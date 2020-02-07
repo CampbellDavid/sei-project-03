@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 
-const teamsSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-})
-
 const drinksSchema = new mongoose.Schema({
   favouriteDrinks: { type: String }
 })
@@ -18,8 +14,7 @@ const profileSchema = new mongoose.Schema({
   bio: { type: String },
   age: { type: Number },
   gender: { type: String },
-  quizStrengths: [ strengthSchema ],
-  teams: { teamsSchema }
+  quizStrengths: [ strengthSchema ]
 })
 
 module.exports = mongoose.model('Profile', profileSchema)
