@@ -29,4 +29,6 @@ const pubSchema = new mongoose.Schema({
   timestamps: true
 })
 
+pubSchema.plugin(require('mongoose-unique-validator'))
+
 module.exports = mongoose.model('Pub', pubSchema)
