@@ -1,3 +1,6 @@
+
+//!NOT DONE YET. NEED TO UPDATE INDEX.JS FILE FIRST -XUAN
+
 const router = require('express').Router()
 const pubs = require('../controllers/pubs') //TODO
 const users = require('../controllers/auth') //TODO
@@ -10,16 +13,13 @@ router.route('/pubs')
 router.route('/pubs/:id')
   .get(pubs.show)
   .put(secureRoute, pubs.update)
-  .delete(secureRoute, pubs.destroy)
+  .delete(secureRoute, pubs.destroy) 
 
-router.route('/pubs/:id/comments')
+router.route('/pubs/:id/reviews')
   .post(secureRoute, pubs.commentCreate)
 
-router.route('/pubs/:id/comments/:commentId') 
+router.route('/pubs/:id/reviews/:reviewId') 
   .delete(secureRoute, pubs.commentDelete)
-
-router.route('/pubs/:id/like')
-  .get(secureRoute, pubs.like)
 
 router.route('/register')
   .post(users.register)
