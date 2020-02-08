@@ -2,6 +2,7 @@ const router = require('express').Router()
 const pubs = require('../controllers/pubs') //TODO
 const users = require('../controllers/auth') //TODO
 const secureRoute = require('../lib/secureRoute') //TODO
+const events = require('../controllers/events')//TODO
 
 router.route('/pubs')
   .get(pubs.index)
@@ -13,13 +14,23 @@ router.route('/pubs/:id')
   .delete(secureRoute, pubs.destroy)
 
 router.route('/pubs/:id/comments')
-  .post(secureRoute, pubs.commentCreate)
+  .post(secureRoute, pubs.commentCreate) //reviews?
 
 router.route('/pubs/:id/comments/:commentId') 
-  .delete(secureRoute, pubs.commentDelete)
+  .delete(secureRoute, pubs.commentDelete) // reviews?
 
 router.route('/pubs/:id/like')
-  .get(secureRoute, pubs.like)
+  .get(secureRoute, pubs.like) /// do we have likes?
+
+router.route('/pubs/:id/events')
+  .get(events.index)
+  .post(secureRoute, events.create)
+
+router.route('/pubs/:id/events/:id')
+  .delete(secureRoute, events.destroy)
+  .get(events.show)
+  .put(secureRoute, events.update)
+
 
 router.route('/register')
   .post(users.register)

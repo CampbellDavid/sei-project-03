@@ -86,7 +86,7 @@ describe('PUT /pubs/:id', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Test' })
       .end((err, res) => {
-        expect(res.body).to.contains.keys([
+        expect(res.body).to.contains.keys([  //_id missing?
           'name',
           'image',
           'city',        
