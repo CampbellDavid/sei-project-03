@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //TODO 
 
 //* CREATE 
@@ -17,3 +18,5 @@ function create(req, res, next) {
 
 
 module.exports = { create, update, destroy }
+=======
+>>>>>>> c9bc0821be9431359913c5e2528c78bed3a65899
