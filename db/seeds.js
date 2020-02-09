@@ -44,7 +44,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         return Team.create([
           {
             teamName: 'Inquizitours',
-            member: [1]
+            member: ''
           }
         ])
       })
@@ -57,7 +57,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             bio: 'I am so good at pub quizzes',
             age: 22,
             gender: 'male',
-            quizStrengths: [1, 2]
+            quizStrengths: ''
           }
         ])
       })
