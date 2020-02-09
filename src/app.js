@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/main.scss'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
 
-
-import Home from './common/Home'
+import Nav from './components/common/Nav'
+import Home from './components/common/Home'
 
 
 class App extends React.Component {

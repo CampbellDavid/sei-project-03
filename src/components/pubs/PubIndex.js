@@ -5,7 +5,7 @@ import Geocoder from 'react-map-gl-geocoder'
 
 const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
-import PubCard from '../pubs/PubCard'
+import PubCard from './PubCard'
 
 export default class PubIndex extends React.Component {
 state = {
