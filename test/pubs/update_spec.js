@@ -87,6 +87,7 @@ describe('PUT /pubs/:id', () => {
       .send({ name: 'Test' })
       .end((err, res) => {
         expect(res.body).to.contains.keys([  //_id missing?
+          '_id',
           'name',
           'image',
           'city',        
