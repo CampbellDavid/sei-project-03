@@ -1,11 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/main.scss'
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+
+import Nav from './common/Nav'
+import Home from './common/Home'
+
 
 class App extends React.Component {
   render() {
     return (
-      <h1>Inquizitour🍺🍺🍺🍺</h1>
+      <BrowserRouter>
+        <main>      
+
+          <Switch>
+            <Route exact path='/' component={Home}></Route>
+            {/* <Route path='/pubs' component={PubIndex}></Route>
+            <Route path='/events' component={EventIndex}></Route>
+            <Route path='/register' component={Register}></Route> */}
+          </Switch>
+        </main>
+      </BrowserRouter>
     )
   }
 }
