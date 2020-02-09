@@ -1,14 +1,20 @@
 import React from 'react'
-//will need axios to get the info from our database later
-//import axios from 'axios'
+import axios from 'axios'
 
-//will need to have the PubCard embedded as a clickable link
+import PubCard from '../pubs/PubCard'
 
 export default class PubIndex extends React.Component {
+state = {
+  pubs: []
+}
 
-  render() {
-    return (
-      <h1>Pub Index Page</h1>
-    )
-  }
+aysnc componentDidMount() {
+  
+}
+
+render() {
+  return (
+    <h1>Pub Index Page</h1>
+  )
+}
 }
