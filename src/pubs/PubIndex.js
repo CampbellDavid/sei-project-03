@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import MapGL, {  Marker, Popup } from 'react-map-gl'
+import Geocoder from 'react-map-gl-geocoder'
+
+const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
 import PubCard from '../pubs/PubCard'
 
