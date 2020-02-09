@@ -17,10 +17,10 @@ router.route('/pubs/:id')
   .delete(secureRoute, pubs.destroy) 
 
 router.route('/pubs/:id/reviews')
-  .post(secureRoute, pubs.commentCreate)
+  .post(secureRoute, pubs.reviewCreate)
 
 router.route('/pubs/:id/reviews/:reviewId') 
-  .delete(secureRoute, pubs.commentDelete)
+  .delete(secureRoute, pubs.reviewDelete)
 
 router.route('/pubs/:id/events')
   .get(events.index)
