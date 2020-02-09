@@ -1,11 +1,11 @@
 
-//!NOT DONE YET. NEED TO UPDATE INDEX.JS FILE FIRST -XUAN
+//!MOSTLY DONE NOW. BUT CHECK BACK LATER IF NEED TO ADD NEW PAGES
 
 const router = require('express').Router()
-const pubs = require('../controllers/pubs') //TODO
-const users = require('../controllers/auth') //TODO
-const secureRoute = require('../lib/secureRoute') //TODO
-const events = require('../controllers/events')//TODO
+const pubs = require('../controllers/pubs') 
+const users = require('../controllers/auth') 
+const secureRoute = require('../lib/secureRoute')
+const events = require('../controllers/events')
 
 router.route('/pubs')
   .get(pubs.index)
