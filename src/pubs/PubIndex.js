@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-
+import 'mapbox-gl/dist/mapbox-gl.css'  
+import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import MapGL, {  Marker, Popup } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 
