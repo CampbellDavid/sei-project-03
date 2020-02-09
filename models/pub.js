@@ -21,7 +21,7 @@ const pubSchema = new mongoose.Schema({
   maxTeamSize: { type: Number, required: true },
   quizDay: { type: String, required: true },
   quizTime: { type: String, required: true },
-  starRating: [2, 3],
+  starRating: { type: Array },
   averagePintCost: { type: String, required: true },
   reviews: [ reviewSchema ],
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }

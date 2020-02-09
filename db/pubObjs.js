@@ -1,4 +1,4 @@
-let createdUsers
+
 [
   {
     name: 'Abbey Bar',
@@ -15,7 +15,7 @@ let createdUsers
     starRating: [1, 2, 3, 4, 5, 5, 5, 5],
     averagePintCost: '£6.50',
     reviews: ['This was great', 'great service', 'quiz was awesome'],
-    user: createdUsers[0]
+    user: ''
   }, {
     name: 'The Red Lion',
     image: 'http://www.pubquizzers.com/images/pubs/abbey-bar_560.jpg',
@@ -31,7 +31,7 @@ let createdUsers
     starRating: [1, 2, 1, 4, 1, 2, 5, 1],
     averagePintCost: '£5.00',
     reviews: ['Good service', 'poor service', 'quiz was hard'],
-    user: createdUsers[1]
+    user: ''
   }, {
     name: 'People\'s Park Tavern',
     image: 'https://media.timeout.com/images/101686741/630/472/image.jpg',
@@ -47,7 +47,7 @@ let createdUsers
     starRating: [5],
     averagePintCost: '£5.50',
     reviews: ['Excellent creative rounds!'],
-    user: createdUsers[0]
+    user: ''
   }, {
     name: 'White Hart',
     image: 'https://cdn.thestage.co.uk/wp-content/uploads/2015/05/White-Hart-700x455.jpg',
@@ -63,7 +63,7 @@ let createdUsers
     starRating: [2, 3],
     averagePintCost: '£5.00',
     reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
-    user: createdUsers[1]
+    user: ''
   }, {
     name: 'Clapton Hart',
     image: 'https://www.telegraph.co.uk/content/dam/food-and-drink/2018/05/21/ClaptonHart-5_trans_NvBQzQNjv4Bq1AT3Q7Sc9uaffdHBes0nLoAUi_eAXJmjTzXoJ-uDM54.jpg?imwidth=450',
@@ -79,7 +79,7 @@ let createdUsers
     starRating: [3],
     averagePintCost: '£5.00',
     reviews: [],
-    user: createdUsers[0]
+    user: ''
   }, {
     name: '',
     image: '',
@@ -89,11 +89,11 @@ let createdUsers
     phone: '',
     website: '',
     description: '',
-    maxTeamSize: ,
+    maxTeamSize: 0,
     quizDay: '',
     quizTime: '',
     starRating: [],
     averagePintCost: '£',
     reviews: [],
-    user: createdUsers[0]
+    user: ''
   }]

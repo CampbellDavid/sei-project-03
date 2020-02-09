@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { dbURI } = require('../config/environment')
 const Pub = require('../models/pub')
-const User = require('..models/user')
+const User = require('../models/user')
 const Event = require('../models/event')
 const Team = require('../models/team')
 const Profile = require('../models/profile')
@@ -31,7 +31,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdUsers.length)} users created`)
         return Event.create([
           {
-            teamName: 'Inquizitors',
+            teamName: 'Inquizitours',
             entryFee: '£2',
             quizDay: 'Tuesday',
             quizTime: '20:00',
@@ -43,14 +43,13 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdEvents.length)} events created`)
         return Team.create([
           {
-            user: createdUsers[1],
             teamName: 'Inquizitours',
             member: [1]
           }
         ])
       })
-      .then(createdTeam => {
-        console.log(`${'🍺'.repeat(createdTeam.length)} teams created`)
+      .then(createdTeams => {
+        console.log(`${'🍺'.repeat(createdTeams.length)} teams created`)
         return Profile.create([
           {
             favouriteDrinks: [0],
@@ -64,9 +63,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       })
       .then(createdProfile => {
         console.log(`${'🍺'.repeat(createdProfile.length)} teams created`)
+        return Pub.create(PubObjs)
       })
-    return Pub.create(PubObjs)
-      .then(createdPubs => console.log(`${'🍺'.repeat(createdPubs.length)} pubs created `))
       .catch(err => console.log(err))
       .finally(() => mongoose.connection.close())
   })
