@@ -87,3 +87,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       .catch(err => console.log(err))
       .finally(() => mongoose.connection.close())
   })
+
+// TODO: seeds for pub and users to include arrays?
+// pubObjs file needed?

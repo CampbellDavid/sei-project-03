@@ -24,9 +24,9 @@ describe('DELETE /pubs/:id', () => {
   beforeEach(done => {
     User.create(testUserData)
       .then(users => {
-        token = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' }) // signing the jwt token for our created user
+        token = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' }) 
         incorrectToken = jwt.sign({ sub: users[1]._id }, secret, { expiresIn: '6h' })
-        return Pub.create({ // the aniaml we will be attempting to edit in our tests
+        return Pub.create({ 
           name: 'Abbey Bar',
           image: 'http://www.pubquizzers.com/images/pubs/abbey-bar_560.jpg',
           city: 'London',
@@ -37,8 +37,7 @@ describe('DELETE /pubs/:id', () => {
           description: 'Join us at Abbey for our Legendary pub quiz. The winning team will walk away with a £250 bar tab to use at Abbey, as well as a trophy to keep until the next quiz. Entry is FREE and complimentary nibbles are provided throughout the evening.',
           maxTeamSize: '8',
           quizDay: 'Tuesday',
-          quizTime: '18:30', // discover time format
-          starRating: [1, 2, 3, 4, 5, 5, 5, 5],
+          quizTime: '18:30',
           averagePintCost: '£6.50',
           user: users[0]
         })

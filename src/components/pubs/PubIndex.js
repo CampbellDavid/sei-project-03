@@ -30,6 +30,7 @@ async componentDidMount() {
   }
 }
 
+<<<<<<< HEAD
 mapRef = React.createRef()
   handleViewportChange = (viewport) => {
     this.setState({
@@ -48,6 +49,40 @@ mapRef = React.createRef()
       ...geocoderDefaultOverrides
     })
   }
+=======
+render() {
+  console.log(1)
+  if (!this.state.postcodes) return null
+  console.log(this.state.postcodes.map(postcode => postcode.result.longitude))
+  return (
+    <MapGL
+      mapboxApiAccessToken={mapboxToken}
+      ref={this.mapRef}
+      {...this.state.viewport}
+      height={'100vh'}
+      width={'100vw'}
+      mapStyle="mapbox://styles/mapbox/streets-v11"
+      // zoom={10}
+      // latitude= {51.5074}
+      // longitude= {0.1278}
+      onViewportChange={this.handleViewportChange}>
+      <Geocoder
+        mapRef={this.mapRef}
+        onViewportChange={this.handleGeocoderViewportChange}
+        mapboxApiAccessToken={mapboxToken}
+      />
+      
+      {this.state.postcodes.map((postcode, index) => {
+        return <Marker
+          key={index.toString()}
+          latitude={postcode.result.latitude}
+          longitude={postcode.result.longitude} >
+          <div className="marker">
+            
+          </div>
+        </Marker>
+      } )}
+>>>>>>> 4c35fe0e1a65cee91db82e943fc67d310196eac6
 
 
 

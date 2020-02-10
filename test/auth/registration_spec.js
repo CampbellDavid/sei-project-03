@@ -1,4 +1,5 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
+
 const User = require('../../models/user')
 
 const testDataIncorrect = {

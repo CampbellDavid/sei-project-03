@@ -16,10 +16,8 @@ const testPub = {
   description: 'Join us at Abbey for our Legendary pub quiz. The winning team will walk away with a £250 bar tab to use at Abbey, as well as a trophy to keep until the next quiz. Entry is FREE and complimentary nibbles are provided throughout the evening.',
   maxTeamSize: 8,
   quizDay: 'Tuesday',
-  quizTime: '18:30', // discover time format
-  starRating: [1, 2, 3, 4, 5, 5, 5, 5],
-  averagePintCost: '£6.50',
-  reviews: ['This was great', 'great service', 'quiz was awesome']
+  quizTime: '18:30',
+  averagePintCost: '£6.50'
 }
 
 const testUserCode = {
@@ -93,9 +91,7 @@ describe('POST /pubs', () => {
           'maxTeamSize',
           'quizDay',
           'quizTime',
-          'starRating',
           'averagePintCost',
-          'reviews',
           'user'
         ])
         done()
@@ -122,9 +118,7 @@ describe('POST /pubs', () => {
         expect(pub.maxTeamSize).to.be.a('number')
         expect(pub.quizDay).to.be.a('string')
         expect(pub.quizTime).to.be.a('string')
-        expect(pub.starRating).to.be.an('array')
         expect(pub.averagePintCost).to.be.a('string')
-        expect(pub.reviews).to.be.an('array')
         expect(pub.user).to.be.an('object')
 
         done()

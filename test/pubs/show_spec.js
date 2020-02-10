@@ -25,10 +25,8 @@ describe('GET /pubs/:id', () => {
           description: 'Join us at Abbey for our Legendary pub quiz. The winning team will walk away with a £250 bar tab to use at Abbey, as well as a trophy to keep until the next quiz. Entry is FREE and complimentary nibbles are provided throughout the evening.',
           maxTeamSize: 8,
           quizDay: 'Tuesday',
-          quizTime: '18:30', // discover time format
-          starRating: [],
+          quizTime: '18:30',
           averagePintCost: '£6.50',
-          reviews: [],
           user: user
         })
       })
@@ -73,8 +71,8 @@ describe('GET /pubs/:id', () => {
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
-          'createdAt',
-          'updatedAt',
+          'createdAt',  // invisible key
+          'updatedAt',  // invisible key
           'name',
           'image',
           'city',
@@ -86,9 +84,7 @@ describe('GET /pubs/:id', () => {
           'maxTeamSize',
           'quizDay',
           'quizTime',
-          'starRating',
           'averagePintCost',
-          // 'reviews',
           'user'
         ])
         done()
@@ -112,10 +108,9 @@ describe('GET /pubs/:id', () => {
         expect(pub.maxTeamSize).to.be.a('number')
         expect(pub.quizDay).to.be.a('string')
         expect(pub.quizTime).to.be.a('string')
-        // expect(pub.starRating).to.be.an('array')
         expect(pub.averagePintCost).to.be.a('string')
-        // expect(pub.reviews).to.be.an('array')
         expect(pub.user).to.be.an('object')
+
         done()
       })
   })

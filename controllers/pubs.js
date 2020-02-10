@@ -1,12 +1,3 @@
-//TODO 
-//* INDEX 
-//* CREATE 
-//* SHOW
-//* UPDATE
-//* DESTROY
-//* CREATE REVIEW
-//* DELETE REVIEW
-
 const Pub = require('../models/pub')
 
 function index(req, res) {
@@ -30,7 +21,7 @@ function show(req, res, next) {
     .findById(req.params.id)
     .populate('user')
     .then(pub => { 
-      if (!pub) throw new Error('Not Found')
+      if (!pub) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(pub)
     })
     .catch(next)
