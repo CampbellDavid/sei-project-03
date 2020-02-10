@@ -80,20 +80,22 @@
     averagePintCost: '£5.00',
     reviews: [],
     user: ''
-  }, {
-    name: '',
-    image: '',
-    city: 'London',
-    streetName: '',
-    postcode: '',
-    phone: '',
-    website: '',
-    description: '',
-    maxTeamSize: 0,
-    quizDay: '',
-    quizTime: '',
-    starRating: [],
-    averagePintCost: '£',
-    reviews: [],
-    user: ''
   }]
+
+// , {
+//   name: '',
+//   image: '',
+//   city: 'London',
+//   streetName: '',
+//   postcode: '',
+//   phone: '',
+//   website: '',
+//   description: '',
+//   maxTeamSize: 0,
+//   quizDay: '',
+//   quizTime: '',
+//   starRating: [],
+//   averagePintCost: '£',
+//   reviews: [],
+//   user: ''
+// }
