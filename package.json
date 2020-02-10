@@ -12,6 +12,7 @@
     "test": "mocha test/**/*_spec.js --require test/helper --recursive --exit"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "mapbox/mapbox-gl-geocoder",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
