@@ -28,7 +28,7 @@ function update(req, res, next) {
       Object.assign(profile, req.body) 
       return profile.save()  
     })
-    .then(updatedProfile => res.status(202).json(updatedProfile)) 
+    .then(updatedProfile => res.status(201).json(updatedProfile)) 
     .catch(next)
 }
 

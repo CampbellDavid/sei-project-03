@@ -12,24 +12,21 @@ const testUserCode = {
   passwordConfirmation: 'test'
 }
 
-describe('PUT /profiles/:id', () => {
+const testProfile = {
+  personalityType: 'INFJ',
+  bio: 'Fun, outgoing and great at quizzes.',
+  age: 26,
+  gender: 'Female'
+}
 
-  let token, incorrectToken, profile
+describe('POST /profiles', () => {
+
+  let token
 
   beforeEach(done => {
     User.create(testUserCode)
       .then(user => {
         token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
-        return Profile.create({
-          personalityType: 'INFJ',
-          bio: 'Fun, outgoing and great at quizzes.',
-          age: 26,
-          gender: 'Female',
-          user: user
-        })
-      })
-      .then(createdProfile => {
-        profile = createdProfile
         done()
       })
   })
@@ -40,19 +37,20 @@ describe('PUT /profiles/:id', () => {
       .then(() => done())
   })
 
-  it('should return error code 401 with no token', done => {
-    api.put(`/api/profiles/${profile._id}`)
-      .send({ personalityType: 'ABCD' })
+
+  it('should return a 401 response without a token', done => {
+    api.post('/api/profiles')
+      .send(testProfile)
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
       })
   })
 
-  it('should return success code 201 with token', done => {
-    api.put(`/api/profiles/${profile._id}`)
+  it('should return a 201 response with a token', done => {
+    api.post('/api/profiles')
       .set('Authorization', `Bearer ${token}`)
-      .send({ personalityType: 'ABCD' })
+      .send(testProfile)
       .end((err, res) => {
         expect(res.status).to.eq(201)
         done()
@@ -60,19 +58,18 @@ describe('PUT /profiles/:id', () => {
   })
 
   it('should return an object', done => {
-    api.put(`/api/profiles/${profile._id}`)
+    api.post('/api/profiles')
       .set('Authorization', `Bearer ${token}`)
-      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
       })
   })
 
-  it('should return correct fields', done => {
-    api.put(`/api/profiles/${profile._id}`)
+  it('should return the correct fields', done => {
+    api.post('/api/profiles')
       .set('Authorization', `Bearer ${token}`)
-      .send({ personalityType: 'ABCD' })
+      .send(testProfile)
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
@@ -83,40 +80,30 @@ describe('PUT /profiles/:id', () => {
           'gender',
           'quizStrengths',
           'user'
+
         ])
         done()
       })
   })
 
-
-  it('should return correct data types', done => {
-    api.put(`/api/profiles/${profile._id}`)
+  it('should return the correct data types', done => {
+    api.post('/api/profiles')
       .set('Authorization', `Bearer ${token}`)
-      .send({ personalityType: 'ABCD' })
+      .send(testProfile)
       .end((err, res) => {
         const profile = res.body
-
         expect(profile._id).to.be.a('string')
         expect(profile.favouriteDrinks).to.be.an('array')
         expect(profile.personalityType).to.be.a('string')
         expect(profile.bio).to.be.a('string')
         expect(profile.age).to.be.a('number')
         expect(profile.gender).to.be.a('string')
-        expect(profile.quizStrengths).to.be.a('array')
-        expect(profile.user).to.be.a('string')
-
+        expect(profile.quizStrengths).to.be.an('array')
+        expect(profile.user).to.be.an('object')
+      
         done()
       })
   })
 
-  it('should return a 401 response with a token for a user that did not create the resource', done => {
-    api.put(`/api/dinosaurs/${profile._id}`)
-      .set('Authorization', `Bearer ${incorrectToken}`)
-      .send({ personalityType: 'ABCD' })
-      .end((err, res) => {
-        expect(res.status).to.eq(401)
-        done()
-      })
-  })
 
 })
