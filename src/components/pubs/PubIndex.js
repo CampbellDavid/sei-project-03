@@ -2,12 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import 'mapbox-gl/mapbox-gl.css'  
 import 'react-map-gl-geocoder/mapbox-gl-geocoder.css'
-import MapGL, {  Marker, Popup } from 'react-map-gl'
-import Geocoder from 'react-map-gl-geocoder'
+// import MapGL, {  Marker, Popup } from 'react-map-gl'
+// import Geocoder from 'react-map-gl-geocoder'
 
-const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
+// const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
-import PubCard from './PubCard'
+// import PubCard from './PubCard'
 
 export default class PubIndex extends React.Component {
 state = {
@@ -21,7 +21,7 @@ state = {
 
 async componentDidMount() {
   try {
-    const res = await axios.get(`/api/pubs/${pubId}`)
+    const res = await axios.get('/api/pubs')
     console.log(res.data)
     this.setState({ pubs: res.data })
 
