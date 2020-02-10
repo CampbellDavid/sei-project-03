@@ -37,9 +37,3 @@ function destroy(req, res) {
 }
 
 module.exports = { create, update, destroy }
-
-//TODO 
-
-//* CREATE 
-//* UPDATE
-//* DESTROY

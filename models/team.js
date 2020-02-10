@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 
-// const memberSchema = new mongoose.Schema({
-//   member: { type: String }
-// })
-
-const teamSchema = new mongoose.Schema({
-  // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  teamName: { type: String, required: true }
-  // member: [ memberSchema ]
+const memberSchema = new mongoose.Schema({
+  member: { type: String }
 })
 
-module.exports = mongoose.model('Team', teamSchema) 
+const teamSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  teamName: { type: String, required: true },
+  member: [ memberSchema ]
+})
+
+module.exports = mongoose.model('Team', teamSchema)
+
+// TODO: fix member schema

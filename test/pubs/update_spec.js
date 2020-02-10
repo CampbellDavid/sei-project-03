@@ -1,4 +1,5 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
+
 const Pub = require('../../models/pub')
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken') // again needed just like in create, we need to be able to pass tokens with requests.
@@ -23,6 +24,7 @@ describe('PUT /pubs/:id', () => {
     User.create(testUserData)
       .then(users => {
         token = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' }) // signing the jwt token for our created user
+        incorrectToken = jwt.sign({ sub: users[1]._id }, secret, { expiresIn: '6h' }) 
         return Pub.create({
           name: 'Abbey Bar',
           image: 'http://www.pubquizzers.com/images/pubs/abbey-bar_560.jpg',
@@ -34,8 +36,7 @@ describe('PUT /pubs/:id', () => {
           description: 'Join us at Abbey for our Legendary pub quiz. The winning team will walk away with a £250 bar tab to use at Abbey, as well as a trophy to keep until the next quiz. Entry is FREE and complimentary nibbles are provided throughout the evening.',
           maxTeamSize: '8',
           quizDay: 'Tuesday',
-          quizTime: '18:30', // discover time format
-          starRating: [1, 2, 3, 4, 5, 5, 5, 5],
+          quizTime: '18:30',
           averagePintCost: '£6.50',
           user: users[0]
         })
@@ -99,9 +100,7 @@ describe('PUT /pubs/:id', () => {
           'maxTeamSize',        
           'quizDay',        
           'quizTime',
-          'starRating',        
-          'averagePintCost',        
-          'reviews',        
+          'averagePintCost',    
           'user'    
         ])
         done()
@@ -117,7 +116,7 @@ describe('PUT /pubs/:id', () => {
         expect(pub.name).to.be.a('string')
         expect(pub.image).to.be.a('string')
         expect(pub.city).to.be.a('string')
-        expect(pub.streatName).to.be.a('string')
+        expect(pub.streetName).to.be.a('string')
         expect(pub.postcode).to.be.a('string')
         expect(pub.phone).to.be.a('string')
         expect(pub.website).to.be.a('string')
@@ -125,9 +124,7 @@ describe('PUT /pubs/:id', () => {
         expect(pub.maxTeamSize).to.be.a('number')
         expect(pub.quizDay).to.be.a('string')
         expect(pub.quizTime).to.be.a('string')
-        expect(pub.starRating).to.be.an('array')
         expect(pub.averagePintCost).to.be.a('string')
-        expect(pub.reviews).to.be.a('string')
         expect(pub.user).to.be.a('string')
         done()
       })

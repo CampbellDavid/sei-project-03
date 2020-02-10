@@ -1,6 +1,5 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 
-const Profile = require('../../models/profile')
 const User = require('../../models/user')
 
 describe('GET /profiles/:id', () => {
@@ -13,12 +12,10 @@ describe('GET /profiles/:id', () => {
       email: 'email@email',
       password: 'pass',
       passwordConfirmation: 'pass',
-      favouriteDrinks: [],
       personalityType: 'UCLA',
       bio: 'Charming and charismatic.',
       age: 24,
-      gender: 'Male',
-      quizStrengths: []
+      gender: 'Male'
     })
       .then(createdProfile => {
         profile = createdProfile
@@ -28,9 +25,7 @@ describe('GET /profiles/:id', () => {
 
 
   afterEach(done => {
-    User.deleteMany()
-      .then(() => Profile.deleteMany())
-      .then(() => done())
+    User.deleteMany().then(() => done())
   })
 
   it('should return a 404 not found for an invalid profile id', done => {
@@ -42,7 +37,7 @@ describe('GET /profiles/:id', () => {
   })
 
   it('should return a 200 response', done => {
-    api.get(`/api/profiles/${profile._id}`) // <=== and using that pub we have created and stored in the requests
+    api.get(`/api/profiles/${profile._id}`) 
       .end((err, res) => {
         expect(res.status).to.eq(200)
         done()
@@ -50,7 +45,7 @@ describe('GET /profiles/:id', () => {
   })
 
   it('should return an object', done => {
-    api.get(`/api/profiles/${profile._id}`) // <=== and using that pub we have created and stored in the requests
+    api.get(`/api/profiles/${profile._id}`) 
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -65,12 +60,10 @@ describe('GET /profiles/:id', () => {
           'username',
           'email',
           'password',
-          'favouriteDrinks',
           'personalityType',
           'bio',
           'age',
           'gender',
-          'quizStrengths',
           'user'
         ])
         done()
@@ -81,14 +74,17 @@ describe('GET /profiles/:id', () => {
     api.get(`/api/profiles/${profile._id}`)
       .end((err, res) => {
         const profile = res.body
+
         expect(profile._id).to.be.a('string')
-        expect(profile.favouriteDrinks).to.be.an('array')
+        expect(profile.username).to.be.a('string')
+        expect(profile.email).to.be.a('string')
+        expect(profile.password).to.be.a('string')
         expect(profile.personalityType).to.be.a('string')
         expect(profile.bio).to.be.a('string')
         expect(profile.age).to.be.a('number')
         expect(profile.gender).to.be.a('string')
-        expect(profile.quizStrengths).to.be.an('array')
         expect(profile.user).to.be.an('object')
+
         done()
       })
   })

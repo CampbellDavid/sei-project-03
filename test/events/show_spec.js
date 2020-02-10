@@ -9,18 +9,18 @@ describe('GET /events/:id', () => {
 
   beforeEach(done => {
     User.create({
-      username: 'test',
-      email: 'test@email',
-      password: 'test',
-      passwordConfirmation: 'test'
+      username: 'testUser',
+      email: 'test-user@email',
+      password: 'testuser',
+      passwordConfirmation: 'testuser'
     })
       .then(user => {
         return Event.create({
           teamName: 'Inquizitors',
           entryFee: '£2',
           quizDay: 'Tuesday',
-          quizTime: '18:30', // discover time format
-          user
+          quizTime: '18:30',
+          user: user
         })
       })
       .then(createEvent => {
@@ -83,13 +83,13 @@ describe('GET /events/:id', () => {
 
         expect(event._id).to.be.a('string')
         expect(event.teamName).to.be.a('string')
-        expect(event.entryFee).to.be.a('number')
+        expect(event.entryFee).to.be.a('string')
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
-        expect(event.user).to.be.a('string')
+        expect(event.user).to.be.an('object')
 
+        done()
       })
-    done()
   })
 
 })
