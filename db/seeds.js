@@ -4,8 +4,6 @@ const Pub = require('../models/pub')
 const User = require('../models/user')
 const Event = require('../models/event')
 const Team = require('../models/team')
-const Profile = require('../models/profile')
-// const PubObjs = require('./pubObjs')
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
   (err, db) => {
@@ -17,13 +15,25 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             username: '1',
             email: '1@email.com',
             password: '1',
-            passwordConfirmation: '1'
+            passwordConfirmation: '1',
+            favouriteDrinks: [],
+            personalityType: 'ABCD',
+            bio: 'Bio for user 1',
+            age: 30,
+            gender: 'Female',
+            quizStrengths: []
           },
           {
             username: '2',
             email: '2@email.com',
             password: '2',
-            passwordConfirmation: '2'
+            passwordConfirmation: '2',
+            favouriteDrinks: [],
+            personalityType: 'EFGH',
+            bio: 'Bio for user 2',
+            age: 25,
+            gender: 'Male',
+            quizStrengths: []
           }
         ])
       })
@@ -44,12 +54,14 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         return Team.create([
           {
             teamName: 'Inquizitours',
-            member: ''
+            member: [],
+            user: 'user'
           }
         ])
       })
       .then(createdTeams => {
         console.log(`${'🍺'.repeat(createdTeams.length)} teams created`)
+<<<<<<< HEAD
         return Profile.create([
           {
             favouriteDrinks: ['gin and tonic', 'pina colada'],
@@ -63,6 +75,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       })
       .then(createdProfile => {
         console.log(`${'🍺'.repeat(createdProfile.length)} profiles created`)
+=======
+>>>>>>> bdb2458aa52a96e3d21d06561a06be264ab056b9
         return Pub.create([
           {
             name: 'Abbey Bar',
@@ -78,8 +92,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizTime: '18:30', // discover time format
             starRating: [1, 2, 3, 4, 5, 5, 5, 5],
             averagePintCost: '£6.50',
-            reviews: ['This was great', 'great service', 'quiz was awesome']
-            // user: '1'
+            reviews: ['This was great', 'great service', 'quiz was awesome'],
+            user: 'user'
           }
         ])
       })

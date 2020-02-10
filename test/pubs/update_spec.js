@@ -48,7 +48,7 @@ describe('PUT /pubs/:id', () => {
 
   afterEach(done => { // as always removing any pubs and users after the tests are complete
     User.deleteMany()
-      .then(() => pub.deleteMany())
+      .then(() => Pub.deleteMany())
       .then(() => done())
   })
 

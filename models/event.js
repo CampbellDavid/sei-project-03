@@ -10,3 +10,5 @@ const eventSchema = new mongoose.Schema({
 )
 
 module.exports = mongoose.model('Event', eventSchema)
+
+// TODO: add pub location to object

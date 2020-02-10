@@ -86,7 +86,7 @@ describe('GET /events/:id', () => {
         expect(event.entryFee).to.be.a('number')
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
-        expect(event.user).to.be.an('object')
+        expect(event.user).to.be.a('string')
 
       })
     done()

@@ -121,10 +121,11 @@ describe('POST /pubs', () => {
         expect(pub.description).to.be.a('string')
         expect(pub.maxTeamSize).to.be.a('number')
         expect(pub.quizDay).to.be.a('string')
+        expect(pub.quizTime).to.be.a('string')
         expect(pub.starRating).to.be.an('array')
         expect(pub.averagePintCost).to.be.a('string')
         expect(pub.reviews).to.be.an('array')
-        expect(pub.user).to.be.an('object')
+        expect(pub.user).to.be.a('string')
 
         done()
       })

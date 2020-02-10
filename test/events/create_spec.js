@@ -93,10 +93,11 @@ describe('POST /events', () => {
         const event = res.body
 
         expect(event._id).to.be.a('string')
+        expect(event.teamName).to.be.a('string')
+        expect(event.entryFee).to.be.a('string')
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
-        expect(event.teamName).to.be.a('string')
-        expect(event.user).to.be.a('object')
+        expect(event.user).to.be.an('object')
 
         done()
       })
