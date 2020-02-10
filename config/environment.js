@@ -5,4 +5,5 @@ const secret = process.env.SECRET || 'I think, therefore I am'
 
 
 console.log({ port, dbURI, secret })
+
 module.exports = { port, dbURI, secret }

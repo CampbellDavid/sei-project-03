@@ -35,8 +35,8 @@ describe('GET /events/:id', () => {
   })
 
 
-  it('should return a 404 not found for an invalid pubs id', done => {
-    api.get('/api/events/incorrectPubId')
+  it('should return a 404 not found for an invalid events id', done => {
+    api.get('/api/events/1234')
       .end((err, res) => {
         expect(res.status).to.eq(404)
         done()
