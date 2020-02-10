@@ -8,7 +8,6 @@ const users = require('../controllers/auth')
 
 const pubs = require('../controllers/pubs')
 const events = require('../controllers/events')
-// const profiles = require('../controllers/profiles')
 // const teams = require('../controllers/teams')
 
 

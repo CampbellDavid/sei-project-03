@@ -6,12 +6,10 @@ const testDataIncorrect = {
   email: 'test@test.test',
   password: 'test',
   passwordConfirmation: 'code',
-  // favouriteDrinks: [],
   personalityType: 'ABCD',
   bio: 'Bio for user 1',
   age: 30,
   gender: 'Female'
-  // quizStrengths: []
 }
 
 const testDataDuplicateUsername = {
@@ -19,12 +17,10 @@ const testDataDuplicateUsername = {
   email: 'unique@test.test',
   password: 'test',
   passwordConfirmation: 'test',
-  // favouriteDrinks: [],
   personalityType: 'DEFG',
   bio: 'Bio for user 1',
   age: 30,
   gender: 'Female'
-  // quizStrengths: []
 }
 
 const testDataDuplicateEmail = {
@@ -32,12 +28,10 @@ const testDataDuplicateEmail = {
   email: 'test@test.test',
   password: 'test',
   passwordConfirmation: 'test',
-  // favouriteDrinks: [],
   personalityType: 'HILK',
   bio: 'Bio for user 1',
   age: 30,
   gender: 'Female'
-  // quizStrengths: []
 }
 
 const testDataCorrect = {
@@ -45,12 +39,10 @@ const testDataCorrect = {
   email: 'testCorrect@test.test',
   password: 'test',
   passwordConfirmation: 'test',
-  // favouriteDrinks: [],
   personalityType: 'LMNO',
   bio: 'Bio for user 1',
   age: 30,
   gender: 'Female'
-  // quizStrengths: []
 }
 
 describe('POST /register', () => {
@@ -61,12 +53,10 @@ describe('POST /register', () => {
       email: 'test@test.test',
       password: 'test',
       passwordConfirmation: 'test',
-      // favouriteDrinks: [],
       personalityType: 'ABCD',
       bio: 'Bio for user 1',
       age: 30,
       gender: 'Female'
-      // quizStrengths: []
     })
       .then(() => done())
   })

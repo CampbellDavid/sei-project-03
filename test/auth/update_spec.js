@@ -27,8 +27,8 @@ describe('PUT /profiles/:id', () => {
       .then(user => {
         token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
         return User.create({
-          username: 'test',
-          email: 'test@email',
+          username: 'testOne',
+          email: 'testOne@email',
           password: 'test',
           passwordConfirmation: 'test',
           // favouriteDrinks: [],
