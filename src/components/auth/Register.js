@@ -2,13 +2,12 @@ import React from 'react'
 import axios from 'axios'
 
 export default class Register extends React.Component {
-  state = {
-    fields: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    }
+state = {
+  fields: {
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: ''
   }
 
   handleChange = e => {
@@ -27,7 +26,6 @@ export default class Register extends React.Component {
   }
 
   render() {
-    console.log(this.state.fields)
     return (
       <div>
         <form 
@@ -63,7 +61,7 @@ export default class Register extends React.Component {
               onChange={this.handleChange} 
               type="password" 
               placeholder="confirm password"
-              name="confirmPassword" />
+              name="passwordConfirmation" />
           </div>
           <div className="button-div">
             <button
