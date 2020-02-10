@@ -26,15 +26,15 @@ function login(req, res) {
 }
 
 
-// function profile(req, res) { //??
-//   User
-//     .findById(req.currentUser._id)
-//     .populate('createdPubs')
-//     .populate('createdEvents')
-//     .populate('createdTeams')
-//     .then(user => res.status(200).json(user))
-//     .catch(err => res.status(422).json(err))
-// }
+function profile(req, res) { //??
+  User
+    .findById(req.currentUser._id)
+    .populate('createdPubs')
+    .populate('createdEvents')
+    .populate('createdTeams')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.status(422).json(err))
+}
 
 function show(req, res, next) {
   User
@@ -74,4 +74,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login, show, update, destroy }
+module.exports = { register, login, show, update, destroy, profile }

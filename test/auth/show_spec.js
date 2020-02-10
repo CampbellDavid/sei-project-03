@@ -13,12 +13,12 @@ describe('GET /profiles/:id', () => {
       email: 'email@email',
       password: 'pass',
       passwordConfirmation: 'pass',
-      // favouriteDrinks: ['Beer', 'Red Wine', 'Bud'],
+      favouriteDrinks: [],
       personalityType: 'UCLA',
       bio: 'Charming and charismatic.',
       age: 24,
-      gender: 'Male'
-      // quizStrengths: ['Latin', 'Science', 'GenEd'],
+      gender: 'Male',
+      quizStrengths: []
     })
       .then(createdProfile => {
         profile = createdProfile
@@ -62,6 +62,9 @@ describe('GET /profiles/:id', () => {
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
+          'username',
+          'email',
+          'password',
           'favouriteDrinks',
           'personalityType',
           'bio',

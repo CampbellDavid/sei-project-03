@@ -95,7 +95,4 @@ function reviewDelete(req, res) {
     .catch(err => res.json(err))
 }
 
-
-
-
 module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete }

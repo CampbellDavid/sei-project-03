@@ -125,7 +125,7 @@ describe('POST /pubs', () => {
         expect(pub.starRating).to.be.an('array')
         expect(pub.averagePintCost).to.be.a('string')
         expect(pub.reviews).to.be.an('array')
-        expect(pub.user).to.be.a('string')
+        expect(pub.user).to.be.an('object')
 
         done()
       })
