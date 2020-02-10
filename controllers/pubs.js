@@ -13,7 +13,9 @@ function index(req, res) {
   Pub
     .find()
     .populate('user')
-    .then(foundPubs => res.status(200).json(foundPubs))
+    .then(foundPubs => {
+      res.status(200).json(foundPubs)
+    })
     .catch(err => res.json(err))
 }
 
