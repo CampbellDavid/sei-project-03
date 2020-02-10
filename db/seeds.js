@@ -62,7 +62,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         ])
       })
       .then(createdProfile => {
-        console.log(`${'🍺'.repeat(createdProfile.length)} teams created`)
+        console.log(`${'🍺'.repeat(createdProfile.length)} profiles created`)
         return Pub.create(PubObjs)
       })
       .catch(err => console.log(err))

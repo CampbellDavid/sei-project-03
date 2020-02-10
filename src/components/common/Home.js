@@ -1,10 +1,11 @@
 import React from 'react'
-import Nav from './Nav'
+// import Nav from './Nav'
 
 const Home = () => (
   <>
     <h1>Inquizitour🍺🍺🍺🍺</h1>
-    <Nav />
+    {/* I've put this in app.js as common across all pages - is this incorrect? CR */}
+    {/* <Nav /> */}
   </>
 )
 
