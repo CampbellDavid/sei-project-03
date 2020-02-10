@@ -7,7 +7,7 @@ state = {
     username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    passwordConfirmation: ''
   }
 }
 
@@ -27,7 +27,6 @@ state = {
   }
 
   render() {
-    console.log(this.state.fields)
     return (
       <div>
         <form 
@@ -63,7 +62,7 @@ state = {
               onChange={this.handleChange} 
               type="password" 
               placeholder="confirm password"
-              name="confirmPassword" />
+              name="passwordConfirmation" />
           </div>
           <div className="button-div">
             <button
