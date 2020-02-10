@@ -5,28 +5,52 @@ const testDataIncorrect = {
   username: 'test',
   email: 'test@test.test',
   password: 'test',
-  passwordConfirmation: 'code'
+  passwordConfirmation: 'code',
+  // favouriteDrinks: [],
+  personalityType: 'ABCD',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 const testDataDuplicateUsername = {
   username: 'test',
   email: 'unique@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  // favouriteDrinks: [],
+  personalityType: 'DEFG',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 const testDataDuplicateEmail = {
   username: 'unique',
   email: 'test@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  // favouriteDrinks: [],
+  personalityType: 'HILK',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 const testDataCorrect = {
   username: 'testCorrect',
   email: 'testCorrect@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  // favouriteDrinks: [],
+  personalityType: 'LMNO',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 describe('POST /register', () => {
@@ -36,7 +60,13 @@ describe('POST /register', () => {
       username: 'test',
       email: 'test@test.test',
       password: 'test',
-      passwordConfirmation: 'test'
+      passwordConfirmation: 'test',
+      // favouriteDrinks: [],
+      personalityType: 'ABCD',
+      bio: 'Bio for user 1',
+      age: 30,
+      gender: 'Female'
+      // quizStrengths: []
     })
       .then(() => done())
   })

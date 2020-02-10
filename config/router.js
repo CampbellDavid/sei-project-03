@@ -8,8 +8,8 @@ const users = require('../controllers/auth')
 
 const pubs = require('../controllers/pubs')
 const events = require('../controllers/events')
-const profiles = require('../controllers/profiles')
-const teams = require('../controllers/teams')
+// const profiles = require('../controllers/profiles')
+// const teams = require('../controllers/teams')
 
 
 // Pubs
@@ -65,23 +65,20 @@ router.route('/login')
 
 // Profiles
 
-router.route('/profiles') // Necessary??
-  .get(secureRoute, profiles.show)
-  // .post(secureRoute, profiles.create)
-
 router.route('/profiles/:id')
-  .delete(secureRoute, profiles.destroy)
-  .put(secureRoute, profiles.update)
+  .delete(secureRoute, users.destroy)
+  .put(secureRoute, users.update)
+  .get(secureRoute, users.show)
 
 
 // Teams
 
-router.route('/profiles')
-  .get(secureRoute, profiles.show)
-  .post(secureRoute, profiles.create)
+// router.route('/profiles')
+//   .get(secureRoute, teams.show)
+//   .post(secureRoute, teams.create)
 
-router.route('/profiles/:id')
-  .delete(secureRoute, profiles.destroy)
-  .put(secureRoute, profiles.update)
+// router.route('/profiles/:id')
+//   .delete(secureRoute, teams.destroy)
+//   .put(secureRoute, teams.update)
 
 module.exports = router

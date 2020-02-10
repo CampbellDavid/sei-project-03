@@ -1,6 +1,6 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 
-const Profile = require('../../models/profile')
+// const Profile = require('../../models/profile')
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
@@ -9,7 +9,13 @@ const testUserCode = {
   username: 'test',
   email: 'test@email',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  // favouriteDrinks: [],
+  personalityType: 'ABCD',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 describe('PUT /profiles/:id', () => {
@@ -20,23 +26,27 @@ describe('PUT /profiles/:id', () => {
     User.create(testUserCode)
       .then(user => {
         token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
-        return Profile.create({
-          personalityType: 'INFJ',
-          bio: 'Fun, outgoing and great at quizzes.',
-          age: 26,
-          gender: 'Female',
-          user: user
+        return User.create({
+          username: 'test',
+          email: 'test@email',
+          password: 'test',
+          passwordConfirmation: 'test',
+          // favouriteDrinks: [],
+          personalityType: 'ABCD',
+          bio: 'Bio for user 1',
+          age: 30,
+          gender: 'Female'
+          // quizStrengths: []
         })
       })
-      .then(createdProfile => {
-        profile = createdProfile
+      .then(updatedProfile => {
+        profile = updatedProfile
         done()
       })
   })
 
   afterEach(done => {
     User.deleteMany()
-      .then(() => Profile.deleteMany())
       .then(() => done())
   })
 
@@ -76,6 +86,9 @@ describe('PUT /profiles/:id', () => {
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
+          'username',
+          'email',
+          'password',
           'favouriteDrinks',
           'personalityType',
           'bio',
@@ -97,6 +110,9 @@ describe('PUT /profiles/:id', () => {
         const profile = res.body
 
         expect(profile._id).to.be.a('string')
+        expect(profile.username).to.be.a('string')
+        expect(profile.email).to.be.a('string')
+        expect(profile.password).to.be.a('string')
         expect(profile.favouriteDrinks).to.be.an('array')
         expect(profile.personalityType).to.be.a('string')
         expect(profile.bio).to.be.a('string')
@@ -110,7 +126,7 @@ describe('PUT /profiles/:id', () => {
   })
 
   it('should return a 401 response with a token for a user that did not create the resource', done => {
-    api.put(`/api/dinosaurs/${profile._id}`)
+    api.put(`/api/profiles/${profile._id}`)
       .set('Authorization', `Bearer ${incorrectToken}`)
       .send({ personalityType: 'ABCD' })
       .end((err, res) => {

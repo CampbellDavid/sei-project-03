@@ -10,15 +10,27 @@ describe('GET /profiles', () => {
       username: 'UserOne',
       email: 'email@email',
       password: 'pass',
-      passwordConfirmation: 'pass'
+      passwordConfirmation: 'pass',
+      // favouriteDrinks: [],
+      personalityType: 'DEFG',
+      bio: 'Bio for user 1',
+      age: 30,
+      gender: 'Female'
+      // quizStrengths: []
     })
       .then(user => {
         Profile.create([
           {
-            personalityType: 'INFJ',
-            bio: 'Fun, outgoing and great at quizzes.',
-            age: 26,
+            username: 'UserOne',
+            email: 'email@email',
+            password: 'pass',
+            passwordConfirmation: 'pass',
+            // favouriteDrinks: [],
+            personalityType: 'DEFG',
+            bio: 'Bio for user 1',
+            age: 30,
             gender: 'Female',
+            // quizStrengths: []
             user: user
           }
           // {
@@ -98,7 +110,7 @@ describe('GET /profiles', () => {
           expect(profile.gender).to.be.a('string')
           expect(profile.quizStrengths).to.be.an('array')
           expect(profile.user).to.be.an('object')
-        
+
         })
         done()
       })

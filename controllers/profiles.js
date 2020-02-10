@@ -1,12 +1,12 @@
 const Profile = require('../models/profile')
 
-function create(req, res, next) {
-  req.body.user = req.currentUser
-  Profile
-    .create(req.body)
-    .then(createdProfile => res.status(201).json(createdProfile))
-    .catch(next)
-}
+// function create(req, res, next) {
+//   req.body.user = req.currentUser
+//   Profile
+//     .create(req.body)
+//     .then(createdProfile => res.status(201).json(createdProfile))
+//     .catch(next)
+// }
 
 function show(req, res, next) {
   Profile
@@ -46,4 +46,6 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { create, show, update, destroy }
+module.exports = { show, update, destroy }
+
+// TODO: delete file

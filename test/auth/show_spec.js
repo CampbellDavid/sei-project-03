@@ -2,34 +2,30 @@
 
 const Profile = require('../../models/profile')
 const User = require('../../models/user')
-const jwt = require('jsonwebtoken')
-const { secret } = require('../../config/environment')
 
-const testUserCode = {
-  username: 'test',
-  email: 'test@email',
-  password: 'test',
-  passwordConfirmation: 'test'
-}
+describe('GET /profiles/:id', () => {
 
-const testProfile = {
-  personalityType: 'INFJ',
-  bio: 'Fun, outgoing and great at quizzes.',
-  age: 26,
-  gender: 'Female'
-}
-
-describe('POST /profiles', () => {
-
-  let token
+  let profile
 
   beforeEach(done => {
-    User.create(testUserCode)
-      .then(user => {
-        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
+    User.create({
+      username: 'UserOne',
+      email: 'email@email',
+      password: 'pass',
+      passwordConfirmation: 'pass',
+      // favouriteDrinks: ['Beer', 'Red Wine', 'Bud'],
+      personalityType: 'UCLA',
+      bio: 'Charming and charismatic.',
+      age: 24,
+      gender: 'Male'
+      // quizStrengths: ['Latin', 'Science', 'GenEd'],
+    })
+      .then(createdProfile => {
+        profile = createdProfile
         done()
       })
   })
+
 
   afterEach(done => {
     User.deleteMany()
@@ -37,29 +33,24 @@ describe('POST /profiles', () => {
       .then(() => done())
   })
 
-
-  it('should return a 401 response without a token', done => {
-    api.post('/api/profiles')
-      .send(testProfile)
+  it('should return a 404 not found for an invalid profile id', done => {
+    api.get('/api/profiles/invalidProfileId')
       .end((err, res) => {
-        expect(res.status).to.eq(401)
+        expect(res.status).to.eq(404)
         done()
       })
   })
 
-  it('should return a 201 response with a token', done => {
-    api.post('/api/profiles')
-      .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+  it('should return a 200 response', done => {
+    api.get(`/api/profiles/${profile._id}`) // <=== and using that pub we have created and stored in the requests
       .end((err, res) => {
-        expect(res.status).to.eq(201)
+        expect(res.status).to.eq(200)
         done()
       })
   })
 
   it('should return an object', done => {
-    api.post('/api/profiles')
-      .set('Authorization', `Bearer ${token}`)
+    api.get(`/api/profiles/${profile._id}`) // <=== and using that pub we have created and stored in the requests
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -67,9 +58,7 @@ describe('POST /profiles', () => {
   })
 
   it('should return the correct fields', done => {
-    api.post('/api/profiles')
-      .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+    api.get(`/api/profiles/${profile._id}`)
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
@@ -80,16 +69,13 @@ describe('POST /profiles', () => {
           'gender',
           'quizStrengths',
           'user'
-
         ])
         done()
       })
   })
 
   it('should return the correct data types', done => {
-    api.post('/api/profiles')
-      .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+    api.get(`/api/profiles/${profile._id}`)
       .end((err, res) => {
         const profile = res.body
         expect(profile._id).to.be.a('string')
@@ -100,10 +86,8 @@ describe('POST /profiles', () => {
         expect(profile.gender).to.be.a('string')
         expect(profile.quizStrengths).to.be.an('array')
         expect(profile.user).to.be.an('object')
-      
         done()
       })
   })
-
 
 })
