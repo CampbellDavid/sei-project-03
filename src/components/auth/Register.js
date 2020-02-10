@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default class Register extends React.Component {
 state = {
-  fields: {
+  data: {
     username: '',
     email: '',
     password: '',
@@ -12,14 +12,14 @@ state = {
 }
 
   handleChange = e => {
-    const fields = { ...this.state.fields, [e.target.name]: e.target.value } 
-    this.setState({ fields })
+    const data = { ...this.state.data, [e.target.name]: e.target.value } 
+    this.setState({ data })
   }
 
   handleSubmit = async e => {
     e.preventDefault()
     try {
-      await axios.post('/api/register', this.state.fields)
+      await axios.post('/api/register', this.state.data)
       this.props.history.push('/login')
     } catch (error) {
       console.log(error)

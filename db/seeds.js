@@ -52,7 +52,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdTeams.length)} teams created`)
         return Profile.create([
           {
-            favouriteDrinks: [0],
+            favouriteDrinks: ['gin and tonic', 'pina colada'],
             personalityType: 'INFJ',
             bio: 'I am so good at pub quizzes',
             age: 22,

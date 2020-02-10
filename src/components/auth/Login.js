@@ -5,40 +5,41 @@ import Authorization from '../../../lib/authorization'
 
 export default class Login extends React.Component {
 state = {
-  fields: {
-    username: '',
+  data: {
+    email: '',
     password: ''
   },
   error: ''
 }
 
 handleChange = ({ target: { name, value } }) => {
-  const fields = { ...this.state.fields, [name]: value }
-  this.setState({ fields, error: '' })
+  const data = { ...this.state.data, [name]: value }
+  this.setState({ data, error: '' })
 }
 
 handleSubmit = async e => {
   e.preventDefault()
   try {
-    const res = await axios.post('/api/login', this.state.fields)
+    const res = await axios.post('/api/login', this.state.data)
     Authorization.setToken(res.data.token)
-    this.props.history.push('/profile')
+    console.log(res.data)
+    this.props.history.push('/profiles/:id')
   } catch (error) {
     this.setState({ error: 'Invalid Credentials' })
   }
 }
 
 render() {
-  console.log(this.state.fields)
+  // console.log(this.state.data)
   return (
     <div>
       <form onSubmit={this.handleSubmit}>
         <h2>Login Here</h2>
         <div className="form-div">
-          <label>Username:</label>
+          <label>Email:</label>
           <input
-            placeholder="username"
-            name="username" 
+            placeholder="email"
+            name="email" 
             onChange={this.handleChange}/>
         </div>
         <div className="form-div">
