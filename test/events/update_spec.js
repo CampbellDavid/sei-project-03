@@ -19,7 +19,7 @@ const testUserData = [{
 }]
 
 
-describe('PUT /pubs/:id/events/:id', () => {
+describe('PUT /events/:id', () => {
   let token, incorrectToken, event
 
 
@@ -49,7 +49,7 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return a 401 response without a token', done => {
-    api.put(`/api/pubs/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .send({ name: 'Test' })
       .end((err, res) => {
         expect(res.status).to.eq(401)
@@ -58,7 +58,7 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return a 202 response with a token', done => {
-    api.put(`/api/pubs/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Test' })
       .end((err, res) => {
@@ -68,7 +68,7 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return an object', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Test' })
       .end((err, res) => {
@@ -78,7 +78,7 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return correct fields', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Test' })
       .end((err, res) => {
@@ -95,7 +95,7 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return correct data types', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Test' })
       .end((err, res) => {
@@ -105,14 +105,14 @@ describe('PUT /pubs/:id/events/:id', () => {
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
         expect(event.teamName).to.be.a('string')
-        expect(event.user).to.be.an('object')
+        expect(event.user).to.be.a('string')
 
         done()
       })
   })
 
   it('should return a 401 response with a token for a user that did not create the resource', done => {
-    api.put(`/api/pubs/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${incorrectToken}`)
       .send({ name: 'Test' })
       .end((err, res) => {

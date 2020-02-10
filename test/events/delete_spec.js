@@ -19,7 +19,7 @@ const testUserData = [{ // creating two users here for this test, will use the s
 }]
 
 
-describe('DELETE /pubs/:id/events/:id', () => {
+describe('DELETE /events/:id', () => {
   let token = null
   let incorrectToken = null
   let event = null
@@ -50,7 +50,7 @@ describe('DELETE /pubs/:id/events/:id', () => {
   })
 
   it('should return a 401 response without a token', done => {
-    api.delete(`/api/pubs/events${event._id}`)
+    api.delete(`/api/events/${event._id}`)
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -58,7 +58,7 @@ describe('DELETE /pubs/:id/events/:id', () => {
   })
 
   it('should return a 204 response with a token', done => {
-    api.delete(`/api/pubs/events${event._id}`)
+    api.delete(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.status).to.eq(204)
@@ -67,7 +67,7 @@ describe('DELETE /pubs/:id/events/:id', () => {
   })
 
   it('should return no data', done => {
-    api.delete(`/api/pubs/events${event._id}`)
+    api.delete(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.body).to.deep.eq({})
@@ -76,7 +76,7 @@ describe('DELETE /pubs/:id/events/:id', () => {
   })
 
   it('should return a 401 response with a token for a user that did not create the resource', done => {
-    api.delete(`/api/pubs/events${event._id}`)
+    api.delete(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${incorrectToken}`)
       .end((err, res) => {
         expect(res.status).to.eq(401)
