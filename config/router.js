@@ -22,7 +22,11 @@ router.route('/pubs/:id/reviews')
 router.route('/pubs/:id/reviews/:reviewId') 
   .delete(secureRoute, pubs.reviewDelete)
 
-router.route('/pubs/:id/events')
+router.route('/pubs/:id/events') // post and request data for pub specific events
+  .get(events.index)
+  .post(secureRoute, events.create)
+
+router.route('/events') // post and request data for all events
   .get(events.index)
   .post(secureRoute, events.create)
 

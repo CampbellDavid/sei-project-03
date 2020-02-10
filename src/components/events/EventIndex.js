@@ -9,17 +9,18 @@ import EventCard from './EventCard'
 class eventIndex extends React.Component {
 
   state = {
-    events: null,
-    errors: {}
+    events: null
+    // errors: {}
   }
 
   async componentDidMount() {
     try {
       const events = await axios.get('/api/events')
+      console.log(events)
       this.setState({ events: events.data })
     } catch (err) {
       console.log(err)
-      this.setState({ errors: err.response.data.errors })
+      // this.setState({ errors: err.response.data.errors })
     }
   }
 
