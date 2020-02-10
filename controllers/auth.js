@@ -5,8 +5,8 @@ const  { secret } = require('../config/environment')
 function register(req, res) { 
   User
     .create(req.body)
-    .then(user => res.status(201).json({ message: `Registered with username: ${user.username}` }))
-    .catch(err => res.status(422).res.json(err))
+    .then(user => res.status(201).json({ 'message': `Registered with username: ${user.username}` }))
+    .catch(err => res.status(422).json(err))
 }
 
 function login(req, res) {
@@ -22,7 +22,7 @@ function login(req, res) {
         token
       })
     })
-    .catch(err => res.status(422).res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 
@@ -33,7 +33,7 @@ function profile(req, res) {
     .populate('createdEvents')
     .populate('createdTeams')
     .then(user => res.status(200).json(user))
-    .catch(err => res.status(422).res.json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 module.exports = { register, login, profile }

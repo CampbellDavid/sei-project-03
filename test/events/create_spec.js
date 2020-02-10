@@ -21,10 +21,9 @@ const testUserCode = {
 }
 
 
-describe('POST /pubs/:id/events', () => {
+describe('POST /events', () => {
 
   let token
-
 
   beforeEach(done => {
     User.create(testUserCode)
@@ -41,7 +40,7 @@ describe('POST /pubs/:id/events', () => {
   })
 
   it('should return error code 401 with no token', done => {
-    api.post('/api/pubs/:id/events')
+    api.post('/api/events')
       .send(testEvent)
       .end((err, res) => {
         expect(res.status).to.eq(401)
@@ -50,7 +49,7 @@ describe('POST /pubs/:id/events', () => {
   })
 
   it('should return success code 201 with token', done => {
-    api.post('/api/pubs/:id/events')
+    api.post('/api/events')
       .set('Authorization', `Bearer ${token}`)
       .send(testEvent)
       .end((err, res) => {
@@ -60,7 +59,7 @@ describe('POST /pubs/:id/events', () => {
   })
 
   it('should return an object', done => {
-    api.post('/api/pubs/:id/events')
+    api.post('/api/events')
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res.body).to.be.an('object')
@@ -69,7 +68,7 @@ describe('POST /pubs/:id/events', () => {
   })
 
   it('should return correct fields', done => {
-    api.post('/api/pubs/:id/events')
+    api.post('/api/events')
       .set('Authorization', `Bearer ${token}`)
       .send(testEvent)
       .end((err, res) => {
@@ -87,7 +86,7 @@ describe('POST /pubs/:id/events', () => {
 
 
   it('should return correct data types', done => {
-    api.post('/api/pubs/:id/events')
+    api.post('/api/events')
       .set('Authorization', `Bearer ${token}`)
       .send(testEvent)
       .end((err, res) => {
@@ -97,7 +96,7 @@ describe('POST /pubs/:id/events', () => {
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
         expect(event.teamName).to.be.a('string')
-        expect(event.user).to.be.an('object')
+        expect(event.user).to.be.a('object')
 
         done()
       })

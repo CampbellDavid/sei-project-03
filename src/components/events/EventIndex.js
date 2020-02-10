@@ -20,7 +20,7 @@ class eventIndex extends React.Component {
       this.setState({ events: events.data })
     } catch (err) {
       console.log(err)
-      // this.setState({ errors: err.response.data.errors })
+      this.setState({ errors: err.response.data.errors })
     }
   }
 
