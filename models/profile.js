@@ -13,7 +13,7 @@ const profileSchema = new mongoose.Schema({
   personalityType: { type: String },
   bio: { type: String },
   age: { type: Number },
-  gender: { type: String },
+  gender: { type: String }
   // quizStrengths: [ strengthSchema ]
 })
 

@@ -2,14 +2,14 @@ import React from 'react'
 import axios from 'axios'
 
 export default class Register extends React.Component {
-state = {
-  fields: {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+  state = {
+    fields: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    }
   }
-}
 
   handleChange = e => {
     const fields = { ...this.state.fields, [e.target.name]: e.target.value } 
