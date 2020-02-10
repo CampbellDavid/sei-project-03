@@ -19,7 +19,7 @@ export default class Register extends React.Component {
   handleSubmit = async e => {
     e.preventDefault()
     try {
-      await axios.post('/api/register', this.state.fields)
+      await axios.post('/register', this.state.fields)
       this.props.history.push('/login')
     } catch (error) {
       console.log(error)
