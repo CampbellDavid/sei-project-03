@@ -2,7 +2,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-import MapGL, {  Marker, Popup } from 'react-map-gl'
+import MapGL, {  Marker } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 
 const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
@@ -17,8 +17,8 @@ state = {
     latitude: 51.5074,
     longitude: 0.1278,
     zoom: 9
-  },
-  showInfo: false
+  }
+  // showInfo: false
 }
 
 mapRef = React.createRef()
@@ -43,6 +43,7 @@ handleGeocoderViewportChange = (viewport) => {
 
 
 async componentDidMount() {
+  console.log('hello')
   try {
     const res = await axios.get('/api/pubs')
     this.setState({ pubs: res.data })
@@ -93,28 +94,9 @@ render() {
         </Marker>
       } )}
 
-      {/* {this.state.postcodes.map(postcode => {
-        if (this.state.showInfo)
-          return (
-            <Popup
-              tipSize={5}
-              anchor="bottom-right"
-              closeButton={false}
-              closeOnClick={true}
-              onClose={ ()=> this.setState({ showInfo: false }) }
-              latitude={postcode.result.latitude}
-              longitude={postcode.result.longitude}>
-              <p>Pop Up Works</p>
-
-            </Popup> 
-          //if pub has the same post code as one of the post code = post.query and thehn map all the stuff you ant from the obj
-          )
-      })} */}
+ 
      
     </MapGL>
   )
 }
 }
-
-
-
