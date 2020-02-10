@@ -61,6 +61,7 @@ async getPostcodes () {
 }
 
 render() {
+  console.log(1)
   if (!this.state.postcodes) return null
   console.log(this.state.postcodes.map(postcode => postcode.result.longitude))
   return (
