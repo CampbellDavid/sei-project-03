@@ -6,7 +6,7 @@ import EventCard from './EventCard'
 
 // const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
-class EventIndex extends React.Component {
+class eventIndex extends React.Component {
 
   state = {
     events: null,
@@ -29,7 +29,6 @@ class EventIndex extends React.Component {
     return (
       <section className="event-index-section">
         <div className="container">
-          <h1>events page working</h1>
           {eventArr.map(event => <EventCard key={event._id} {...event} />)}
         </div>
       </section>
@@ -38,4 +37,4 @@ class EventIndex extends React.Component {
 
 }
 
-export default EventIndex
+export default eventIndex
