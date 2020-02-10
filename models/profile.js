@@ -13,8 +13,13 @@ const profileSchema = new mongoose.Schema({
   personalityType: { type: String },
   bio: { type: String },
   age: { type: Number },
+<<<<<<< HEAD
   gender: { type: String },
   quizStrengths: [ strengthSchema ]
+=======
+  gender: { type: String }
+  // quizStrengths: [ strengthSchema ]
+>>>>>>> development
 })
 
 module.exports = mongoose.model('Profile', profileSchema)

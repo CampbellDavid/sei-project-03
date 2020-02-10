@@ -7,9 +7,8 @@ state = {
     username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    passwordConfirmation: ''
   }
-}
 
   handleChange = e => {
     const fields = { ...this.state.fields, [e.target.name]: e.target.value } 
@@ -27,7 +26,6 @@ state = {
   }
 
   render() {
-    console.log(this.state.fields)
     return (
       <div>
         <form 
@@ -63,7 +61,7 @@ state = {
               onChange={this.handleChange} 
               type="password" 
               placeholder="confirm password"
-              name="confirmPassword" />
+              name="passwordConfirmation" />
           </div>
           <div className="button-div">
             <button
