@@ -2,12 +2,13 @@ import React from 'react'
 import axios from 'axios'
 
 export default class Register extends React.Component {
-state = {
-  fields: {
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
+  state = {
+    fields: {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    }
   }
 
   handleChange = e => {
@@ -18,7 +19,7 @@ state = {
   handleSubmit = async e => {
     e.preventDefault()
     try {
-      await axios.post('/api/register', this.state.fields)
+      await axios.post('/register', this.state.fields)
       this.props.history.push('/login')
     } catch (error) {
       console.log(error)
