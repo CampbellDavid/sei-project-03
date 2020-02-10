@@ -96,7 +96,7 @@ describe('POST /events', () => {
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
         expect(event.teamName).to.be.a('string')
-        expect(event.user).to.be.an('object')
+        expect(event.user).to.be.a('object')
 
         done()
       })
