@@ -5,28 +5,44 @@ const testDataIncorrect = {
   username: 'test',
   email: 'test@test.test',
   password: 'test',
-  passwordConfirmation: 'code'
+  passwordConfirmation: 'code',
+  personalityType: 'ABCD',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
 }
 
 const testDataDuplicateUsername = {
   username: 'test',
   email: 'unique@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  personalityType: 'DEFG',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
 }
 
 const testDataDuplicateEmail = {
   username: 'unique',
   email: 'test@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  personalityType: 'HILK',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
 }
 
 const testDataCorrect = {
   username: 'testCorrect',
   email: 'testCorrect@test.test',
   password: 'test',
-  passwordConfirmation: 'test'
+  passwordConfirmation: 'test',
+  personalityType: 'LMNO',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
 }
 
 describe('POST /register', () => {
@@ -36,7 +52,11 @@ describe('POST /register', () => {
       username: 'test',
       email: 'test@test.test',
       password: 'test',
-      passwordConfirmation: 'test'
+      passwordConfirmation: 'test',
+      personalityType: 'ABCD',
+      bio: 'Bio for user 1',
+      age: 30,
+      gender: 'Female'
     })
       .then(() => done())
   })

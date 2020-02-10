@@ -3,7 +3,7 @@ const Event = require('../../models/event')
 const User = require('../../models/user')
 
 
-describe('GET /pubs/:id/events', () => {
+describe('GET /events', () => {
   beforeEach( done => {
     User.create({
       username: 'UserOne',

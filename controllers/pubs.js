@@ -13,7 +13,9 @@ function index(req, res) {
   Pub
     .find()
     .populate('user')
-    .then(foundPubs => res.status(200).json(foundPubs))
+    .then(foundPubs => {
+      res.status(200).json(foundPubs)
+    })
     .catch(err => res.json(err))
 }
 
@@ -92,8 +94,5 @@ function reviewDelete(req, res) {
     .then(pub => res.status(202).json(pub))
     .catch(err => res.json(err))
 }
-
-
-
 
 module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete }

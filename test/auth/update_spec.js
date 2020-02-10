@@ -1,6 +1,6 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 
-const Profile = require('../../models/profile')
+// const Profile = require('../../models/profile')
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
@@ -9,39 +9,50 @@ const testUserCode = {
   username: 'test',
   email: 'test@email',
   password: 'test',
-  passwordConfirmation: 'test'
-}
-
-const testProfile = {
-  favouriteDrinks: ['Gin and Tonic', 'Whiskey Shot', 'Coors Light'],
-  personalityType: 'INFJ',
-  bio: 'Fun, outgoing and great at quizzes.',
-  age: 26,
-  gender: 'Female',
-  quizStrengths: ['Geography', 'Math', 'Biology', 'Astronomy', 'Banter']
+  passwordConfirmation: 'test',
+  // favouriteDrinks: [],
+  personalityType: 'ABCD',
+  bio: 'Bio for user 1',
+  age: 30,
+  gender: 'Female'
+  // quizStrengths: []
 }
 
 describe('PUT /profiles/:id', () => {
 
-  let token
+  let token, incorrectToken, profile
 
   beforeEach(done => {
     User.create(testUserCode)
       .then(user => {
         token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
+        return User.create({
+          username: 'testOne',
+          email: 'testOne@email',
+          password: 'test',
+          passwordConfirmation: 'test',
+          // favouriteDrinks: [],
+          personalityType: 'ABCD',
+          bio: 'Bio for user 1',
+          age: 30,
+          gender: 'Female'
+          // quizStrengths: []
+        })
+      })
+      .then(updatedProfile => {
+        profile = updatedProfile
         done()
       })
   })
 
   afterEach(done => {
     User.deleteMany()
-      .then(() => Profile.deleteMany())
       .then(() => done())
   })
 
   it('should return error code 401 with no token', done => {
-    api.post('/api/profiles/:id/edit')
-      .send(testProfile)
+    api.put(`/api/profiles/${profile._id}`)
+      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -49,9 +60,9 @@ describe('PUT /profiles/:id', () => {
   })
 
   it('should return success code 201 with token', done => {
-    api.post('/api/profiles/:id/edit')
+    api.put(`/api/profiles/${profile._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         expect(res.status).to.eq(201)
         done()
@@ -59,8 +70,9 @@ describe('PUT /profiles/:id', () => {
   })
 
   it('should return an object', done => {
-    api.post('/api/profiles/:id')
+    api.put(`/api/profiles/${profile._id}`)
       .set('Authorization', `Bearer ${token}`)
+      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -68,17 +80,22 @@ describe('PUT /profiles/:id', () => {
   })
 
   it('should return correct fields', done => {
-    api.post('/api/profiles/:id')
+    api.put(`/api/profiles/${profile._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         expect(res.body).to.contains.keys([
+          '_id',
+          'username',
+          'email',
+          'password',
           'favouriteDrinks',
           'personalityType',
           'bio',
           'age',
           'gender',
-          'quizStrengths'
+          'quizStrengths',
+          'user'
         ])
         done()
       })
@@ -86,20 +103,34 @@ describe('PUT /profiles/:id', () => {
 
 
   it('should return correct data types', done => {
-    api.post('/api/profiles/:id')
+    api.put(`/api/profiles/${profile._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testProfile)
+      .send({ personalityType: 'ABCD' })
       .end((err, res) => {
         const profile = res.body
 
         expect(profile._id).to.be.a('string')
+        expect(profile.username).to.be.a('string')
+        expect(profile.email).to.be.a('string')
+        expect(profile.password).to.be.a('string')
         expect(profile.favouriteDrinks).to.be.an('array')
         expect(profile.personalityType).to.be.a('string')
         expect(profile.bio).to.be.a('string')
         expect(profile.age).to.be.a('number')
         expect(profile.gender).to.be.a('string')
         expect(profile.quizStrengths).to.be.a('array')
+        expect(profile.user).to.be.a('string')
 
+        done()
+      })
+  })
+
+  it('should return a 401 response with a token for a user that did not create the resource', done => {
+    api.put(`/api/profiles/${profile._id}`)
+      .set('Authorization', `Bearer ${incorrectToken}`)
+      .send({ personalityType: 'ABCD' })
+      .end((err, res) => {
+        expect(res.status).to.eq(401)
         done()
       })
   })

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const drinksSchema = new mongoose.Schema({
-  favouriteDrinks: { type: String }
+  favouriteDrink: { type: String }
 })
 
 const strengthSchema = new mongoose.Schema({
-  quizStrengths: { type: String }
+  quizStrength: { type: String }
 })
 
 const profileSchema = new mongoose.Schema({

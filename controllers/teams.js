@@ -1,10 +1,3 @@
-//TODO 
-
-//* CREATE 
-//* UPDATE
-//* DESTROY
-
-
 const Team = require('../models/team')
 
 function create(req, res, next) {
@@ -44,3 +37,9 @@ function destroy(req, res) {
 }
 
 module.exports = { create, update, destroy }
+
+//TODO 
+
+//* CREATE 
+//* UPDATE
+//* DESTROY
