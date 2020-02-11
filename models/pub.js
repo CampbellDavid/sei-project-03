@@ -29,7 +29,7 @@ const pubSchema = new mongoose.Schema({
   starRating: [starRatingSchema],
   averagePintCost: { type: String, required: true },
   reviews: [reviewSchema],
-  events: { type: [mongoose.Schema.ObjectId], ref: 'Event' },
+  events: [{ type: mongoose.Schema.ObjectId, ref: 'Event' }],
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const teamSchema = new mongoose.Schema({
   captain: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   teamName: { type: String, required: true, unique: true },
-  members: { type: [mongoose.Schema.ObjectId], ref: 'User' }
+  members: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 })
 
 teamSchema
