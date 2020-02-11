@@ -5,7 +5,6 @@ const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
 
-
 const testUserData = [{
   username: 'test',
   email: 'test@email',
@@ -18,10 +17,8 @@ const testUserData = [{
   passwordConfirmation: 'test'
 }]
 
-
-describe('PUT /pubs/:id/events/:id', () => {
+describe('PUT /events/:id', () => {
   let token, incorrectToken, event
-
 
   beforeEach(done => {
     User.create(testUserData)
@@ -32,7 +29,7 @@ describe('PUT /pubs/:id/events/:id', () => {
           teamName: 'Inquizitors',
           entryFee: '£2',
           quizDay: 'Tuesday',
-          quizTime: '18:30', // discover time format
+          quizTime: '18:30',
           user: users[0]
         })
       })
@@ -49,8 +46,8 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return a 401 response without a token', done => {
-    api.put(`/api/pubs/events${event._id}`)
-      .send({ name: 'Test' })
+    api.put(`/api/events/${event._id}`)
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -58,9 +55,9 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return a 202 response with a token', done => {
-    api.put(`/api/pubs/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Test' })
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         expect(res.status).to.eq(202)
         done()
@@ -68,9 +65,9 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return an object', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Test' })
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -78,9 +75,9 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return correct fields', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Test' })
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id', 
@@ -95,26 +92,27 @@ describe('PUT /pubs/:id/events/:id', () => {
   })
 
   it('should return correct data types', done => {
-    api.put(`/api/pubs/:id/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Test' })
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         const event = res.body
 
         expect(event._id).to.be.a('string')
+        expect(event.teamName).to.be.a('string')
+        expect(event.entryFee).to.be.a('string')
         expect(event.quizDay).to.be.a('string')
         expect(event.quizTime).to.be.a('string')
-        expect(event.teamName).to.be.a('string')
-        expect(event.user).to.be.an('object')
+        expect(event.user).to.be.a('string')
 
         done()
       })
   })
 
   it('should return a 401 response with a token for a user that did not create the resource', done => {
-    api.put(`/api/pubs/events${event._id}`)
+    api.put(`/api/events/${event._id}`)
       .set('Authorization', `Bearer ${incorrectToken}`)
-      .send({ name: 'Test' })
+      .send({ teamName: 'Test' })
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()

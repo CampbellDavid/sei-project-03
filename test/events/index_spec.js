@@ -3,7 +3,7 @@ const Event = require('../../models/event')
 const User = require('../../models/user')
 
 
-describe('GET /pubs/:id/events', () => {
+describe('GET /events', () => {
   beforeEach( done => {
     User.create({
       username: 'UserOne',
@@ -17,15 +17,15 @@ describe('GET /pubs/:id/events', () => {
             teamName: 'Inquizitors',
             entryFee: '£2',
             quizDay: 'Tuesday',
-            quizTime: '18:30', // discover time format
-            user
+            quizTime: '18:30',
+            user: user
           },
           {
             teamName: 'Coders',
             entryFee: '£3',
             quizDay: 'Monday',
-            quizTime: '18:30', // discover time format
-            user
+            quizTime: '18:30',
+            user: user
           }
         ])
       })
@@ -85,9 +85,10 @@ describe('GET /pubs/:id/events', () => {
       .end((err, res) => {
         res.body.forEach(event => {
           expect(event._id).to.be.a('string')
+          expect(event.teamName).to.be.a('string')
+          expect(event.entryFee).to.be.a('string')
           expect(event.quizDay).to.be.a('string')
           expect(event.quizTime).to.be.a('string')
-          expect(event.teamName).to.be.a('string')
           expect(event.user).to.be.an('object')
         })
         done()

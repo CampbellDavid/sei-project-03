@@ -6,7 +6,8 @@ const eventSchema = new mongoose.Schema({
   entryFee: { type: String },
   quizDay: { type: String },
   quizTime: { type: String }
-}
-)
+})
 
 module.exports = mongoose.model('Event', eventSchema)
+
+// TODO: add pub location to object

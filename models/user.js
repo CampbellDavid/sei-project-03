@@ -4,7 +4,13 @@ const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true , unique: true },
   email: { type: String, required: true , unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  favouriteDrinks: { type: Array },
+  personalityType: { type: String },
+  bio: { type: String },
+  age: { type: Number },
+  gender: { type: String },
+  quizStrengths: { type: Array }
 }, {
   timestamps: true
 })
@@ -45,3 +51,6 @@ userSchema
   })
 
 module.exports = mongoose.model('User', userSchema)
+
+// TODO: add schema for drinks and strengths
+// TODO: add image upload option for user
