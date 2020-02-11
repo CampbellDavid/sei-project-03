@@ -2,13 +2,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-import MapGL, {  Marker } from 'react-map-gl'
-import Geocoder from 'react-map-gl-geocoder'
-
-const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
-
+// import MapGL, {  Marker } from 'react-map-gl'
+// import Geocoder from 'react-map-gl-geocoder'
+import Map from '../common/Map'
+// const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 // import PubCard from './PubCard'
-
 export default class PubIndex extends React.Component {
 state = {
   postcodes: [],
@@ -20,14 +18,12 @@ state = {
   }
   // showInfo: false
 }
-
-mapRef = React.createRef()
+// mapRef = React.createRef()
 handleViewportChange = (viewport) => {
   this.setState({
     viewport: { ...this.state.viewport, ...viewport }
   })
 }
-
 handleGeocoderViewportChange = (viewport) => {
   // console.log(viewport)
   const geocoderDefaultOverrides = { transitionDuration: 1000 }
@@ -39,9 +35,6 @@ handleGeocoderViewportChange = (viewport) => {
     ...geocoderDefaultOverrides
   })
 }
-
-
-
 async componentDidMount() {
   console.log('hello')
   try {
@@ -52,7 +45,6 @@ async componentDidMount() {
     console.log(error)
   }
 }
- 
 async getPostcodes () {
   const postcodes = this.state.pubs.map( pub => pub.postcode)
   const res = await axios.post('https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes', { postcodes })
@@ -60,43 +52,14 @@ async getPostcodes () {
   // console.log(postcodes.result)
   this.setState({ postcodes: res.data.result })
 }
-
 render() {
   console.log(1)
   if (!this.state.postcodes) return null
   console.log(this.state.postcodes.map(postcode => postcode.result.longitude))
   return (
-    <MapGL
-      mapboxApiAccessToken={mapboxToken}
-      ref={this.mapRef}
-      {...this.state.viewport}
-      height={'100vh'}
-      width={'100vw'}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
-      // zoom={10}
-      // latitude= {51.5074}
-      // longitude= {0.1278}
-      onViewportChange={this.handleViewportChange}>
-      <Geocoder
-        mapRef={this.mapRef}
-        onViewportChange={this.handleGeocoderViewportChange}
-        mapboxApiAccessToken={mapboxToken}
-      />
-      
-      {this.state.postcodes.map((postcode, index) => {
-        return <Marker
-          key={index.toString()}
-          latitude={postcode.result.latitude}
-          longitude={postcode.result.longitude} >
-          <div className="marker">
-            
-          </div>
-        </Marker>
-      } )}
-
- 
-     
-    </MapGL>
+    <>
+      <Map />
+    </>
   )
 }
 }

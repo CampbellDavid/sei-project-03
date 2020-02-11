@@ -11,9 +11,18 @@
 }
 
 .marker {
-  background-color: red;
+  // background-color: red;
   height: 5px;
   width: 5px;
   // transform: translate(-50%, -50%);
   border-radius: 100px;
+  // background: none;
+  border: none;
+  cursor: pointer;
 }
+.marker img {
+  width: 60px;
+  height: 60px;
+  border-radius:100%;
+}
+
