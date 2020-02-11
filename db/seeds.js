@@ -61,22 +61,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       })
       .then(createdTeams => {
         console.log(`${'🍺'.repeat(createdTeams.length)} teams created`)
-<<<<<<< HEAD
-        return Profile.create([
-          {
-            favouriteDrinks: ['gin and tonic', 'pina colada'],
-            personalityType: 'INFJ',
-            bio: 'I am so good at pub quizzes',
-            age: 22,
-            gender: 'male',
-            quizStrengths: ''
-          }
-        ])
-      })
-      .then(createdProfile => {
-        console.log(`${'🍺'.repeat(createdProfile.length)} profiles created`)
-=======
->>>>>>> bdb2458aa52a96e3d21d06561a06be264ab056b9
         return Pub.create([
           {
             name: 'Abbey Bar',
