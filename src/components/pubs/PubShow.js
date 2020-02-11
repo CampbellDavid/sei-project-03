@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class PubShow extends React.Component {
 state = {
@@ -35,6 +36,9 @@ render() {
       <h2>{pub.starRating}</h2>
       <h2>{pub.averagePintCost}</h2>
       <h2>{pub.reviews}</h2>
+      <Link to="/events/new">
+        <button type="button">New Event</button>
+      </Link>
     </div>
   )
 }

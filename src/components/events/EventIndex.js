@@ -34,5 +34,3 @@ export default class EventIndex extends React.Component {
   }
 
 }
-
-{/* {eventArr.map(event => <EventCard key={event._id} {...event} />)} */}
