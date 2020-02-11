@@ -9,33 +9,20 @@
 .nav-item {
   margin: 5px;
 }
+
+
 .marker {
-  // background-color: red;
-  height: 5px;
-  width: 5px;
-  // transform: translate(-50%, -50%);
-  border-radius: 100px;
-  // background: none;
+  background: none;
   border: none;
-  cursor: pointer;
 }
-
-
 .marker img {
   width: 60px;
   height: 60px;
   border-radius:100%;
 }
 
-.button.marker{
-  width: 60px;
-  height: 60px;
-}
 
-.mapboxgl-marker{
-  width: 60px;
-  height: 60px;
-}
+
 h1 {
   font-family: 'Righteous', cursive;
   font-size: 30px;

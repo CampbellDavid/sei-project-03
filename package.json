@@ -27,6 +27,7 @@
     "nodemon": "^2.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-icons": "^3.9.0",
     "react-map-gl": "^5.2.2",
     "react-map-gl-geocoder": "^2.0.11",
     "react-router-dom": "^5.1.2"
