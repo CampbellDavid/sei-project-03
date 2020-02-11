@@ -25,16 +25,15 @@ function login(req, res) {
     .catch(err => res.status(422).json(err))
 }
 
-
-// function profile(req, res) { //??
-//   User
-//     .findById(req.currentUser._id)
-//     .populate('createdPubs')
-//     .populate('createdEvents')
-//     .populate('createdTeams')
-//     .then(user => res.status(200).json(user))
-//     .catch(err => res.status(422).json(err))
-// }
+function profile(req, res) { //??
+  User
+    .findById(req.currentUser._id)
+    .populate('createdPubs')
+    .populate('createdEvents')
+    .populate('createdTeams')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.status(422).json(err))
+}
 
 function show(req, res, next) {
   User
@@ -53,8 +52,8 @@ function update(req, res, next) {
     .then(profile => {
       if (!profile) throw new Error('Not Found')
       if (!profile.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Authorized' })
-      Object.assign(profile, req.body) 
-      return profile.save()  
+      Object.assign(profile, req.body)
+      return profile.save()
     })
     .then(updatedProfile => res.status(201).json(updatedProfile)) 
     .catch(next)
@@ -74,4 +73,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login, show, update, destroy }
+module.exports = { register, login, show, update, destroy, profile }

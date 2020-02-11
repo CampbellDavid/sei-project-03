@@ -1,6 +1,5 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 
-// const Profile = require('../../models/profile')
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
@@ -10,12 +9,10 @@ const testUserCode = {
   email: 'test@email',
   password: 'test',
   passwordConfirmation: 'test',
-  // favouriteDrinks: [],
   personalityType: 'ABCD',
   bio: 'Bio for user 1',
   age: 30,
   gender: 'Female'
-  // quizStrengths: []
 }
 
 describe('PUT /profiles/:id', () => {
@@ -27,16 +24,14 @@ describe('PUT /profiles/:id', () => {
       .then(user => {
         token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' })
         return User.create({
-          username: 'test',
-          email: 'test@email',
+          username: 'testOne',
+          email: 'testOne@email',
           password: 'test',
           passwordConfirmation: 'test',
-          // favouriteDrinks: [],
           personalityType: 'ABCD',
           bio: 'Bio for user 1',
           age: 30,
           gender: 'Female'
-          // quizStrengths: []
         })
       })
       .then(updatedProfile => {
@@ -89,12 +84,10 @@ describe('PUT /profiles/:id', () => {
           'username',
           'email',
           'password',
-          'favouriteDrinks',
           'personalityType',
           'bio',
           'age',
           'gender',
-          'quizStrengths',
           'user'
         ])
         done()
@@ -113,13 +106,11 @@ describe('PUT /profiles/:id', () => {
         expect(profile.username).to.be.a('string')
         expect(profile.email).to.be.a('string')
         expect(profile.password).to.be.a('string')
-        expect(profile.favouriteDrinks).to.be.an('array')
         expect(profile.personalityType).to.be.a('string')
         expect(profile.bio).to.be.a('string')
         expect(profile.age).to.be.a('number')
         expect(profile.gender).to.be.a('string')
-        expect(profile.quizStrengths).to.be.a('array')
-        expect(profile.user).to.be.a('string')
+        expect(profile.user).to.be.an('object')
 
         done()
       })

@@ -1,19 +1,12 @@
-//TODO 
-//* INDEX 
-//* CREATE 
-//* SHOW
-//* UPDATE
-//* DESTROY
-//* CREATE REVIEW
-//* DELETE REVIEW
-
 const Pub = require('../models/pub')
 
 function index(req, res) {
   Pub
     .find()
     .populate('user')
-    .then(foundPubs => res.status(200).json(foundPubs))
+    .then(foundPubs => {
+      res.status(200).json(foundPubs)
+    })
     .catch(err => res.json(err))
 }
 
@@ -30,7 +23,7 @@ function show(req, res, next) {
     .findById(req.params.id)
     .populate('user')
     .then(pub => { 
-      if (!pub) throw new Error('Not Found')
+      if (!pub) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(pub)
     })
     .catch(next)
@@ -92,8 +85,5 @@ function reviewDelete(req, res) {
     .then(pub => res.status(202).json(pub))
     .catch(err => res.json(err))
 }
-
-
-
 
 module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete }

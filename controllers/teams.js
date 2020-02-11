@@ -1,10 +1,3 @@
-//TODO 
-
-//* CREATE 
-//* UPDATE
-//* DESTROY
-
-
 const Team = require('../models/team')
 
 function create(req, res, next) {

@@ -53,5 +53,4 @@ userSchema
 module.exports = mongoose.model('User', userSchema)
 
 // TODO: add schema for drinks and strengths
-// TODO: delete profile model
 // TODO: add image upload option for user
