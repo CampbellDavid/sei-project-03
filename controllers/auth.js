@@ -25,7 +25,7 @@ function login(req, res) {
     .catch(err => res.status(422).json(err))
 }
 
-function displayProfileCreations(req, res) { //??
+function displayProfileCreations(req, res) {
   User
     .findById(req.currentUser._id)
     .populate('createdPubs')
