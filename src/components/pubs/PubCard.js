@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const PubCard = ({ _id, name, image, starRating }) => (
   <section className="column">
     <Link to={`/pubs/${_id}`}>

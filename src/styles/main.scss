@@ -9,44 +9,20 @@
 .nav-item {
   margin: 5px;
 }
-
 .marker {
-  background-color: red;
+  // background-color: red;
   height: 5px;
   width: 5px;
   // transform: translate(-50%, -50%);
   border-radius: 100px;
+  // background: none;
+  border: none;
+  cursor: pointer;
 }
 
 
-
-
-
-
-
-
-
-
-//! CR: edits to CSS not working, pushing and restarting
-h1 {
-  font-family: 'Crushed', cursive;
+.marker img {
+  width: 60px;
+  height: 60px;
+  border-radius:100%;
 }
-
-.card-container {
-  display: flex;
-  flex-direction: column;
-  background-color: violet;
-  .card {
-    display: flex;
-    .colour-header {
-      background-color: rgb(51, 158, 185);
-      h2 {
-        background-color: rgb(51, 158, 185);
-      }
-    }
-  }
-
-}
-
-
-
