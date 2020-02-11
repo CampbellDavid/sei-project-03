@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { withAuth } from '@okta/okta-react'
+// import { withAuth } from '@okta/okta-react'
 
 class TeamCard extends React.Component {
   state = {
@@ -13,14 +13,14 @@ class TeamCard extends React.Component {
     user: ''
   }
 
-  checkAuthentication = async () => {
-    const authenticated = await this.props.auth.isAuthenticated()
-    if (authenticated && !this.state.userinfo) {
-      const user = await this.props.auth.getUser()
-      this.setState({ user })
-    }
-    console.log('user is not logged in')
-  }
+  // checkAuthentication = async () => {
+  //   const authenticated = await this.props.auth.isAuthenticated()
+  //   if (authenticated && !this.state.userinfo) {
+  //     const user = await this.props.auth.getUser()
+  //     this.setState({ user })
+  //   }
+  //   console.log('user is not logged in')
+  // }
 
   handleSubmit = async (e) => {
     e.preventDefault() 
@@ -57,11 +57,5 @@ class TeamCard extends React.Component {
     )
   }
 }
-
-  
-  
-  
- 
-
 
 export default TeamCard
