@@ -85,7 +85,7 @@ router.route('/pubs/:id/teams/:teamId')
   .get(teams.show)
   .put(secureRoute, teams.update)
 
-
+// Change teams routes to reflect events specificity 
 
 
 //!TEST ROUTE WILL DELETE
