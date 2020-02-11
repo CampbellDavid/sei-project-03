@@ -39,7 +39,7 @@ userSchema
 userSchema.virtual('createdTeams', {
   ref: 'Team',
   localField: '_id',
-  foreignField: 'teams.user'
+  foreignField: 'members.user'
 })
 
 userSchema.virtual('createdPubs', {
