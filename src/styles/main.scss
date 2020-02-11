@@ -36,3 +36,39 @@
   width: 60px;
   height: 60px;
 }
+h1 {
+  font-family: 'Righteous', cursive;
+  font-size: 30px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 30vw;
+  a {
+    text-decoration: none;;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    .colour-header {
+      h2 {
+        background-color: rgb(51, 158, 185);
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .card-info {
+      h3 {
+        margin: 5px;
+      }
+    }
+  }
+
+}
+
+.map-container {
+  width: 70vw;
+}
