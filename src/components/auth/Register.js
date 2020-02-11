@@ -30,10 +30,10 @@ handleSubmit = async e => {
 render() {
   return (
     <div>
+      <h1>Register to Comment</h1>
       <form
         onSubmit={this.handleSubmit}
       >
-        <h2>Register to Comment</h2>
         <div className="form-div">
           <label>Username:</label>
           <input
