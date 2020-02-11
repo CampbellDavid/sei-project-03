@@ -11,6 +11,7 @@ import EventIndex from './components/events/EventIndex'
 import EventNew from './components/events/EventNew'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import TeamIndex from './components/teams/TeamIndex'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
 
@@ -30,6 +31,8 @@ class App extends React.Component {
             <Route path='/events' component={EventIndex}></Route>
             <Route path='/register' component={Register}></Route>
             <Route path='/login' component={Login}></Route>
+            {/* //! XW: TEST ROUTE; DELETE LATER */}
+            <Route path='/teams' component={TeamIndex}></Route>
             <Route path='/*' component={Unknown}></Route>
           </Switch>
         </BrowserRouter>
