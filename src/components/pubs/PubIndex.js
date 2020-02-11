@@ -2,16 +2,17 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-import MapGL, { Marker, Popup } from 'react-map-gl'
+import MapGL, { Marker } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 import { Link } from 'react-router-dom'
+import SearchBar from '../common/SearchBar'
 
 const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
 export default class PubIndex extends React.Component {
   state = {
-    postcodes: [],
-    pubs: [],
+    postcodes: null,
+    pubs: null,
     viewport: {
       latitude: 51.5074,
       longitude: 0.1278,
@@ -56,7 +57,10 @@ export default class PubIndex extends React.Component {
   }
 
   async getPostcodes() {
-    const postcodes = this.state.pubs.map(pub => pub.postcode)
+    const postcodes = this.state.pubs.map(pub => {
+      return pub.postcode
+    })
+
     const res = await axios.post(
       'https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes',
       { postcodes }
@@ -68,81 +72,56 @@ export default class PubIndex extends React.Component {
 
   render() {
     if (!this.state.postcodes) return null
-    // if (!this.state.pubs) return null
-    // console.log(this.state.postcodes.map(postcode => postcode.result.longitude))
-    const { showPopup } = this.state
+    if (!this.state.pubs) return null
+    console.log('pubs', this.state.pubs)
+    console.log('postcodes', this.state.postcodes)
     return (
-      <MapGL
-        mapboxApiAccessToken={mapboxToken}
-        ref={this.mapRef}
-        {...this.state.viewport}
-        height={'100vh'}
-        width={'100vw'}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
-        onViewportChange={this.handleViewportChange}
-      >
-        <Geocoder
-          mapRef={this.mapRef}
-          onViewportChange={this.handleGeocoderViewportChange}
+      <>
+        <SearchBar />
+        <MapGL
           mapboxApiAccessToken={mapboxToken}
-        />
+          ref={this.mapRef}
+          {...this.state.viewport}
+          height={'100vh'}
+          width={'100vw'}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          onViewportChange={this.handleViewportChange}
+        >
+          <Geocoder
+            mapRef={this.mapRef}
+            onViewportChange={this.handleGeocoderViewportChange}
+            mapboxApiAccessToken={mapboxToken}
+          />
 
-        {this.state.postcodes.map((postcode, index) => {
-          // console.log(this.state.pubs)
-          return (
-            <Marker
-              key={index.toString()}
-              latitude={postcode.result.latitude}
-              longitude={postcode.result.longitude}
-            >
-              <button
-                className="marker"
-                // onClick = {(e) => {
-                //   e.preventDefault(),
-                //   this.setState({ showInfo: false })
-                //   console.log('button pressed')
-                //   console.log(this.state.showInfo)
-                // }}
+          {this.state.postcodes.map((postcode, index) => {
+            return (
+              <Marker
+                key={index}
+                latitude={postcode.result.latitude}
+                longitude={postcode.result.longitude}
               >
-                {/* <img src={this.state.pubs.image} /> */}
-                <img src="https://d2kdkfqxnvpuu9.cloudfront.net/images/big/47455.jpg?1319388226" />
-
-                {this.state.pubs.map(pub => {
-                  <div key={pub._id}>
-                    <Link to={`/pubs/${pub._id}`}>
-                      <p>
-                        {pub.name} {pub.postcode}
-                      </p>
-                    </Link>
-                  </div>
-                })}
-              </button>
-            </Marker>
-          )
-        })}
-
-      </MapGL>
+                <button className="marker">
+                  {this.state.pubs.map((pub, i) => {
+                    return pub.postcode === postcode.query ? (
+                      <Link key={i} to={`/pubs/${pub._id}`}>
+                        <div>
+                          <img src={pub.image} />
+                        </div>
+                      </Link>
+                    ) : null
+                  })}
+                </button>
+              </Marker>
+            )
+          })}
+        </MapGL>
+      </>
     )
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* {this.state.postcodes.map((postcode, index) => {
+{
+  /* {this.state.postcodes.map((postcode, index) => {
         <div key={index.toString()}>
           {showPopup && <Popup
             latitude={postcode.result.latitude}
@@ -156,7 +135,8 @@ export default class PubIndex extends React.Component {
             <h1>Hello</h1>
           </Popup>}
         </div>
-      })} */}
+      })} */
+}
 
 // import 'mapbox-gl/dist/mapbox-gl.css'
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
