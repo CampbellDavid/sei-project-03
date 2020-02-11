@@ -19,7 +19,7 @@ class TeamCard extends React.Component {
       const user = await this.props.auth.getUser()
       this.setState({ user })
     }
-    console.log('user is not logged in')
+    console.log('user is now logged in')
   }
 
   handleSubmit = async (e) => {

@@ -4,7 +4,8 @@ function index(req, res) {
   Pub
     .find()
     .populate('user')
-    .populate('events')
+    .populate('events.teams')
+
     .then(foundPubs => {
       res.status(200).json(foundPubs)
     })
@@ -23,7 +24,7 @@ function show(req, res, next) {
   Pub
     .findById(req.params.id)
     .populate('user')
-    .populate('events')
+    .populate('events.teams')
     .then(pub => { 
       if (!pub) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(pub)

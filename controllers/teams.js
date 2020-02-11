@@ -4,6 +4,7 @@ function index(req, res) {
   Team
     .find()
     .populate('members')
+    .populate('captain')
     .then(foundTeams => res.status(200).json(foundTeams))
     .catch(err => res.json(err))
 }

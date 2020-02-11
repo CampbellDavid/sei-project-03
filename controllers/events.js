@@ -4,7 +4,7 @@ function index(req, res) {
   Event
     .find()
     .populate('user')
-    .populate('teams')
+    .populate('teams.members')
     .then(foundEvents => res.status(200).json(foundEvents))
     .catch(err => res.json(err))
 }
@@ -21,7 +21,7 @@ function show(req, res, next) {
   Event
     .findById(req.params.id)
     .populate('user')
-    .populate('teams')
+    .populate('teams.members')
     .then(event => { 
       if (!event) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(event)
