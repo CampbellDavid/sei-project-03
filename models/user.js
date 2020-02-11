@@ -2,18 +2,20 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true , unique: true },
-  email: { type: String, required: true , unique: true },
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  favouriteDrinks: { type: Array },
+  favouriteDrinks: { type: [String] },
   personalityType: { type: String },
   bio: { type: String },
   age: { type: Number },
   gender: { type: String },
-  quizStrengths: { type: Array }
+  quizStrengths: { type: [String] },
+  profileImage: { type: String }
 }, {
   timestamps: true
 })
+
 
 userSchema
   .set('toJSON', {
@@ -34,6 +36,24 @@ userSchema
     this._passwordConfirmation = passwordConfirmation
   })
 
+userSchema.virtual('createdTeams', {
+  ref: 'Team',
+  localField: '_id',
+  foreignField: 'teams.user'
+})
+
+userSchema.virtual('createdPubs', {
+  ref: 'Pub',
+  localField: '_id',
+  foreignField: 'pubs.user'
+})
+
+userSchema.virtual('createdEvents', {
+  ref: 'Event',
+  localField: '_id',
+  foreignField: 'events.user'
+})
+
 userSchema
   .pre('validate', function checkPassword(next) {
     if (this.isModified('password') && this._passwordConfirmation !== this.password) {
@@ -50,7 +70,7 @@ userSchema
     next()
   })
 
-module.exports = mongoose.model('User', userSchema)
+userSchema.plugin(require('mongoose-unique-validator'))
 
-// TODO: add schema for drinks and strengths
-// TODO: add image upload option for user
+
+module.exports = mongoose.model('User', userSchema)

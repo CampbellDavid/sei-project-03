@@ -95,4 +95,4 @@ describe('GET /events', () => {
       })
   })
 
-} )
+})

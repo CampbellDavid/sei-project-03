@@ -1,13 +1,21 @@
 const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  teamName: { type: String, required: true },
-  entryFee: { type: String },
-  quizDay: { type: String },
-  quizTime: { type: String }
+  teams: { type: [mongoose.Schema.ObjectId], ref: 'Team' } ,
+  entryFee: { type: String, required: true  },
+  quizDay: { type: String, required: true  },
+  quizTime: { type: String, required: true  },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
-module.exports = mongoose.model('Event', eventSchema)
+eventSchema
+  .virtual('teamsCount')
+  .get(function() {
+    return this.teams.length
+  })
 
-// TODO: add pub location to object
+eventSchema.set('toJSON', { virtuals: true })
+
+eventSchema.plugin(require('mongoose-unique-validator'))
+
+module.exports = mongoose.model('Event', eventSchema)

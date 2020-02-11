@@ -25,11 +25,7 @@ function login(req, res) {
     .catch(err => res.status(422).json(err))
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> reg-log
-function profile(req, res) { //??
+function displayProfileCreations(req, res) { //??
   User
     .findById(req.currentUser._id)
     .populate('createdPubs')
@@ -77,4 +73,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login, show, update, destroy, profile }
+module.exports = { register, login, displayProfileCreations, show, update, destroy  }

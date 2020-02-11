@@ -86,4 +86,18 @@ function reviewDelete(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete }
+// * GET /pubs/:id/likes
+function like(req, res) {
+  Pub
+    .findById(req.params.id)
+    .then(pub => {
+      if (!pub) return res.status(404).json({ message: 'Not Found' })
+      if (pub.likes.some(like => like.user.equals(req.currentUser._id))) return pub
+      pub.likes.push({ user: req.currentUser })
+      return pub.save()
+    })
+    .then(pub => res.status(202).json(pub))
+    .catch(err => res.json(err))
+}
+
+module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete, like }

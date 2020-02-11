@@ -1,10 +1,29 @@
 const Team = require('../models/team')
 
+function index(req, res) {
+  Team
+    .find()
+    .populate('user')
+    .then(foundTeams => res.status(200).json(foundTeams))
+    .catch(err => res.json(err))
+}
+
 function create(req, res, next) {
   req.body.user = req.currentUser
   Team
     .create(req.body)
-    .then(createdPub => res.status(201).json(createdPub))
+    .then(createdTeam => res.status(201).json(createdTeam))
+    .catch(next)
+}
+
+function show(req, res, next) {
+  Team
+    .findById(req.params.id)
+    .populate('user')
+    .then(team => { 
+      if (!team) return res.status(404).json({ message: 'Not Found' })
+      res.status(200).json(team)
+    })
     .catch(next)
 }
 
@@ -36,4 +55,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { create, update, destroy }
+module.exports = { index, create, show, update, destroy }
