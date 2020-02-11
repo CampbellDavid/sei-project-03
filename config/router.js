@@ -85,6 +85,15 @@ router.route('/pubs/:id/teams/:teamId')
   .get(teams.show)
   .put(secureRoute, teams.update)
 
-module.exports = router
 
-// TODO: teams to be linked to event route instead of pub route
+
+
+//!TEST ROUTE WILL DELETE
+router.route('/teams/:teamId')
+  .get(teams.index)
+  .post(secureRoute, teams.create)
+router.route('/teams')
+  .get(teams.index)
+  .post(secureRoute, teams.create)
+
+module.exports = router
