@@ -85,4 +85,15 @@ router.route('/pubs/:id/teams/:teamId')
   .get(teams.show)
   .put(secureRoute, teams.update)
 
+
+
+
+//!TEST ROUTE WILL DELETE
+router.route('/teams/:teamId')
+  .get(teams.index)
+  .post(secureRoute, teams.create)
+router.route('/teams')
+  .get(teams.index)
+  .post(secureRoute, teams.create)
+
 module.exports = router
