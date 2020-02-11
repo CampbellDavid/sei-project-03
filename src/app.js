@@ -6,10 +6,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Nav from './components/common/Nav'
 import Home from './components/common/Home'
 import PubIndex from './components/pubs/PubIndex'
+import PubShow from './components/pubs/PubShow'
 import EventIndex from './components/events/EventIndex'
 import EventNew from './components/events/EventNew'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import Unknown from './components/common/Unknown'
+import Profile from './components/profile/Profile'
 
 
 class App extends React.Component {
@@ -20,11 +23,14 @@ class App extends React.Component {
           <Nav />
           <Switch>
             <Route exact path='/' component={Home}></Route>
+            <Route path='/pubs/:id' component={PubShow}></Route>
             <Route path='/pubs' component={PubIndex}></Route>
+            <Route path='/profiles/:id' component={Profile}></Route>
             <Route path='/events/new' component={EventNew}></Route>
             <Route path='/events' component={EventIndex}></Route>
             <Route path='/register' component={Register}></Route>
             <Route path='/login' component={Login}></Route>
+            <Route path='/*' component={Unknown}></Route>
           </Switch>
         </BrowserRouter>
       </main>

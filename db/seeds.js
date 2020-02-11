@@ -129,6 +129,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             // starRating: [1, 2, 3, 4, 5, 5, 5, 5],
             averagePintCost: '£6.50',
             // reviews: ['This was great', 'great service', 'quiz was awesome'],
+            events: [createdEvents[0]],
             user: createdEvents[0].user
           }, {
             name: 'Clapton Hart',
@@ -145,6 +146,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             // starRating: [3, 2, 4, 1],
             averagePintCost: '£5.00',
             // reviews: [],
+            events: [createdEvents[1]],
             user: createdEvents[1].user
           }, {
             name: 'White Hart',
@@ -161,6 +163,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£5.00',
             // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
+            events: [createdEvents[2]],
             user: createdEvents[2].user
           }, {
             name: 'Red Lion',
@@ -177,6 +180,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£5.80',
             // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
+            events: [createdEvents[3]],
             user: createdEvents[3].user
           }
         ])

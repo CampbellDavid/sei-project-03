@@ -1,17 +1,20 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 const Pub = require('../../models/pub')
-const User = require('../../models/user') // we need our user again to attribute a created animal a user
+const User = require('../../models/user')
+const Team = require('../../models/team')
 
-describe('GET /pubs/:id', () => {
 
-  let pub// we will stored a reference to our created animal here, we will use this pub as the one we are tring to request, we store it so we can get its id to use in the requests
+describe('GET /pubs/:id/teams/:id', () => {
+
+  let pub
+  let team
 
   beforeEach(done => {
     User.create({
-      username: 'Jack',
-      email: 'jack@email',
-      password: 'pass',
-      passwordConfirmation: 'pass'
+      username: 'Test',
+      email: 'test@email',
+      password: 'word',
+      passwordConfirmation: 'word'
     })
       .then(user => {
         return Pub.create({
@@ -30,8 +33,18 @@ describe('GET /pubs/:id', () => {
           user: user
         })
       })
-      .then(createPub => {
-        pub = createPub // <==== here is where we set that let abocve as the created pub, we can then access its id in the tests below
+      .then(createdPub => {
+        pub = createdPub
+        Team.create([
+          {
+            captain: createdPub[0].user,
+            teamName: 'Inquizitours',
+            members: ['userOne', 'userTwo', 'userThree']
+          }
+        ])
+      })
+      .then(createdTeam => {
+        team = createdTeam
         done()
       })
   })
@@ -39,11 +52,12 @@ describe('GET /pubs/:id', () => {
   afterEach(done => {
     User.deleteMany()
       .then(() => Pub.deleteMany())
+      .then(() => Team.deleteMany())
       .then(() => done())
   })
 
-  it('should return a 404 not found for an invalid pubs id', done => {
-    api.get('/api/pubs/1234')
+  it('should return a 404 not found for an invalid team id', done => {
+    api.get(`/api/pubs/${pub._id}/teams/1234`)
       .end((err, res) => {
         expect(res.status).to.eq(404)
         done()
@@ -51,7 +65,7 @@ describe('GET /pubs/:id', () => {
   })
 
   it('should return a 200 response', done => {
-    api.get(`/api/pubs/${pub._id}`) // <=== and using that pub we have created and stored in the requests
+    api.get(`/api/pubs/${pub._id}/teams/${team._id}`)
       .end((err, res) => {
         expect(res.status).to.eq(200)
         done()
@@ -59,7 +73,7 @@ describe('GET /pubs/:id', () => {
   })
 
   it('should return an object', done => {
-    api.get(`/api/pubs/${pub._id}`) // <=== and using that pub we have created and stored in the requests
+    api.get(`/api/pubs/${pub._id}/teams/${team._id}`)
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -67,24 +81,13 @@ describe('GET /pubs/:id', () => {
   })
 
   it('should return the correct fields', done => {
-    api.get(`/api/pubs/${pub._id}`)
+    api.get(`/api/pubs/${pub._id}/teams/${team._id}`)
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
-          'createdAt',  // invisible key
-          'updatedAt',  // invisible key
-          'name',
-          'image',
-          'city',
-          'streetName',
-          'postcode',
-          'phone',
-          'website',
-          'description',
-          'maxTeamSize',
-          'quizDay',
-          'quizTime',
-          'averagePintCost',
+          'captain',
+          'teamName',
+          'members',
           'user'
         ])
         done()
@@ -92,24 +95,15 @@ describe('GET /pubs/:id', () => {
   })
 
   it('should return the correct data types', done => {
-    api.get(`/api/pubs/${pub._id}`)
+    api.get(`/api/pubs/${pub._id}/teams/${team._id}`)
       .end((err, res) => {
-        const pub = res.body
-        
-        expect(pub._id).to.be.a('string')
-        expect(pub.name).to.be.a('string')
-        expect(pub.image).to.be.a('string')
-        expect(pub.city).to.be.a('string')
-        expect(pub.streetName).to.be.a('string')
-        expect(pub.postcode).to.be.a('string')
-        expect(pub.phone).to.be.a('string')
-        expect(pub.website).to.be.a('string')
-        expect(pub.description).to.be.a('string')
-        expect(pub.maxTeamSize).to.be.a('number')
-        expect(pub.quizDay).to.be.a('string')
-        expect(pub.quizTime).to.be.a('string')
-        expect(pub.averagePintCost).to.be.a('string')
-        expect(pub.user).to.be.an('object')
+        const team = res.body
+
+        expect(team._id).to.be.a('string')
+        expect(team.captain).to.be.an('object')
+        expect(team.teamName).to.be.a('string')
+        expect(team.members).to.be.an('array')
+        expect(team.user).to.be.an('object')
 
         done()
       })

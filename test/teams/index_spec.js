@@ -6,6 +6,8 @@ const Team = require('../../models/team')
 
 describe('GET /pubs/:id/teams', () => {
 
+  let pub
+
   beforeEach(done => {
     User.create({
       username: 'UserOne',
@@ -29,28 +31,18 @@ describe('GET /pubs/:id/teams', () => {
             quizTime: '18:30',
             averagePintCost: '£6.50',
             user: user
-          }, {
-            name: 'The Red Lion',
-            image: 'http://www.pubquizzers.com/images/pubs/abbey-bar_560.jpg',
-            city: 'London',
-            streetName: '48 Parliament St',
-            postcode: 'SW1A 2NH',
-            phone: '020 7930 5826',
-            website: 'redlionwestminster.co.uk',
-            description: 'Westminster pub with elaborate ceiling, politicians\' portraits and illustrious former clientele.',
-            maxTeamSize: 6,
-            quizDay: 'Friday',
-            quizTime: '19:00',
-            averagePintCost: '£5.00',
-            user: user
           }
         ])
       })
       .then(createdPub => {
         pub = createdPub
-        return Team.create({
-          teamName: 'New Team'
-        })
+        Team.create([
+          {
+            captain: createdPub[0].user,
+            teamName: 'Inquizitours',
+            members: ['userOne', 'userTwo', 'userThree']
+          }
+        ])
       })
       .then(() => done())
   })
@@ -63,7 +55,7 @@ describe('GET /pubs/:id/teams', () => {
   })
 
   it('should return 200 res', done => {
-    api.get(`/api/pubs/${pub._id}/team`)
+    api.get(`/api/pubs/${pub._id}/teams`)
       .end((err, res) => {
         expect(res.status).to.eq(200)
         done()
@@ -71,7 +63,7 @@ describe('GET /pubs/:id/teams', () => {
   })
 
   it('should return array', done => {
-    api.get(`/api/pubs/${pub._id}/team`)
+    api.get(`/api/pubs/${pub._id}/teams`)
       .end((err, res) => {
         expect(res.body).to.be.an('array')
         done()
@@ -79,33 +71,25 @@ describe('GET /pubs/:id/teams', () => {
   })
 
   it('should return array of objs', done => {
-    api.get(`/api/pubs/${pub._id}/team`)
+    api.get(`/api/pubs/${pub._id}/teams`)
       .end((err, res) => {
-        res.body.forEach(pub => {
-          expect(pub).to.be.an('object')
+        res.body.forEach(team => {
+          expect(team).to.be.an('object')
         })
         done()
       })
   })
 
   it('should return array of objs with correct fields and data types', done => {
-    api.get(`/api/pubs/${pub._id}/team`)
+    api.get(`/api/pubs/${pub._id}/teams`)
       .end((err, res) => {
-        res.body.forEach(pub => {
+        res.body.forEach(team => {
 
-          expect(pub._id).to.be.a('string')
-          expect(pub.name).to.be.a('string')
-          expect(pub.image).to.be.a('string')
-          expect(pub.city).to.be.a('string')
-          expect(pub.streetName).to.be.a('string')
-          expect(pub.postcode).to.be.a('string')
-          expect(pub.phone).to.be.a('string')
-          expect(pub.website).to.be.a('string')
-          expect(pub.description).to.be.a('string')
-          expect(pub.maxTeamSize).to.be.a('number')
-          expect(pub.quizDay).to.be.a('string')
-          expect(pub.averagePintCost).to.be.a('string')
-          expect(pub.user).to.be.an('object')
+          expect(team._id).to.be.a('string')
+          expect(team.captain).to.be.an('object')
+          expect(team.teamName).to.be.a('string')
+          expect(team.members).to.be.an('array')
+          expect(team.user).to.be.an('object')
 
         })
         done()
@@ -113,23 +97,14 @@ describe('GET /pubs/:id/teams', () => {
   })
 
   it('should return an array of objects with the correct fields', done => {
-    api.get(`/api/pubs/${pub._id}/team`)
+    api.get(`/api/pubs/${pub._id}/teams`)
       .end((err, res) => {
-        res.body.forEach(pub => {
-          expect(pub).to.contains.keys([
+        res.body.forEach(team => {
+          expect(team).to.contains.keys([
             '_id',
-            'name',
-            'image',
-            'city',
-            'streetName',
-            'postcode',
-            'phone',
-            'website',
-            'description',
-            'maxTeamSize',
-            'quizDay',
-            'quizTime',
-            'averagePintCost',
+            'captain',
+            'teamName',
+            'members',
             'user'
           ])
         })

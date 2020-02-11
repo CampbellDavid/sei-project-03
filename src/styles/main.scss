@@ -27,6 +27,15 @@
   border-radius:100%;
 }
 
+.button.marker{
+  width: 60px;
+  height: 60px;
+}
+
+.mapboxgl-marker{
+  width: 60px;
+  height: 60px;
+}
 h1 {
   font-family: 'Righteous', cursive;
   font-size: 30px;
