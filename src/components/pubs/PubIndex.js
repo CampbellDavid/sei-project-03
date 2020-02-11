@@ -2,10 +2,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-import MapGL, {  Marker } from 'react-map-gl'
-import Geocoder from 'react-map-gl-geocoder'
+// import MapGL, {  Marker } from 'react-map-gl'
+// import Geocoder from 'react-map-gl-geocoder'
+import Map from '../common/Map'
 
-const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
+// const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
 // import PubCard from './PubCard'
 
@@ -21,7 +22,8 @@ state = {
   // showInfo: false
 }
 
-mapRef = React.createRef()
+// mapRef = React.createRef()
+
 handleViewportChange = (viewport) => {
   this.setState({
     viewport: { ...this.state.viewport, ...viewport }
@@ -66,38 +68,12 @@ render() {
   if (!this.state.postcodes) return null
   console.log(this.state.postcodes.map(postcode => postcode.result.longitude))
   return (
-    <MapGL
-      mapboxApiAccessToken={mapboxToken}
-      ref={this.mapRef}
-      {...this.state.viewport}
-      height={'100vh'}
-      width={'100vw'}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
-      // zoom={10}
-      // latitude= {51.5074}
-      // longitude= {0.1278}
-      onViewportChange={this.handleViewportChange}>
-      <Geocoder
-        mapRef={this.mapRef}
-        onViewportChange={this.handleGeocoderViewportChange}
-        mapboxApiAccessToken={mapboxToken}
-      />
-      
-      {this.state.postcodes.map((postcode, index) => {
-        return <Marker
-          key={index.toString()}
-          latitude={postcode.result.latitude}
-          longitude={postcode.result.longitude} >
-          <button className="marker">
-            {/* <img src={this.state.image} /> */}
-            <img src="https://d2kdkfqxnvpuu9.cloudfront.net/images/big/47455.jpg?1319388226" />
-          </button>
-        </Marker>
-      } )}
-
+    <>
+      <Map />
+    </>
  
      
-    </MapGL>
+
   )
 }
 }
