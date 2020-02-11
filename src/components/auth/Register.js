@@ -11,7 +11,6 @@ state = {
   }
 }
 
-
 handleChange = e => {
   
   const data = { ...this.state.data, [e.target.name]: e.target.value } 
