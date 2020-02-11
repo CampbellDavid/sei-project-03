@@ -10,6 +10,9 @@ const Nav = () => (
     <Link className="nav-item" to="/events/new">New Event</Link>
     <Link className="nav-item" to="/login">Login</Link>
     <Link className="nav-item" to="/register">Register</Link>
+    {/* //! XW: test link; will delete later */}
+    <Link className="nav-item" to="/teams/">teams</Link>
+
   </nav> 
 )
 
