@@ -3,7 +3,7 @@ const Team = require('../models/team')
 function index(req, res) {
   Team
     .find()
-    .populate('user')
+    .populate('members')
     .then(foundTeams => res.status(200).json(foundTeams))
     .catch(err => res.json(err))
 }
@@ -19,7 +19,7 @@ function create(req, res, next) {
 function show(req, res, next) {
   Team
     .findById(req.params.id)
-    .populate('user')
+    .populate('members')
     .then(team => { 
       if (!team) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(team)
