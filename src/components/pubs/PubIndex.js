@@ -9,7 +9,6 @@ import Map from '../common/Map'
 // const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
 // import PubCard from './PubCard'
-
 export default class PubIndex extends React.Component {
 state = {
   postcodes: [],
@@ -29,7 +28,6 @@ handleViewportChange = (viewport) => {
     viewport: { ...this.state.viewport, ...viewport }
   })
 }
-
 handleGeocoderViewportChange = (viewport) => {
   // console.log(viewport)
   const geocoderDefaultOverrides = { transitionDuration: 1000 }
@@ -41,9 +39,6 @@ handleGeocoderViewportChange = (viewport) => {
     ...geocoderDefaultOverrides
   })
 }
-
-
-
 async componentDidMount() {
   console.log('hello')
   try {
@@ -54,7 +49,6 @@ async componentDidMount() {
     console.log(error)
   }
 }
- 
 async getPostcodes () {
   const postcodes = this.state.pubs.map( pub => pub.postcode)
   const res = await axios.post('https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes', { postcodes })
@@ -62,7 +56,6 @@ async getPostcodes () {
   // console.log(postcodes.result)
   this.setState({ postcodes: res.data.result })
 }
-
 render() {
   console.log(1)
   if (!this.state.postcodes) return null
