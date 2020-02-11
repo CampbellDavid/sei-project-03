@@ -88,9 +88,10 @@ render() {
           key={index.toString()}
           latitude={postcode.result.latitude}
           longitude={postcode.result.longitude} >
-          <div className="marker">
-            
-          </div>
+          <button className="marker">
+            {/* <img src={this.state.image} /> */}
+            <img src="https://d2kdkfqxnvpuu9.cloudfront.net/images/big/47455.jpg?1319388226" />
+          </button>
         </Marker>
       } )}
 
