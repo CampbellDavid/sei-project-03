@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 
 import EventCard from './EventCard'
 
-import { Link } from 'react-router-dom'
-
 
 
 export default class EventIndex extends React.Component {
@@ -26,7 +24,6 @@ export default class EventIndex extends React.Component {
   render() {
     console.log('pubs', this.state.pubs)
     if (!this.state.pubs) return null
-    // const eventArr = this.state.events
     return (
       <section className="event-index-section">
         <h1>Find a pub quiz near you!</h1>

@@ -33,8 +33,8 @@ export default class Login extends React.Component {
     console.log(this.state.data)
     return (
       <div>
+        <h1>Login Here</h1>
         <form onSubmit={this.handleSubmit}>
-          <h2>Login Here</h2>
           <div className="form-div">
             <label>Email:</label>
             <input
