@@ -1,10 +1,10 @@
 const Team = require('../models/team')
+const Event = require('../models/event')
 
 function index(req, res) {
-  Team
-    .find()
-    .populate('members')
-    .populate('captain')
+  Event
+    .findById(req.params.id)
+    .populate('teams')
     .then(foundTeams => res.status(200).json(foundTeams))
     .catch(err => res.json(err))
 }
@@ -18,10 +18,10 @@ function create(req, res, next) {
 }
 
 function show(req, res, next) {
-  Team
+  Event
     .findById(req.params.id)
-    .populate('members')
-    .then(team => { 
+    .populate('teams')
+    .then(team => {
       if (!team) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(team)
     })
@@ -34,10 +34,10 @@ function update(req, res, next) {
     .then(team => {
       if (!team) throw new Error('Not Found')
       if (!team.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(team, req.body) 
-      return team.save()  
+      Object.assign(team, req.body)
+      return team.save()
     })
-    .then(updatedTeam => res.status(202).json(updatedTeam)) 
+    .then(updatedTeam => res.status(202).json(updatedTeam))
     .catch(next)
 }
 

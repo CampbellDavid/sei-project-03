@@ -1,10 +1,19 @@
 const Event = require('../models/event')
+const Pub = require('../models/pub')
 
 function index(req, res) {
   Event
     .find()
     .populate('user')
     .populate('teams.members')
+    .then(foundEvents => res.status(200).json(foundEvents))
+    .catch(err => res.json(err))
+}
+
+function indexForSpecificPub(req, res) {
+  Pub
+    .findById(req.params.id)
+    .populate('events')
     .then(foundEvents => res.status(200).json(foundEvents))
     .catch(err => res.json(err))
 }
@@ -22,7 +31,7 @@ function show(req, res, next) {
     .findById(req.params.id)
     .populate('user')
     .populate('teams.members')
-    .then(event => { 
+    .then(event => {
       if (!event) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(event)
     })
@@ -35,10 +44,10 @@ function update(req, res, next) {
     .then(event => {
       if (!event) throw new Error('Not Found')
       if (!event.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(event, req.body) 
-      return event.save()  
+      Object.assign(event, req.body)
+      return event.save()
     })
-    .then(updatedEvent => res.status(202).json(updatedEvent)) 
+    .then(updatedEvent => res.status(202).json(updatedEvent))
     .catch(next)
 }
 
@@ -53,4 +62,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, create, show, update, destroy }
+module.exports = { index, create, show, update, destroy, indexForSpecificPub }
