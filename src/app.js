@@ -20,7 +20,7 @@ import EventIndex from './components/events/EventIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 
-// import TeamIndex from './components/teams/TeamIndex'
+import TeamShow from './components/teams/TeamShow'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
 
@@ -32,25 +32,20 @@ class App extends React.Component {
         <BrowserRouter>   
           <Nav />
           <Switch>
-            <Route exact path='/' component={Home}></Route>
-
-            <SecureRoute path='/pubs/:id/edit' component={PubEdit} />
-            <SecureRoute path='/pubs/new' component={PubNew} />
-            <Route path='/pubs/:id' component={PubShow} />
-            <Route path='/pubs' component={PubIndex} />
-
-            <Route path='/profiles/:id' component={Profile} />
-
-            <SecureRoute path='/events/:id/edit' component={EventEdit} />
-            <SecureRoute path='/events/new' component={EventNew} />
-            <Route path='/events/:id' component={EventShow} />
-            <Route path='/events' component={EventIndex} />
-
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
-            {/* //! XW: TEST ROUTE; DELETE LATER */}
-            {/* <Route path='/teams' component={TeamIndex}></Route> */}
-            <Route path='/*' component={Unknown} />
+            <Route exact path='/' component={Home}/>
+            <SecureRoute path='/pubs/:id/edit' component={PubEdit}/>
+            <Route path='/pubs/:id' component={PubShow}/>
+            <SecureRoute path='/pubs/new' component={PubNew}/>
+            <Route path='/pubs' component={PubIndex}/>
+            <Route path='/events/:id/teams/:id' component={TeamShow}/>
+            <SecureRoute path='/events/:id/edit' component={EventEdit}/>
+            <Route path='/events/:id' component={EventShow}/>
+            <SecureRoute path='/events/new' component={EventNew}/>
+            <Route path='/events' component={EventIndex}/>
+            <Route path='/profiles/:id' component={Profile}/>
+            <Route path='/register' component={Register}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/*' component={Unknown}/>
           </Switch>
         </BrowserRouter>
       </main>
