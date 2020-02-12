@@ -52,10 +52,14 @@ export default class PubEdit extends React.Component {
 
   render() {
     return (
+      <>
+      <h1>Edit a pub page</h1>
+      <h1>Edit a pub!</h1>
       <PubForm 
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}/>
+        </>
     )
   }
 

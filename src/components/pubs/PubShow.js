@@ -22,20 +22,20 @@ render() {
   const { pub } = this.state
   return (
     <div>
-      <h2>{pub.name}</h2>
-      <h2>{pub.image}</h2>
-      <h2>{pub.description}</h2>
-      <h2>{pub.streetName}</h2>
-      <h2>{pub.city}</h2>
-      <h2>{pub.postcode}</h2>
-      <h2>{pub.phone}</h2>
-      <h2>{pub.website}</h2>
-      <h2>{pub.maxTeamSize}</h2>
-      <h2>{pub.quizDay}</h2>
-      <h2>{pub.quizTime}</h2>
-      <h2>{pub.starRating}</h2>
-      <h2>{pub.averagePintCost}</h2>
-      <h2>{pub.reviews}</h2>
+      <h1>{pub.name}</h1>
+      <img src={pub.image}/>
+      <p>{pub.description}</p>
+      <p>{pub.streetName}</p>
+      <p>{pub.city}</p>
+      <p>{pub.postcode}</p>
+      <p>{pub.phone}</p>
+      <a href={pub.website}>Visit Pub Website</a>
+      <p>Maximun Team size: {pub.maxTeamSize}</p>
+      <p>Day of Quiz: {pub.quizDay}</p>
+      <h2>Time of Quiz: {pub.quizTime}</h2>
+      {/* <h2>{pub.starRating}</h2> */}
+      <h2>Average Cost of a Pint: {pub.averagePintCost}</h2>
+      {/* <h2>{pub.reviews}</h2> */}
       <Link to="/events/new">
         <button type="button">New Event</button>
       </Link>
