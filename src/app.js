@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Nav from './components/common/Nav'
 import Home from './components/common/Home'
+import SecureRoute from './components/common/SecureRoute'
 
 import PubEdit from './components/pubs/PubEdit'
 import PubNew from './components/pubs/PubNew'
@@ -23,10 +24,6 @@ import Login from './components/auth/Login'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
 
-//edit
-//new
-//show
-//index
 
 class App extends React.Component {
   render() {
@@ -37,23 +34,23 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home}></Route>
 
-            <Route path='/pubs/:id/edit' component={PubEdit}></Route>
-            <Route path='/pubs/new' component={PubNew}></Route>
-            <Route path='/pubs/:id' component={PubShow}></Route>
-            <Route path='/pubs' component={PubIndex}></Route>
+            <SecureRoute path='/pubs/:id/edit' component={PubEdit} />
+            <SecureRoute path='/pubs/new' component={PubNew} />
+            <Route path='/pubs/:id' component={PubShow} />
+            <Route path='/pubs' component={PubIndex} />
 
-            <Route path='/profiles/:id' component={Profile}></Route>
+            <Route path='/profiles/:id' component={Profile} />
 
-            <Route path='/events/:id/edit' component={EventEdit}></Route>
-            <Route path='/events/new' component={EventNew}></Route>
-            <Route path='/events/:id' component={EventShow}></Route>
-            <Route path='/events' component={EventIndex}></Route>
+            <SecureRoute path='/events/:id/edit' component={EventEdit} />
+            <SecureRoute path='/events/new' component={EventNew} />
+            <Route path='/events/:id' component={EventShow} />
+            <Route path='/events' component={EventIndex} />
 
-            <Route path='/register' component={Register}></Route>
-            <Route path='/login' component={Login}></Route>
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
             {/* //! XW: TEST ROUTE; DELETE LATER */}
             {/* <Route path='/teams' component={TeamIndex}></Route> */}
-            <Route path='/*' component={Unknown}></Route>
+            <Route path='/*' component={Unknown} />
           </Switch>
         </BrowserRouter>
       </main>

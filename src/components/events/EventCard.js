@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import Map from '../common/Map'
+
 const EventCard = ({ name, events, _id }) => (
   <div className="card-container">
     <Link to={`/events/${_id}`}>
@@ -16,9 +16,6 @@ const EventCard = ({ name, events, _id }) => (
           })}
         </div>
       </div>
-      {/* <div className="map-container">
-        <Map />
-      </div> */}
     </Link>
   </div>
 )
