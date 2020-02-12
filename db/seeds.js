@@ -12,7 +12,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       .then(() => {
         return User.create([
           {
-            username: '1',
+            username: 'George W. Bush',
             email: '1@email.com',
             password: '1',
             passwordConfirmation: '1',
@@ -24,7 +24,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizStrengths: []
           },
           {
-            username: '2',
+            username: 'Barack H. Obama',
             email: '2@email.com',
             password: '2',
             passwordConfirmation: '2',
@@ -35,7 +35,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             gender: 'Male',
             quizStrengths: ['Gen Ed']
           },{
-            username: '3',
+            username: 'Bill Clinton',
             email: '3@email.com',
             password: '3',
             passwordConfirmation: '3',
@@ -46,7 +46,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             gender: 'Female',
             quizStrengths: ['Geography', 'Math']
           },{
-            username: '4',
+            username: 'Donald Trump',
             email: '4@email.com',
             password: '4',
             passwordConfirmation: '4',
@@ -65,21 +65,25 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
           {
             captain: createdUsers[0],
             teamName: 'Inquizitours',
+            // event: '5e44498928eeec38c5183622',
             members: [createdUsers[1], createdUsers[2], createdUsers[3]],
             user: createdUsers[0]
           }, {
             captain: createdUsers[1],
             teamName: 'Beijing Team',
+            // event: '5e44498928eeec38c5183621',
             members: [createdUsers[0], createdUsers[2], createdUsers[3]],
             user: createdUsers[1]
           }, {
             captain: createdUsers[2],
             teamName: 'Copenhagen Team',
+            // event: '5e44498928eeec38c5183623',
             members: [createdUsers[0], createdUsers[1], createdUsers[3]],
             user: createdUsers[2]
           }, {
             captain: createdUsers[3],
             teamName: 'London Team',
+            // event: '5e44498928eeec38c5183620',
             members: [createdUsers[0], createdUsers[1], createdUsers[2]],
             user: createdUsers[3]
           }

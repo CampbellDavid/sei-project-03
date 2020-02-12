@@ -1,17 +1,7 @@
 import React from 'react'
-import axios from 'axios'
+import TeamShow from './TeamShow'
 import { Link } from 'react-router-dom'
-// import { withAuth } from '@okta/okta-react'
 
-class TeamCard extends React.Component {
-  state = {
-    team: {
-      name: '',
-      captain: '',
-      members: []
-    },
-    user: ''
-  }
 
   // checkAuthentication = async () => {
   //   const authenticated = await this.props.auth.isAuthenticated()

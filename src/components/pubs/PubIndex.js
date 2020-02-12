@@ -2,9 +2,9 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-
-import PubMap from '../common/PubMap'
-import SearchBar from '../common/SearchBar'
+import MapComp from '../common/MapComp'
+// import SearchBar from '../common/SearchBar'
+import PubCard from './PubCard'
 
 
 export default class PubIndex extends React.Component {
@@ -18,18 +18,14 @@ export default class PubIndex extends React.Component {
     },
     showPopup: true
   }
-
   mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
   mapRef = React.createRef()
-
   handleViewportChange = viewport => {
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
     })
   }
-
   handleGeocoderViewportChange = viewport => {
-
     const geocoderDefaultOverrides = { transitionDuration: 1000 }
     this.setState({
       viewport: {
@@ -38,13 +34,11 @@ export default class PubIndex extends React.Component {
         zoom: viewport.zoom
       }
     })
-
     return this.handleViewportChange({
       ...viewport,
       ...geocoderDefaultOverrides
     })
   };
-
   async componentDidMount() {
     try {
       const res = await axios.get('/api/pubs')
@@ -54,41 +48,45 @@ export default class PubIndex extends React.Component {
       console.log(error)
     }
   }
-
   async getPostcodes() {
     const postcodes = this.state.pubs.map(pub => {
       return pub.postcode
     })
-
     const res = await axios.post(
       'https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes',
       { postcodes }
     )
     console.log(res.data.result)
-
     this.setState({ postcodes: res.data.result })
   }
-
   render() {
     if (!this.state.postcodes) return null
     if (!this.state.pubs) return null
     console.log('pubs', this.state.pubs)
     console.log('postcodes', this.state.postcodes)
     return (
-      <>
-        <SearchBar />
-        <PubMap 
-          viewport={this.state.viewport} 
-          handleGeocoderViewportChange={this.handleGeocoderViewportChange}
-          handleViewportChange={this.handleViewportChange} 
-          mapboxToken={this.mapboxToken}
-          mapRef={this.mapRef} 
-          postcodes={this.state.postcodes}
-          pubs={this.state.pubs} 
-        />
-
-      </>
+      <div className="pub-index-show" >
+        {/* <SearchBar /> */}
+        <div className="map-container">
+          <MapComp 
+            viewport={this.state.viewport} 
+            handleGeocoderViewportChange={this.handleGeocoderViewportChange}
+            handleViewportChange={this.handleViewportChange} 
+            mapboxToken={this.mapboxToken}
+            mapRef={this.mapRef} 
+            postcodes={this.state.postcodes}
+            pubs={this.state.pubs} 
+          />
+        </div>
+        <section className="cards">
+          <h1>Find a pub quiz near you!</h1>
+          <div className="container">
+            {this.state.pubs.map(pub => (
+              <PubCard key={pub._id} {...pub} />
+            ))}
+          </div>
+        </section>
+      </div>
     )
   }
 }
-
