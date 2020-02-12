@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 
 import EventCard from './EventCard'
 
-import { Link } from 'react-router-dom'
-
-
 
 export default class EventIndex extends React.Component {
   state = {
