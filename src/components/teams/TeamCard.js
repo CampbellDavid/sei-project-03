@@ -27,7 +27,7 @@ class TeamCard extends React.Component {
     this.setState({ members: [...this.state.members, this.state.user] })
     
     try {
-      const res = await axios.post('/api/teams/', this.state.team) //!not quite right
+      const res = await axios.post('/api/teams/', this.state.team) //!link pending, wait for changes of models and controllers to be done
       console.log(res)
     } catch (err) {
       console.log(err)
