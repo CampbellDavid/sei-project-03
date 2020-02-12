@@ -12,7 +12,12 @@ teamSchema
     return this.members.length
   })
 
-teamSchema.set('toJSON', { virtuals: true })
+teamSchema.set('toJSON', {
+  virtuals: true,
+  transform(doc, json) {
+    return json
+  }
+})
 
 teamSchema.plugin(require('mongoose-unique-validator'))
 

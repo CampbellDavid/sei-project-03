@@ -18,9 +18,9 @@ router.route('/pubs/:id') // done
   .put(secureRoute, pubs.update)
   .get(pubs.show)
 
-// Pub likes
-router.route('/pubs/:id/likes') // done
-  .get(secureRoute, pubs.like)
+// Pub rating
+router.route('/pubs/:id/ratings') // done
+  .get(secureRoute, pubs.starRating)
 
 // Pub reviews
 router.route('/pubs/:id/reviews') // done
