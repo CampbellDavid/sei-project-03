@@ -34,13 +34,13 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <SecureRoute path='/pubs/:id/edit' component={PubEdit}/>
-            <Route path='/pubs/:id' component={PubShow}/>
             <SecureRoute path='/pubs/new' component={PubNew}/>
+            <Route path='/pubs/:id' component={PubShow}/>
             <Route path='/pubs' component={PubIndex}/>
             <Route path='/events/:id/teams/:id' component={TeamShow}/>
             <SecureRoute path='/events/:id/edit' component={EventEdit}/>
-            <Route path='/events/:id' component={EventShow}/>
             <SecureRoute path='/events/new' component={EventNew}/>
+            <Route path='/events/:id' component={EventShow}/>
             <Route path='/events' component={EventIndex}/>
             <Route path='/profiles/:id' component={Profile}/>
             <Route path='/register' component={Register}/>
