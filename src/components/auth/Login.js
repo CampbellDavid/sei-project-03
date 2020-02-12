@@ -23,7 +23,8 @@ export default class Login extends React.Component {
       const res = await axios.post('/api/login', this.state.data)
       Authorization.setToken(res.data.token)
       console.log(res.data)
-      this.props.history.push('/profiles/:id')
+      this.props.history.push(`/profiles/${res.data.userId}`)
+      
     } catch (error) {
       this.setState({ error: 'Invalid Credentials' })
     }
