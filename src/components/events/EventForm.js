@@ -50,7 +50,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
           <button
             className="button"
             type="submit">
-              Create Event</button>
+              Submit</button>
         </div>
       </form>
     </div>

@@ -8,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
 })
 
 const starRatingSchema = new mongoose.Schema({
-  rating: { type: Number, min: 0, max: 5 },
+  rating: { type: Number, min: 1, max: 5 },
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
@@ -26,7 +26,7 @@ const pubSchema = new mongoose.Schema({
   maxTeamSize: { type: Number, required: true },
   quizDay: { type: String, required: true },
   quizTime: { type: String, required: true },
-  starRating: [starRatingSchema],
+  starRatings: [starRatingSchema],
   averagePintCost: { type: String, required: true },
   reviews: [reviewSchema],
   events: [{ type: mongoose.Schema.ObjectId, ref: 'Event' }],
@@ -35,10 +35,20 @@ const pubSchema = new mongoose.Schema({
   timestamps: true
 })
 
+// pubSchema
+//   .virtual('starRatingCount')
+//   .get(function () {
+//     return this.starRatings.length
+//   })
+
 pubSchema
-  .virtual('starRatingCount')
+  .virtual('aveRating')
   .get(function () {
-    return this.starRating.length
+    if (this.starRating.length === 0) {
+      return null
+    } else {
+      return this.starRating.reduce((acc, curr) => acc + curr) / this.starRating.length
+    }
   })
 
 pubSchema.set('toJSON', { virtuals: true })

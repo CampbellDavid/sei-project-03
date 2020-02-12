@@ -2,15 +2,23 @@ import React from 'react'
 import axios from 'axios'
 import Authorization from '../../../lib/authorization'
 
-import EventForm from './EventForm'
+import PubForm from './PubForm'
 
-export default class EventNew extends React.Component {
+export default class PubNew extends React.Component {
   state = {
     data: {
-      pub: '',
-      entryFee: '',
+      name: '',
+      image: '',
+      city: '',
+      streetName: '',
+      postcode: '',
+      phone: '',
+      website: '',
+      description: '',
+      maxTeamSize: '',
       quizDay: '',
-      quizTime: ''
+      quizTime: '',
+      averagePintCost: ''
     }
   }
 
@@ -23,10 +31,11 @@ export default class EventNew extends React.Component {
   handleSubmit = async e => {
     e.preventDefault()
     try {
-      const res = await axios.post('/api/events', this.state.data, {
+      const res = await axios.post('/api/pubs', this.state.data, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      this.props.history.push(`/events/${res.data._id}`)
+      console.log(res.data)
+      this.props.history.push(`/pubs/${res.data._id}`)
     } catch (error) {
       console.log(error)
     }
@@ -35,8 +44,9 @@ export default class EventNew extends React.Component {
   render() {
     return (
       <>
-      <h1>New Event Page</h1>
-      <EventForm 
+      <h1>New Pub Page</h1>
+      <h1>Create a pub!</h1>
+      <PubForm 
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}/>
