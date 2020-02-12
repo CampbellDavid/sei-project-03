@@ -16,7 +16,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             email: '1@email.com',
             password: '1',
             passwordConfirmation: '1',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Beer', 'Gin'],
             personalityType: 'ABCD',
             bio: 'Bio for user 1',
             age: 30,
@@ -28,34 +28,34 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             email: '2@email.com',
             password: '2',
             passwordConfirmation: '2',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Wisky', 'Water'],
             personalityType: 'EFGH',
             bio: 'Bio for user 2',
             age: 25,
             gender: 'Male',
-            quizStrengths: []
+            quizStrengths: ['Gen Ed']
           },{
             username: '3',
             email: '3@email.com',
             password: '3',
             passwordConfirmation: '3',
-            favouriteDrinks: [],
+            favouriteDrinks: ['White Russian', 'Wine'],
             personalityType: 'IJKL',
             bio: 'Bio for user 3',
             age: 28,
             gender: 'Female',
-            quizStrengths: []
+            quizStrengths: ['Geography', 'Math']
           },{
             username: '4',
             email: '4@email.com',
             password: '4',
             passwordConfirmation: '4',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Red Wine', 'Rosé Wine'],
             personalityType: 'MNOP',
             bio: 'Bio for user 4',
             age: 26,
             gender: 'Male',
-            quizStrengths: []
+            quizStrengths: ['History', 'Politics']
           }
         ])
       })
@@ -65,19 +65,23 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
           {
             captain: createdUsers[0],
             teamName: 'Inquizitours',
-            members: [createdUsers[1], createdUsers[2], createdUsers[3]]
+            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
+            user: createdUsers[0]
           }, {
             captain: createdUsers[1],
             teamName: 'Beijing Team',
-            members: [createdUsers[0], createdUsers[2], createdUsers[3]]
+            members: [createdUsers[0], createdUsers[2], createdUsers[3]],
+            user: createdUsers[1]
           }, {
             captain: createdUsers[2],
             teamName: 'Copenhagen Team',
-            members: [createdUsers[0], createdUsers[1], createdUsers[3]]
+            members: [createdUsers[0], createdUsers[1], createdUsers[3]],
+            user: createdUsers[2]
           }, {
             captain: createdUsers[3],
             teamName: 'London Team',
-            members: [createdUsers[0], createdUsers[1], createdUsers[2]]
+            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
+            user: createdUsers[3]
           }
         ])
       })

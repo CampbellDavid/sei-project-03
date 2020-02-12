@@ -5,10 +5,12 @@ import EventForm from './EventForm'
 
 export default class EventEdit extends React.Component {
   state = {
-    pub: '',
-    entryFee: '',
-    quizDay: '',
-    quizTime: ''
+    data: {
+      pub: '',
+      entryFee: '',
+      quizDay: '',
+      quizTime: ''
+    }
   }
 
   async componentDidMount() {

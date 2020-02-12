@@ -5,17 +5,16 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  favouriteDrinks: { type: [String] },
+  favouriteDrinks: [{ type: String }],
   personalityType: { type: String },
   bio: { type: String },
   age: { type: Number },
   gender: { type: String },
-  quizStrengths: { type: [String] },
+  quizStrengths: [{ type: String }],
   profileImage: { type: String }
 }, {
   timestamps: true
 })
-
 
 userSchema
   .set('toJSON', {
@@ -52,6 +51,12 @@ userSchema.virtual('createdEvents', {
   ref: 'Event',
   localField: '_id',
   foreignField: 'events.user'
+})
+
+userSchema.virtual('joinedTeams', {
+  ref: 'Team',
+  localField: '_id',
+  foreignField: 'teams.members.user'
 })
 
 userSchema
