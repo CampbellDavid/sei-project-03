@@ -35,32 +35,17 @@ const pubSchema = new mongoose.Schema({
   timestamps: true
 })
 
-// pubSchema
-//   .virtual('starRatingCount')
-//   .get(function () {
-//     return this.starRatings.length
-//   })
-
 pubSchema
-  .virtual('aveRating')
+  .virtual('starRatingCount')
   .get(function () {
-    if (this.starRating.length === 0) {
-      return null
-    } else {
-      return this.starRating.reduce((acc, curr) => acc + curr) / this.starRating.length
-    }
+    return this.starRatings.length
   })
 
 pubSchema
   .virtual('avRating')
   .get(function () {
-<<<<<<< HEAD
     if (this.starRatings.length === 0) {
       return null
-=======
-    if (this.starRating.length === 0) {
-      return null 
->>>>>>> development
     } else {
       const numRatings = this.starRatings.map(ratingObj => ratingObj.rating)
       return numRatings.reduce((acc, curr) => acc + curr) /  numRatings.length
