@@ -8,16 +8,6 @@ export default class EventIndex extends React.Component {
     pubs: null
   }
 
-  // async componentDidMount() {
-  //   try {
-  //     const res = await axios.get('/api/events')
-  //     // console.log(res.data)
-  //     this.setState({ events: res.data })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
   async componentDidMount() {
     try {
       const res = await axios.get('/api/pubs')

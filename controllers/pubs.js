@@ -50,7 +50,7 @@ function destroy(req, res) {
   Pub
     .findById(req.params.id)
     .then(pub => {
-      if (!pub) return res.status(404).json({ message: 'Not Found ' })
+      if (!pub) return res.status(404).json({ message: 'Not Found' })
       if (!pub.user.equals(req.currentUser._id)) {
         res.status(401).json({ message: 'Unauthorised' })
       } else {
@@ -66,7 +66,7 @@ function reviewCreate(req, res) {
   Pub
     .findById(req.params.id)
     .then(pub => {
-      if (!pub) return res.status(404).json({ message: 'Not Found ' })
+      if (!pub) return res.status(404).json({ message: 'Not Found' })
       pub.reviews.push(req.body)
       return pub.save()
     })
@@ -77,7 +77,7 @@ function reviewCreate(req, res) {
 // * DELETE /pubs/:id/reviews/:reviewId
 function reviewDelete(req, res) {
   Pub
-    .findById(req.params.id)
+    .findById(req.params.reviewId)
     .then(pub => { 
       if (!pub) return res.status(404).json({ message: 'Not Found ' })
       const review = pub.reviews.id(req.params.reviewId)
@@ -90,18 +90,20 @@ function reviewDelete(req, res) {
     .catch(err => res.json(err))
 }
 
-// * GET /pubs/:id/likes
-function like(req, res) {
+// * GET /pubs/:id/ratings
+function starRating(req, res) {
   Pub
     .findById(req.params.id)
     .then(pub => {
       if (!pub) return res.status(404).json({ message: 'Not Found' })
-      if (pub.likes.some(like => like.user.equals(req.currentUser._id))) return pub
-      pub.likes.push({ user: req.currentUser })
+      if (pub.starRatings.some(starRating => starRating.user.equals(req.currentUser._id))) return pub
+      pub.starRatings.push({ user: req.currentUser })
       return pub.save()
     })
     .then(pub => res.status(202).json(pub))
     .catch(err => res.json(err))
 }
 
-module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete, like }
+module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete, starRating }
+
+// TODO: remove star rating function

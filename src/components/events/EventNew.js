@@ -26,7 +26,6 @@ export default class EventNew extends React.Component {
       const res = await axios.post('/api/events', this.state.data, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      console.log(res)
       this.props.history.push(`/events/${res.data._id}`)
     } catch (error) {
       console.log(error)
@@ -35,10 +34,13 @@ export default class EventNew extends React.Component {
 
   render() {
     return (
+      <>
+      <h1>New Event Page</h1>
       <EventForm 
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}/>
+      </>
     )
   }
 }
