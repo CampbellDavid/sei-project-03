@@ -16,32 +16,6 @@ export default class EventIndex extends React.Component {
     showPopup: true
   }
 
-  mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
-  mapRef = React.createRef()
-
-  handleViewportChange = viewport => {
-    this.setState({
-      viewport: { ...this.state.viewport, ...viewport }
-    })
-  }
-
-  handleGeocoderViewportChange = viewport => {
-
-    const geocoderDefaultOverrides = { transitionDuration: 1000 }
-    this.setState({
-      viewport: {
-        latitude: viewport.latitude,
-        longitude: viewport.longitude,
-        zoom: viewport.zoom
-      }
-    })
-
-    return this.handleViewportChange({
-      ...viewport,
-      ...geocoderDefaultOverrides
-    })
-  };
-
   async componentDidMount() {
     try {
       const res = await axios.get('/api/pubs')
