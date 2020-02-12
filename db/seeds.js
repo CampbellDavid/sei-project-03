@@ -65,19 +65,23 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
           {
             captain: createdUsers[0],
             teamName: 'Inquizitours',
-            members: [createdUsers[1], createdUsers[2], createdUsers[3]]
+            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
+            user: createdUsers[0]
           }, {
             captain: createdUsers[1],
             teamName: 'Beijing Team',
-            members: [createdUsers[0], createdUsers[2], createdUsers[3]]
+            members: [createdUsers[0], createdUsers[2], createdUsers[3]],
+            user: createdUsers[1]
           }, {
             captain: createdUsers[2],
             teamName: 'Copenhagen Team',
-            members: [createdUsers[0], createdUsers[1], createdUsers[3]]
+            members: [createdUsers[0], createdUsers[1], createdUsers[3]],
+            user: createdUsers[2]
           }, {
             captain: createdUsers[3],
             teamName: 'London Team',
-            members: [createdUsers[0], createdUsers[1], createdUsers[2]]
+            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
+            user: createdUsers[3]
           }
         ])
       })
