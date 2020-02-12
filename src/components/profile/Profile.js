@@ -1,14 +1,48 @@
 import React from 'react'
-
+import axios from 'axios'
 
 class Profile extends React.Component {
+
+  state = {
+    user: {
+      username: '',
+      favouriteDrinks: [],
+      quizStrenghts: [],
+      email: '',
+      bio: '',
+      personalityType: '',
+      _id: ''
+    }
+  }
+
+  async componentDidMount() {
+    const userId = this.props.match.params.id
+    try {
+      const res = await axios.get(`/api/profiles/${userId}`)
+      console.log(res.data)
+      this.setState({ user: res.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+ 
+
   render() {
+    console.log('rendering')
+    const { username, favouriteDrinks, quizStrenghts, email, bio, personalityType } = this.state.user
     return (
-      
+      <>
+        <h1>{username}</h1>
+        <p>Favourite Drinks: {favouriteDrinks}</p>
+        <p>Quiz Strengths: {quizStrenghts}</p>
+        <p>Email: {email}</p>
+        <p>Bio: {bio}</p>
+        <p>Peronality Type: {personalityType}</p>
+      </>
     )
   }
 }
-
+  
 export default Profile
 
 
