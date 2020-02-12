@@ -18,7 +18,7 @@ function login(req, res) {
       }
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '24h' })
       res.status(202).json({
-        message: `Hello ${user.username}, welcome back!`,
+        userId: user._id,
         token
       })
     })
