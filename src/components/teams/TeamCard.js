@@ -3,15 +3,16 @@ import TeamShow from './TeamShow'
 import { Link } from 'react-router-dom'
 
 
-  // checkAuthentication = async () => {
-  //   const authenticated = await this.props.auth.isAuthenticated()
-  //   if (authenticated && !this.state.userinfo) {
-  //     const user = await this.props.auth.getUser()
-  //     this.setState({ user })
-  //   }
-  //   console.log('user is not logged in')
-  // }
-
+// checkAuthentication = async () => {
+//   const authenticated = await this.props.auth.isAuthenticated()
+//   if (authenticated && !this.state.userinfo) {
+//     const user = await this.props.auth.getUser()
+//     this.setState({ user })
+//   }
+//   console.log('user is not logged in')
+// }
+class TeamCard extends React.Component {
+  
   handleSubmit = async (e) => {
     e.preventDefault() 
     this.setState({ members: [...this.state.members, this.state.user] })
@@ -47,5 +48,6 @@ import { Link } from 'react-router-dom'
     )
   }
 }
+
 
 export default TeamCard
