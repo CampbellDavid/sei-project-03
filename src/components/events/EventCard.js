@@ -14,9 +14,6 @@ const EventCard = ({ entryFee, quizDay, quizTime, _id }) => (
 
         </div>
       </div>
-      {/* <div className="map-container">
-        <Map />
-      </div> */}
     </Link>
   </div>
 )
