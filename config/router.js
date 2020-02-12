@@ -72,6 +72,10 @@ router.route('/profiles/:id') // come back to
   .get(users.show)
   .put(secureRoute, users.update)
 
+router.route('/profiles/:id/messages') // necessary???
+  .post(secureRoute, users.sendMessage)
+  
+
 
 
 // Teams
