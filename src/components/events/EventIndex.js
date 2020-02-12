@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import EventCard from './EventCard'
 
+import { Link } from 'react-router-dom'
+
 
 export default class EventIndex extends React.Component {
   state = {
@@ -30,6 +32,9 @@ export default class EventIndex extends React.Component {
             <EventCard key={pub._id} {...pub} />
           ))}
         </div>
+        <Link to="/events/new">
+          <button type="button">New Event</button>
+        </Link>
       </section>
     )
   }
