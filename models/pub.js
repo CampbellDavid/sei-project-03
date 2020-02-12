@@ -38,7 +38,7 @@ const pubSchema = new mongoose.Schema({
 pubSchema
   .virtual('starRatingCount')
   .get(function () {
-    return this.starRating.length
+    return this.starRatings.length
   })
 
 pubSchema.set('toJSON', { virtuals: true })

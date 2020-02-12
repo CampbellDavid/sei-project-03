@@ -16,7 +16,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             email: '1@email.com',
             password: '1',
             passwordConfirmation: '1',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Beer', 'Gin'],
             personalityType: 'ABCD',
             bio: 'Bio for user 1',
             age: 30,
@@ -28,34 +28,34 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             email: '2@email.com',
             password: '2',
             passwordConfirmation: '2',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Wisky', 'Water'],
             personalityType: 'EFGH',
             bio: 'Bio for user 2',
             age: 25,
             gender: 'Male',
-            quizStrengths: []
+            quizStrengths: ['Gen Ed']
           },{
             username: '3',
             email: '3@email.com',
             password: '3',
             passwordConfirmation: '3',
-            favouriteDrinks: [],
+            favouriteDrinks: ['White Russian', 'Wine'],
             personalityType: 'IJKL',
             bio: 'Bio for user 3',
             age: 28,
             gender: 'Female',
-            quizStrengths: []
+            quizStrengths: ['Geography', 'Math']
           },{
             username: '4',
             email: '4@email.com',
             password: '4',
             passwordConfirmation: '4',
-            favouriteDrinks: [],
+            favouriteDrinks: ['Red Wine', 'Rosé Wine'],
             personalityType: 'MNOP',
             bio: 'Bio for user 4',
             age: 26,
             gender: 'Male',
-            quizStrengths: []
+            quizStrengths: ['History', 'Politics']
           }
         ])
       })

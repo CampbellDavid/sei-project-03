@@ -32,7 +32,7 @@ function show(req, res, next) {
 
 function update(req, res, next) {
   Team
-    .findById(req.params.id)
+    .findById(req.params.teamId)
     .then(team => {
       if (!team) throw new Error('Not Found')
       if (!team.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
@@ -43,10 +43,38 @@ function update(req, res, next) {
     .catch(next)
 }
 
+function join(req, res, next) {
+  req.body.user = req.currentUser
+  Team
+    .findById(req.params.teamId)
+    .then(team => {
+      if (!team) throw new Error('Not Found')
+      team.members.push(req.body.user)
+      return team.save()
+    })
+    .then(updatedTeam => res.status(201).json(updatedTeam))
+    .catch(next)
+}
+
+function leave(req, res, next) {
+  req.body.user = req.currentUser
+  Team
+    .findById(req.params.teamId)
+    .then(team => {
+      if (!team) throw new Error('Not Found')
+      team.members.filter(member => {
+        member._id !== req.body.user._id
+        return team.save()
+      })
+    })
+    .then(updatedTeam => res.status(201).json(updatedTeam))
+    .catch(next)
+}
+
 
 function destroy(req, res) {
   Team
-    .findById(req.params.id)
+    .findById(req.params.teamId)
     .then(team => {
       if (!team) return res.status(404).json({ message: 'Not Found ' })
       if (!team.user.equals(req.currentUser._id)) {
@@ -58,4 +86,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, create, show, update, destroy }
+module.exports = { index, create, show, update, destroy, join, leave }

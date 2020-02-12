@@ -76,13 +76,15 @@ router.route('/profiles/:id') // come back to
 
 // Teams
 
-router.route('/events/:eventId/teams') // needs to return data specific to the event id
+router.route('/events/:eventId/teams') // done
   .get(teams.index)
   .post(secureRoute, teams.create)
 
-router.route('/events/:eventId/teams/:teamId') // needs to return specific team data
+router.route('/events/:eventId/teams/:teamId') // done
   .delete(secureRoute, teams.destroy)
-  .get(teams.show)
   .put(secureRoute, teams.update)
+  .put(secureRoute, teams.join)
+  .put(secureRoute, teams.leave) // check for functionality
+  .get(teams.show)
 
 module.exports = router
