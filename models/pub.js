@@ -41,6 +41,16 @@ pubSchema
     return this.starRating.length
   })
 
+pubSchema
+  .virtual('aveRating')
+  .get(function () {
+    if (this.starRating.length === 0) {
+      return null 
+    } else {
+      return this.starRating.reduce((acc, curr) => acc + curr) / this.starRating.length
+    }
+  })
+
 pubSchema.set('toJSON', { virtuals: true })
 
 pubSchema.plugin(require('mongoose-unique-validator'))

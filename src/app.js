@@ -14,7 +14,7 @@ import Login from './components/auth/Login'
 import TeamIndex from './components/teams/TeamIndex'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
-
+// import StarRating from './components/common/StarRating'
 
 class App extends React.Component {
   render() {
@@ -24,6 +24,7 @@ class App extends React.Component {
           <Nav />
           <Switch>
             <Route exact path='/' component={Home}></Route>
+            {/* <Route path='/' component={StarRating}></Route> */}
             <Route path='/pubs/:id' component={PubShow}></Route>
             <Route path='/pubs' component={PubIndex}></Route>
             <Route path='/profiles/:id' component={Profile}></Route>
