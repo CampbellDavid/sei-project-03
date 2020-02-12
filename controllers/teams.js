@@ -4,7 +4,18 @@ const Event = require('../models/event')
 function index(req, res) {
   Event
     .findById(req.params.eventId)
-    .populate('teams')
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'captain' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'members' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'event' })
+    })
     .then(foundTeams => res.status(200).json(foundTeams))
     .catch(err => res.json(err))
 }
@@ -20,9 +31,18 @@ function create(req, res, next) {
 function show(req, res, next) {
   Team
     .findById(req.params.teamId)
-    .populate('captain')
-    .populate('teamName')
-    .populate('members')
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'captain' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'members' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'event' })
+    })
     .then(team => {
       if (!team) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(team)

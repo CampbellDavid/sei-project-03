@@ -19,7 +19,7 @@ import EventIndex from './components/events/EventIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 
-// import TeamIndex from './components/teams/TeamIndex'
+import TeamShow from './components/teams/TeamShow'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
 
@@ -36,23 +36,18 @@ class App extends React.Component {
           <Nav />
           <Switch>
             <Route exact path='/' component={Home}></Route>
-
             <Route path='/pubs/:id/edit' component={PubEdit}></Route>
-            <Route path='/pubs/new' component={PubNew}></Route>
             <Route path='/pubs/:id' component={PubShow}></Route>
+            <Route path='/pubs/new' component={PubNew}></Route>
             <Route path='/pubs' component={PubIndex}></Route>
-
-            <Route path='/profiles/:id' component={Profile}></Route>
-
+            <Route path='/events/:id/teams/:id' component={TeamShow}></Route>
             <Route path='/events/:id/edit' component={EventEdit}></Route>
-            <Route path='/events/new' component={EventNew}></Route>
             <Route path='/events/:id' component={EventShow}></Route>
+            <Route path='/events/new' component={EventNew}></Route>
             <Route path='/events' component={EventIndex}></Route>
-
+            <Route path='/profiles/:id' component={Profile}></Route>
             <Route path='/register' component={Register}></Route>
             <Route path='/login' component={Login}></Route>
-            {/* //! XW: TEST ROUTE; DELETE LATER */}
-            {/* <Route path='/teams' component={TeamIndex}></Route> */}
             <Route path='/*' component={Unknown}></Route>
           </Switch>
         </BrowserRouter>

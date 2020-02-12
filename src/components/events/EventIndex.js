@@ -5,29 +5,29 @@ import EventCard from './EventCard'
 
 export default class EventIndex extends React.Component {
   state = {
-    pubs: null
+    events: null
   }
 
   async componentDidMount() {
     try {
-      const res = await axios.get('/api/pubs')
-      console.log('res data', res.data)
-      this.setState({ pubs: res.data })
+      const { data } = await axios.get('/api/events')
+      console.log('data', data)
+      this.setState({ events: data })
     } catch (err) {
       console.log(err)
     }
   }
 
   render() {
-    console.log('pubs', this.state.pubs)
-    if (!this.state.pubs) return null
+    console.log('events', this.state.events)
+    if (!this.state.events) return null
     // const eventArr = this.state.events
     return (
       <section className="event-index-section">
-        <h1>Find a pub quiz near you!</h1>
+        <h1>Find an event near you!</h1>
         <div className="container">
-          {this.state.pubs.map(pub => (
-            <EventCard key={pub._id} {...pub} />
+          {this.state.events.map(event => (
+            <EventCard key={event._id} {...event} />
           ))}
         </div>
       </section>
