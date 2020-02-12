@@ -1,27 +1,50 @@
-import React from 'React'
+import React from 'react'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
+import TeamCard from '../teams/TeamCard'
+// import TeamShow from '../teams/TeamShow'
 
 export default class EventShow extends React.Component {
-state = {
-  events: []
-}
-
-async componentDidMount() {
-  const eventId = this.props.match.params.id
-  try {
-    const res = await axios.get(`/api/events/${eventId}`)
-    console.log(res.data)
-    this.setState({ events: res.data })
-  } catch (error) {
-    console.log(error)
+  state = {
+    event: null,
+    teams: null
   }
-}
 
-render() {
+  async componentDidMount() {
+    try {
 
-  return (
-    <h1>Event Show Page</h1>
-  )
-}
+      const eventId = this.props.match.params.id
+      await axios.all([
+        axios.get(`/api/events/${eventId}`),
+        axios.get(`/api/events/${eventId}/teams`)
+      ])
+
+        .then(axios.spread((eventReq, teamsReq) => {
+          this.setState({
+            event: eventReq.data,
+            teams: teamsReq.data
+          })
+
+        }))
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
+  render() {
+    if (!this.state.event) return null
+    console.log(this.state.event)
+    console.log(this.state.teams)
+    return (
+      <>
+        <h1>{this.state.event.entryFee}</h1>
+        {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} /> )}
+        
+      </>
+    )
+  }
 } 
+
+// double embedded 'teams' - try to fix in back end.. works so leave til end

@@ -28,8 +28,8 @@
 
 
 h1 {
-  font-family: 'Righteous', cursive;
-  font-size: 30px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 24px;
 }
 
 .card-container {
@@ -38,7 +38,7 @@ h1 {
   flex-wrap: wrap;
   width: 30vw;
   a {
-    text-decoration: none;;
+    text-decoration: none;
   }
   .card {
     display: flex;
@@ -60,6 +60,46 @@ h1 {
 
 }
 
-.map-container {
-  width: 70vw;
+
+.pub-index-show{
+  display: flex;
+  height: 100%;
 }
+.pub-index-section{
+  // display: flex;
+  // align-items: flex-start;
+  background-color: blue;
+}
+
+.pub-index-card{
+  background-color: grey;
+  width: 200px;
+  height: 300px;
+  border-radius: 5%;
+  justify-content: center;
+}
+
+.image img{
+  width: 150px;
+  height: 150px;
+  border-radius:100%;
+}
+
+
+.cards{
+  background-color: indigo;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.map-container{
+  background-color: lightblue;
+  width: 40%;
+  flex-wrap: wrap;
+  background: contain;
+}
+
+
+
+
+

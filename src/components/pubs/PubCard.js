@@ -5,13 +5,13 @@ const PubCard = ({ _id, name, image, starRating }) => (
   <section className="column">
     <Link to={`/pubs/${_id}`}>
 
-      <div>
+      <div className="pub-index-card">
 
         <h2 className="header">{name}</h2>
         
         <p>Rating: {starRating}</p>
 
-        <div className="card-image">
+        <div className="card-container">
           <figure className="image">
             <img src={image} alt={name} />
           </figure>
