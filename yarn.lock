@@ -1555,6 +1555,11 @@ bcrypt@^3.0.7:
     nan "2.14.0"
     node-pre-gyp "0.14.0"
 
+beauty-stars@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/beauty-stars/-/beauty-stars-1.0.4.tgz#a7928bec4a71c7f33abb0fd5d8b63dbdb1063c2c"
+  integrity sha512-Srx2PB2c8dc04yQyTAYGjTRqBXV7wnWChhLy/0B2f4nYWGOm1M7WG4KVHXC5558HBqYxK+A0w9AahqHd/0eCVQ==
+
 big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
