@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import axios from 'axios'
 import TeamCard from '../teams/TeamCard'
 // import TeamShow from '../teams/TeamShow'
