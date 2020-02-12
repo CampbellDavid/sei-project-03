@@ -92,12 +92,13 @@ function reviewDelete(req, res) {
 
 // * GET /pubs/:id/ratings
 function starRating(req, res) {
+  console.log(req.body)
   Pub
     .findById(req.params.id)
     .then(pub => {
       if (!pub) return res.status(404).json({ message: 'Not Found' })
       if (pub.starRatings.some(starRating => starRating.user.equals(req.currentUser._id))) return pub
-      pub.starRatings.push({ user: req.currentUser })
+      pub.starRatings.push({ user: req.currentUser, rating: req.body.rating })
       return pub.save()
     })
     .then(pub => res.status(202).json(pub))
