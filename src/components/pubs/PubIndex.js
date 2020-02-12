@@ -2,9 +2,9 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
-
-import PubMap from '../common/PubMap'
-import SearchBar from '../common/SearchBar'
+import MapComp from '../common/MapComp'
+// import SearchBar from '../common/SearchBar'
+import PubCard from './PubCard'
 
 
 export default class PubIndex extends React.Component {
@@ -75,19 +75,28 @@ export default class PubIndex extends React.Component {
     console.log('pubs', this.state.pubs)
     console.log('postcodes', this.state.postcodes)
     return (
-      <>
-        <SearchBar />
-        <PubMap 
-          viewport={this.state.viewport} 
-          handleGeocoderViewportChange={this.handleGeocoderViewportChange}
-          handleViewportChange={this.handleViewportChange} 
-          mapboxToken={this.mapboxToken}
-          mapRef={this.mapRef} 
-          postcodes={this.state.postcodes}
-          pubs={this.state.pubs} 
-        />
-
-      </>
+      <div className="pub-index-show" >
+        {/* <SearchBar /> */}
+        <div className="map-container">
+          <MapComp 
+            viewport={this.state.viewport} 
+            handleGeocoderViewportChange={this.handleGeocoderViewportChange}
+            handleViewportChange={this.handleViewportChange} 
+            mapboxToken={this.mapboxToken}
+            mapRef={this.mapRef} 
+            postcodes={this.state.postcodes}
+            pubs={this.state.pubs} 
+          />
+        </div>
+        <section className="cards">
+          <h1>Find a pub quiz near you!</h1>
+          <div className="container">
+            {this.state.pubs.map(pub => (
+              <PubCard key={pub._id} {...pub} />
+            ))}
+          </div>
+        </section>
+      </div>
     )
   }
 }
