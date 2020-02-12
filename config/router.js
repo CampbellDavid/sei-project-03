@@ -20,7 +20,7 @@ router.route('/pubs/:id') // done
 
 // Pub rating
 router.route('/pubs/:id/ratings') // done
-  .get(secureRoute, pubs.starRating)
+  .post(secureRoute, pubs.starRating)
 
 // Pub reviews
 router.route('/pubs/:id/reviews') // done

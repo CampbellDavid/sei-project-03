@@ -8,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
 })
 
 const starRatingSchema = new mongoose.Schema({
-  rating: { type: Number, min: 1, max: 5 },
+  rating: { type: Number, min: 1, max: 5, required: true  },
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
@@ -42,12 +42,13 @@ pubSchema
   })
 
 pubSchema
-  .virtual('aveRating')
+  .virtual('avRating')
   .get(function () {
-    if (this.starRating.length === 0) {
+    if (this.starRatings.length === 0) {
       return null
     } else {
-      return this.starRating.reduce((acc, curr) => acc + curr) / this.starRating.length
+      const numRatings = this.starRatings.map(ratingObj => ratingObj.rating)
+      return numRatings.reduce((acc, curr) => acc + curr) /  numRatings.length
     }
   })
 
