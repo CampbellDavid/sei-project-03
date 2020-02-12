@@ -1,9 +1,7 @@
 import React from 'react'
 
 
-//TODO: Pub Name input to be autopopulated somehow
-
-const EventForm = ({ data, handleChange, handleSubmit }) => {
+const PubForm = ({ data, handleChange, handleSubmit }) => {
   return (
     <div>
       <h1>Create a new quiz event at this pub!</h1>
@@ -57,4 +55,4 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
   )
 }
 
-export default EventForm
+export default PubForm

@@ -13,7 +13,7 @@ const EventCard = ({ name, events, _id }) => (
         </div>
         <div className="card-info">
           <h3>Entry Fee: {events.map((event, i) => {
-            return <h3 key={i}>{event.quizDay}</h3>
+            return <p key={i}>{event.quizDay}</p>
           })}</h3>
           {/* <h3>Date: {quizDay}</h3>
           <h3>Time: {quizTime}</h3> */}

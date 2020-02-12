@@ -1,22 +1,30 @@
 import React from 'react'
 import axios from 'axios'
 import Authorization from '../../../lib/authorization'
-import EventForm from './EventForm'
+import PubForm from './PubForm'
 
-export default class EventEdit extends React.Component {
+export default class PubEdit extends React.Component {
   state = {
     data: {
-      pub: '',
-      entryFee: '',
+      name: '',
+      image: '',
+      city: '',
+      streetName: '',
+      postcode: '',
+      phone: '',
+      website: '',
+      description: '',
+      maxTeamSize: null,
       quizDay: '',
-      quizTime: ''
+      quizTime: '',
+      averagePintCost: ''
     }
   }
-
+  
   async componentDidMount() {
-    const eventId = this.props.match.params.id
+    const pubId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/events/${eventId}`)
+      const res = await axios.get(`/api/pubs/${pubId}`)
       console.log(res.data)
       this.setState({ data: res.data })
     } catch (error) {
@@ -31,24 +39,24 @@ export default class EventEdit extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault()
-    const eventId = this.props.match.params.id
+    const pubId = this.props.match.params.id
     try {
-      const { data } = await axios.put(`/api/events/${eventId}`, this.state.data, {
+      const { data } = await axios.put(`/api/pubs/${pubId}`, this.state.data, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      this.props.history.push(`/events/${data._id}`)
+      this.props.history.push(`/pubs/${data._id}`)
     } catch (error) {
       console.log(error)
     }
-  }
-
+  } 
 
   render() {
     return (
-      <EventForm 
+      <PubForm 
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}/>
     )
   }
+
 }
