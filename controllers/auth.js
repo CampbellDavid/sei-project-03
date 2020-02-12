@@ -73,4 +73,18 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login, displayProfileCreations, show, update, destroy  }
+function sendMessage(req, res) { // necessary??
+  User
+    .findById(req.params.id)
+    .then(profile => {
+      if (!profile) return res.status(404).json({ message: 'Not Found' })
+      if (!profile.user.equals(req.currentUser._id)) {
+        res.status(401).json({ message: 'Not Authorized' })
+      } else {
+        profile.remove().then(() => res.sendStatus(204))
+      }
+    })
+    .catch(err => res.json(err))
+}
+
+module.exports = { register, login, displayProfileCreations, show, update, destroy, sendMessage  }
