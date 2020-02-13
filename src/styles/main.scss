@@ -15,6 +15,10 @@ h1 {
   margin: 10px;
 }
 
+// body {
+//   background-image: url('https://live.staticflickr.com/3508/3895590793_79cc34158a_b.jpg');
+// }
+
 section {
   display: flex;
   flex-direction: column;
@@ -98,11 +102,12 @@ a {
   display: flex;
   flex-direction: column;
   margin: 20px;
-  border: 1px solid black
+  border: 1px solid black;
+  background-color: white;
 }
 
 .colour-header {
-  background-color: rgb(51, 158, 185);
+  background-color: orangered;
   display: flex;
   justify-content: center;
 }
@@ -123,6 +128,51 @@ h3 {
 p {
   margin: 5px;
 }
+
+//!Pub Show
+.pub-show {
+  display: flex;
+  margin: 30px;
+}
+
+.pub-info {
+ border: medium solid black;
+ width: 70%;
+ margin: 10px;
+ h1 {
+   color: black;
+ }
+}
+
+.pub-image {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-list {
+  display: flex;
+  
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.address {
+  border: medium solid black;
+  height: 50%;
+  margin: 10px;
+}
+
+.quiz-info {
+  border: medium solid black;
+  height: 50%;
+  margin: 10px;
+}
+
+
 
 
 //! Forms
