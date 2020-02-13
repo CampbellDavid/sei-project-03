@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import TeamCard from '../teams/TeamCard'
-// import TeamShow from '../teams/TeamShow'
+import TeamNew from '../teams/TeamNew'
+import { Link } from 'react-router-dom'
 
 export default class EventShow extends React.Component {
   state = {
@@ -40,11 +41,13 @@ export default class EventShow extends React.Component {
     return (
       <>
         <h1>{this.state.event.entryFee}</h1>
-        {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} /> )}
-        
+        {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} />)}
+        <Link to={TeamNew}>
+          <button type="button">New Team</button>
+        </Link>
       </>
     )
   }
-} 
+}
 
 // double embedded 'teams' - try to fix in back end.. works so leave til end

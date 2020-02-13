@@ -85,7 +85,6 @@ export default class EventIndex extends React.Component {
             {/* <Map goes here/> */}
           </div>
         </div>
-<<<<<<< HEAD
         <Link to="/events/new">
           <button type="button">New Event</button>
         </Link>
@@ -101,8 +100,6 @@ export default class EventIndex extends React.Component {
             pubs={this.state.pubs} 
           />
         </div>
-=======
->>>>>>> development
       </section>
     )
   }
