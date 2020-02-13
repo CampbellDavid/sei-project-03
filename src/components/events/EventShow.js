@@ -36,13 +36,14 @@ export default class EventShow extends React.Component {
 
   render() {
     if (!this.state.event) return null
+    const eventId = this.props.match.params.id
     console.log(this.state.event)
     console.log(this.state.teams)
     return (
       <>
         <h1>{this.state.event.entryFee}</h1>
         {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} />)}
-        <Link to={TeamNew}>
+        <Link to={`/events/${eventId}/teams/new`}>
           <button type="button">New Team</button>
         </Link>
       </>

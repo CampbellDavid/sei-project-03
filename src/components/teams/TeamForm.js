@@ -9,6 +9,15 @@ const TeamForm = ({ data, handleChange, handleSubmit }) => {
           <label>Pub Name:</label>
           <input
             onChange={handleChange}
+            placeholder="Pub Name"
+            name="pub" 
+            value={data.pub}
+            required/>
+        </div>
+        <div className="form-div">
+          <label>Captain:</label>
+          <input
+            onChange={handleChange}
             placeholder="Captain"
             name="captain" 
             value={data.captain}
