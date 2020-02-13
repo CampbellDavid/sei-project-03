@@ -7,10 +7,11 @@ import EventForm from './EventForm'
 export default class EventNew extends React.Component {
   state = {
     data: {
-      pub: '',
       entryFee: '',
       quizDay: '',
-      quizTime: ''
+      quizTime: '',
+      pub: '',
+      postcode: ''
     }
   }
 
