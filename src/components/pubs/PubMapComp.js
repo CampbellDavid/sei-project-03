@@ -6,7 +6,15 @@ import Geocoder from 'react-map-gl-geocoder'
 import { Link } from 'react-router-dom'
 // const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 // const mapRef = React.createRef()
-const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, mapboxToken, mapRef, postcodes, pubs  }) => (
+const PubMapComp = ({
+  viewport,
+  handleGeocoderViewportChange,
+  handleViewportChange,
+  mapboxToken,
+  mapRef,
+  postcodes,
+  pubs
+}) => (
   <MapGL
     mapboxApiAccessToken={mapboxToken}
     ref={mapRef}
@@ -42,6 +50,9 @@ const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, 
         </Marker>
       )
     })}
+
+ 
+    
   </MapGL>
 )
-export default PubMap
+export default PubMapComp

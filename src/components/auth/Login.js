@@ -33,18 +33,16 @@ export default class Login extends React.Component {
   render() {
     console.log(this.state.data)
     return (
-      <div>
+      <section className="form">
         <h1>Login Here</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-div">
-            <label>Email:</label>
             <input
               placeholder="email"
               name="email"
               onChange={this.handleChange} />
           </div>
           <div className="form-div">
-            <label>Password:</label>
             <input
               type="password"
               placeholder="password"
@@ -58,7 +56,7 @@ export default class Login extends React.Component {
               Login</button>
           </div>
         </form>
-      </div>
+      </section>
     )
   }
 }
