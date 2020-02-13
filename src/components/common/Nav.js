@@ -5,11 +5,11 @@ import Authorization from '../../../lib/authorization'
 
 
 class Nav extends React.Component {
-  state = { loggedIn: true }
+  state = { loggedIn: false }
 
 
 
-  handleLogin = () => {
+  toggleNavbar = () => {
     this.setState({ loggedIn: !this.state.loggedIn })
   }
 
@@ -32,14 +32,15 @@ class Nav extends React.Component {
       <nav className="navbar">    
         
         <Link className="nav-item" to="/">Home</Link>
+        
         <Link className="nav-item" to="/pubs">Pubs</Link>
         <Link className="nav-item" to="/events">Events</Link>
       
-        <Link className="nav-item" hidden={this.state.loggedIn} to="/login">Login</Link>
+        {!Authorization.isAuthenticated() && <Link className="nav-item"  to="/login">Login</Link>}
               
-        <Link className="nav-item" hidden={this.state.loggedIn} to="/register">Register</Link>
+        {!Authorization.isAuthenticated() && <Link className="nav-item"  to="/register">Register</Link>}
           
-        {<p onClick={this.handleLogout} className="nav-item"><Link to="/" hidden={!this.state.loggedIn}>Logout</Link></p>}
+        {Authorization.isAuthenticated() && <span onClick={this.handleLogout} className="nav-item"><Link to="/" >Logout</Link></span>}
 
       </nav> 
     )
