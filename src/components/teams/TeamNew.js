@@ -14,8 +14,8 @@ export default class TeamNew extends React.Component {
     }
   }
 
-  handleChange = ({ target: { captain, value } }) => {
-    const data = { ...this.state.data, [captain]: value }
+  handleChange = ({ target: { name, value } }) => {
+    const data = { ...this.state.data, [name]: value }
     console.log(data)
     this.setState({ data })
   }

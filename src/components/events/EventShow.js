@@ -32,8 +32,6 @@ export default class EventShow extends React.Component {
     }
   }
 
-
-
   render() {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
