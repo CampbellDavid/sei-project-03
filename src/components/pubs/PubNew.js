@@ -44,8 +44,7 @@ export default class PubNew extends React.Component {
   render() {
     return (
       <>
-      <h1>New Pub Page</h1>
-      <h1>Create a pub!</h1>
+      <h1>Create a new pub!</h1>
       <PubForm 
         data={this.state.data}
         handleChange={this.handleChange}

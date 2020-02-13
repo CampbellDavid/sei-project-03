@@ -106,7 +106,6 @@ export default class PubIndex extends React.Component {
               pubs={this.state.pubs}
             />
           </div>
-
         </div>
       </section>
     )

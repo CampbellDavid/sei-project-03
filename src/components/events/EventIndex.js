@@ -70,12 +70,14 @@ export default class EventIndex extends React.Component {
     console.log('events', this.state.events)
     if (!this.state.events) return null
     if (!this.state.postcodes) return null
-    // const eventArr = this.state.events
     return (
       <section>
-        <h1>Find an event near you!</h1>
+        <div className="title">
+          <h1>Find an event near you!</h1>
+        </div>
+
         <div className="index">
-          <div className="container">
+          <div className="card-container">
             {this.state.events.map(event => (
               <EventCard key={event._id} {...event} />
             ))}
@@ -83,11 +85,10 @@ export default class EventIndex extends React.Component {
 
             {Authorization.isAuthenticated() ?
               <Link to="/events/new">
-                <button type="button" className="button">New Event</button>
+                <button type="button" 
+                  className="button">New Event</button>
               </Link>
               : null}
-
-
           </div>
 
 

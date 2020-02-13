@@ -1,3 +1,4 @@
+$pale: rgb(245, 238, 226);
 
 //! Common
 * {
@@ -8,9 +9,9 @@
 
 h1 {
   font-family: 'Kranky', cursive;
-  font-size: 34px;
+  font-size: 44px;
   text-align: center;
-  color: white;
+  color: $pale;
   padding: 10px;
   margin: 10px;
 }
@@ -19,26 +20,55 @@ h1 {
   color: black;
 }
 
-// body {
-//   background-image: url('https://live.staticflickr.com/3508/3895590793_79cc34158a_b.jpg');
-// }
+body {
+  background: rgb(0,36,27);
+  background: linear-gradient(180deg, rgba(0,36,27,1) 11%, rgba(9,121,108,1) 65%, rgba(0,255,254,1) 100%) fixed;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
 
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(0,36,27);
-  background: linear-gradient(180deg, rgba(0,36,27,1) 0%, rgba(9,121,108,1) 35%, rgba(0,255,254,1) 100%);
 }
 
 
 //!Nav
+html, body, div, p, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
 .navbar {
-  margin: 5px;
+  background: #000;
+  height: 60px;
 }
 
 .nav-item {
-  margin: 5px;
+  display: inline-block;
+  list-style: none;
+  height: 60px;
+  line-height: 60px; 
+  padding: 0 40px;
+}
+
+.nav-item:hover {
+  background: darkcyan;
+  transition: background .3s;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
 }
 
 //!Home
@@ -48,7 +78,8 @@ section {
   // background-image: url('https://cdn2.vectorstock.com/i/1000x1000/38/36/many-multicolor-question-marks-vector-19723836.jpg');
   // background-image: url('https://www.nojitter.com/sites/default/files/question-mark-2110767_1280.jpg');
     // background-image: url('https://i.pinimg.com/originals/35/5e/4b/355e4b0ed8a86718cd2468096b9b9190.jpg');
-    background-image: url('https://www.elsevier.com/__data/assets/image/0007/898666/id998996630-Credit-Dmitrii_Guzhanin.jpg');
+    // background-image: url('https://www.elsevier.com/__data/assets/image/0007/898666/id998996630-Credit-Dmitrii_Guzhanin.jpg');
+    background-image: url('https://www.bunchofgrapesborough.co.uk/youngs/uploads/sites/156/2018/09/bunchofgrapes-104-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -57,9 +88,17 @@ section {
     justify-content: center;
     align-items: center;
     margin: 0;
-    h1 {
-      font-size: 8vw;
-      color: black;
+    .headline {
+      background-color: rgba(212, 218, 212, 0.5);
+      h1 {
+        font-size: 10vw;
+        color: white;
+      }
+      p {
+        font-size: 4vw;
+        color: white;
+        margin: 20;
+      }
     }
 }
 
@@ -97,23 +136,25 @@ section {
   flex-direction: column;
   flex-wrap: wrap;
   width: 35vw;
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
-a {
-  text-decoration: none;
-}
+
 
 .card {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   margin: 20px;
   border: 1px solid black;
-  background-color: white;
+  background-color: $pale;
 }
 
 .colour-header {
-  background-color: orangered;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .image img{
@@ -127,6 +168,10 @@ h3 {
 }
 
 .card-info {
+  h3 {
+    margin: 20px;
+  }
+
 }
 // .event-map-name{
 //   text-align: center;
@@ -142,22 +187,29 @@ p {
 //!Pub Show
 .pub-show {
   display: flex;
-  margin: 30px;
+  margin: 50px;
 }
 
 .pub-info {
  border: medium solid black;
- width: 70%;
+ width: 60%;
  margin: 10px;
+ background-color: $pale;
  h1 {
    color: black;
+ }
+ p {
+   padding: 10px;
+ }
+ a {
+   padding: 10px;
+   margin: 10px;
  }
 }
 
 .pub-image {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+display: flex;
+justify-content: center;
 }
 
 .button-list {
@@ -174,12 +226,14 @@ p {
   border: medium solid black;
   height: 50%;
   margin: 10px;
+  background-color: $pale;
 }
 
 .quiz-info {
   border: medium solid black;
   height: 50%;
   margin: 10px;
+  background-color: $pale;
 }
 
 

@@ -5,10 +5,9 @@ import ImageUpload from '../common/ImageUpload'
 
 const PubForm = ({ data, handleChange, handleSubmit }) => {
   return (
-    <div>
+    <section className="form">
       <form onSubmit={handleSubmit}>
         <div className="form-div">
-          <label>Pub Name:</label>
           <input
             onChange={handleChange}
             placeholder="Pub Name"
@@ -17,7 +16,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Street Address:</label>
           <input
             onChange={handleChange}
             placeholder="Street Address"
@@ -26,7 +24,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>City:</label>
           <input
             onChange={handleChange}
             placeholder="City"
@@ -35,7 +32,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Postcode:</label>
           <input
             onChange={handleChange}
             placeholder="Postcode"
@@ -44,7 +40,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Phone Number:</label>
           <input
             onChange={handleChange}
             placeholder="Phone Number"
@@ -53,7 +48,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
           />
         </div>
         <div className="form-div">
-          <label>Website:</label>
           <input
             onChange={handleChange}
             placeholder="Website"
@@ -62,7 +56,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
           />
         </div>
         <div className="form-div">
-          <label>Pub Description:</label>
           <input
             onChange={handleChange}
             placeholder="Pub Description"
@@ -71,7 +64,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
           />
         </div>
         <div className="form-div">
-          <label>Max. Team Size:</label>
           <input
             type="number"
             onChange={handleChange}
@@ -81,7 +73,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Quiz Day:</label>
           <input
             onChange={handleChange}
             placeholder="Quiz Day"
@@ -90,7 +81,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Quiz Time:</label>
           <input
             type="time"
             onChange={handleChange}
@@ -100,7 +90,6 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Average Pint Cost:</label>
           <input
             onChange={handleChange}
             placeholder="Average Pint Cost"
@@ -122,7 +111,7 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
               Submit</button>
         </div>
       </form>
-    </div>
+    </section>
   )
 }
 
