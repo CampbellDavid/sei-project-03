@@ -67,32 +67,42 @@ export default class PubIndex extends React.Component {
     // console.log('pubs', this.state.pubs)
     // console.log('postcodes', this.state.postcodes)
     return (
-      <div className="pub-index-show" >
-        <h1>Find a pub quiz near you!</h1>
-        {/* <SearchBar /> */}
-        <div className="map-container">
-          <MapComp 
-            viewport={this.state.viewport} 
-            handleGeocoderViewportChange={this.handleGeocoderViewportChange}
-            handleViewportChange={this.handleViewportChange} 
-            mapboxToken={this.mapboxToken}
-            mapRef={this.mapRef} 
-            postcodes={this.state.postcodes}
-            pubs={this.state.pubs} 
-          />
+      <section>
+        <div className="title">
+          <h1 >Find a pub quiz near you!</h1>
         </div>
-        <section>
+     
+        <div className="index" >
+       
+          {/* <SearchBar /> */}
+      
+        
           
-          <div>
+          <div className="container">
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
             ))}
+            <Link to="/pubs/new">
+              <button type="button">New Pub</button>
+            </Link>
           </div>
-          <Link to="/pubs/new">
-            <button type="button">New Pub</button>
-          </Link>
-        </section>
-      </div>
+          
+          <div className="map-container">
+            <MapComp 
+              viewport={this.state.viewport} 
+              handleGeocoderViewportChange={this.handleGeocoderViewportChange}
+              handleViewportChange={this.handleViewportChange} 
+              mapboxToken={this.mapboxToken}
+              mapRef={this.mapRef} 
+              postcodes={this.state.postcodes}
+              pubs={this.state.pubs} 
+            />
+          </div>
+          
+         
+       
+        </div>
+      </section>
     )
   }
 }

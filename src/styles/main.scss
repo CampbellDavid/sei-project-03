@@ -8,6 +8,7 @@
 h1 {
   font-family: 'Fredoka One', cursive;
   font-size: 24px;
+  text-align: center;
 }
 
 //!Nav
@@ -52,8 +53,16 @@ h1 {
   border-radius:100%;
 }
 
+.index{
+  display: flex;
+  // background-color: red;
+}
+
 .map-container {
+  display: flex;
   width: 65vw;
+  // background-color: lightgreen;
+  flex-wrap: wrap;
   }
 
 // input[type="radio"]{
@@ -100,6 +109,9 @@ h3 {
 p {
   margin: 5px;
 }
+
+
+
 
 
 
