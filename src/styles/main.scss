@@ -1,7 +1,16 @@
+
+//! Common
 * {
   box-sizing: border-box;
+  margin: 0, auto;
 }
 
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 24px;
+}
+
+//!Nav
 .navbar {
   margin: 5px;
 }
@@ -10,7 +19,29 @@
   margin: 5px;
 }
 
+//!Home
+.home {
+  // background-image: url('https://carsonparkdesign.com/wp-content/uploads/2015/10/question-mark-etymology.png');
+  // background-image: url('https://i.imgflip.com/19gsq3.jpg');
+  // background-image: url('https://cdn2.vectorstock.com/i/1000x1000/38/36/many-multicolor-question-marks-vector-19723836.jpg');
+  // background-image: url('https://www.nojitter.com/sites/default/files/question-mark-2110767_1280.jpg');
+    // background-image: url('https://i.pinimg.com/originals/35/5e/4b/355e4b0ed8a86718cd2468096b9b9190.jpg');
+    background-image: url('https://www.elsevier.com/__data/assets/image/0007/898666/id998996630-Credit-Dmitrii_Guzhanin.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    h1 {
+      font-size: 8vw;
+    }
+}
 
+
+//!Map
 .marker {
   background: none;
   border: none;
@@ -21,84 +52,127 @@
   border-radius:100%;
 }
 
+.map-container {
+  width: 65vw;
+  }
+
 // input[type="radio"]{
 //   display: none;
 // }
 
-
-
-h1 {
-  font-family: 'Fredoka One', cursive;
-  font-size: 24px;
-}
-
+//! Pub & Event Cards
 .card-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 30vw;
-  a {
-    text-decoration: none;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    .colour-header {
-      h2 {
-        background-color: rgb(51, 158, 185);
-        padding: 0;
-        margin: 0;
-      }
-    }
-    .card-info {
-      h3 {
-        margin: 5px;
-      }
-    }
-  }
-
+  width: 35vw;
+}
+a {
+  text-decoration: none;
 }
 
-
-.pub-index-show{
+.card {
   display: flex;
-  height: 100%;
-}
-.pub-index-section{
-  // display: flex;
-  // align-items: flex-start;
-  background-color: blue;
+  flex-direction: column;
+  margin: 20px;
+  border: 1px solid black
 }
 
-.pub-index-card{
-  background-color: grey;
-  width: 200px;
-  height: 300px;
-  border-radius: 5%;
+.colour-header {
+  background-color: rgb(51, 158, 185);
+  display: flex;
   justify-content: center;
 }
 
 .image img{
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   border-radius:100%;
 }
 
-
-.cards{
-  background-color: indigo;
-  width: 90%;
-  flex-wrap: wrap;
+h3 {
+  margin: 5px;
 }
 
-.map-container{
-  background-color: lightblue;
-  width: 40%;
-  flex-wrap: wrap;
-  background: contain;
+.card-info {
 }
 
+p {
+  margin: 5px;
+}
+
+
+
+// .pub-index-show{
+//   display: flex;
+//   height: 100%;
+// }
+// .pub-index-section{
+//   // display: flex;
+//   // align-items: flex-start;
+//   background-color: blue;
+// }
+
+// .pub-index-card{
+//   background-color: grey;
+//   width: 200px;
+//   height: 300px;
+//   border-radius: 5%;
+//   justify-content: center;
+// }
+
+// .image img{
+//   width: 150px;
+//   height: 150px;
+//   border-radius:100%;
+// }
+
+
+// .cards{
+//   background-color: indigo;
+//   width: 90%;
+//   flex-wrap: wrap;
+// }
+
+// .map-container{
+//   background-color: lightblue;
+//   width: 40%;
+//   flex-wrap: wrap;
+//   background: contain;
+// }
+
+//! Forms
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(99, 198, 228, 0.4);
+  border-bottom: 7px solid black;
+  border-top: 1px solid white;
+  // width: 450px;
+}
+.form-div {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+  margin: 10px;
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin: 20px;
+}
+.form-div > label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+  // font-family: 'Overpass', sans-serif;
+  white-space: nowrap;
+}
+.form-div > input {
+  flex: 2;
+  background-color: whitesmoke;
+}
 
 
 
