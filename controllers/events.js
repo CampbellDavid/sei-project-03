@@ -5,7 +5,18 @@ function index(req, res) {
   Event
     .find()
     .populate('user')
-    .populate('teams')
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'captain' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'members' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'event' })
+    })
     .then(foundEvents => res.status(200).json(foundEvents))
     .catch(err => res.json(err))
 }

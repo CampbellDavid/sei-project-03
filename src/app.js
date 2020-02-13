@@ -20,7 +20,7 @@ import EventIndex from './components/events/EventIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 
-import TeamShow from './components/teams/TeamShow'
+// import TeamShow from './components/teams/TeamShow'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
 
@@ -37,7 +37,7 @@ class App extends React.Component {
             <SecureRoute path='/pubs/new' component={PubNew}/>
             <Route path='/pubs/:id' component={PubShow}/>
             <Route path='/pubs' component={PubIndex}/>
-            <Route path='/events/:id/teams/:id' component={TeamShow}/>
+            {/* <Route path='/events/:id/teams/:id' component={TeamShow}/> */}
             <SecureRoute path='/events/:id/edit' component={EventEdit}/>
             <SecureRoute path='/events/new' component={EventNew}/>
             <Route path='/events/:id' component={EventShow}/>
