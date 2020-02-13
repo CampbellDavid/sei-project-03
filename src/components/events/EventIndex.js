@@ -99,5 +99,4 @@ export default class EventIndex extends React.Component {
       </section>
     )
   }
-
 }
