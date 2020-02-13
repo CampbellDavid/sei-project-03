@@ -14,7 +14,7 @@ export default class PubEdit extends React.Component {
       phone: '',
       website: '',
       description: '',
-      maxTeamSize: null,
+      maxTeamSize: 0, //changed from null?
       quizDay: '',
       quizTime: '',
       averagePintCost: ''
@@ -26,7 +26,7 @@ export default class PubEdit extends React.Component {
     const pubId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/pubs/${pubId}`)
-      console.log(res.data)
+      console.log('this console',res.data)
       this.setState({ data: res.data })
     } catch (error) {
       console.log(error)
@@ -60,8 +60,9 @@ export default class PubEdit extends React.Component {
         <PubForm 
           data={this.state.data}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}/>
+          handleSubmit={this.handleSubmit}
           errors={this.state.errors}
+        />
       </>
     )
   }
