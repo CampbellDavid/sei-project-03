@@ -21,24 +21,52 @@ async componentDidMount() {
 render() {
   const { pub } = this.state
   return (
-    <div>
-      <h1>{pub.name}</h1>
-      <img src={pub.image}/>
-      <p>{pub.description}</p>
-      <p>{pub.streetName}</p>
-      <p>{pub.city}</p>
-      <p>{pub.postcode}</p>
-      <p>{pub.phone}</p>
-      <a href={pub.website}>Visit Pub Website</a>
-      <p>Maximun Team size: {pub.maxTeamSize}</p>
-      <p>Day of Quiz: {pub.quizDay}</p>
-      <h2>Time of Quiz: {pub.quizTime}</h2>
-      {/* <h2>{pub.starRating}</h2> */}
-      <h2>Average Cost of a Pint: {pub.averagePintCost}</h2>
-      {/* <h2>{pub.reviews}</h2> */}
-      <Link to="/events/new">
-        <button type="button">New Event</button>
-      </Link>
+    <div className="pub-show">
+
+      <div className="pub-info">
+        <h1>{pub.name}</h1>
+        {/* <h2>{pub.starRating}</h2> */}
+        <img className="pub-image" src={pub.image}/>
+        <p>{pub.description}</p>
+        <a href={pub.website}>Visit Pub Website</a>
+        <div>
+          <Link to="/events/new">
+            <button 
+              className="button"
+              type="button">New Event</button>
+          </Link>
+          <Link to="/pubs/:id/edit">
+            <button 
+              className="button"
+              type="button">Edit Pub</button>
+          </Link>
+        </div>
+      </div>
+
+      <div className="sidebar">
+        <div className="address">
+          <h2>Address Info:</h2>
+          <p>{pub.streetName}</p>
+          <p>{pub.city}</p>
+          <p>{pub.postcode}</p>
+          <p>{pub.phone}</p>
+        </div>
+        
+        <div className="quiz-info">
+          <h2>Quiz Info:</h2>
+          <p>Maximum Team size: {pub.maxTeamSize}</p>
+          <p>Day of Quiz: {pub.quizDay}</p>
+          <p>Time of Quiz: {pub.quizTime}</p>
+          <p>Average Cost of a Pint: {pub.averagePintCost}</p>
+        </div>
+      </div>
+
+      
+      <div className="reviews">
+        {/* <h2>{pub.reviews}</h2> */}
+      </div>
+      
+
     </div>
   )
 }
