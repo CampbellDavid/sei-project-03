@@ -27,7 +27,7 @@ export default class TeamNew extends React.Component {
       const res = await axios.post(`/api/${eventId}/teams`, this.state.team, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      this.props.history.push(`/events/${eventId}/teams${res.team._id}`)
+      this.props.history.push(`/events/${eventId}/teams/${res.team._id}`)
     } catch (error) {
       console.log(error)
     }

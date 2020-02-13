@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TeamForm = ({ data, handleChange, handleSubmit }) => {
+const TeamForm = ({ team, handleChange, handleSubmit }) => {
   return (
     <div>
       <h1>Create a new team for this event!</h1>
@@ -11,7 +11,7 @@ const TeamForm = ({ data, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Event Name"
             name="event" 
-            value={data.event}
+            value={team.event}
             required/>
         </div>
         <div className="form-div">
@@ -20,7 +20,7 @@ const TeamForm = ({ data, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Captain"
             name="captain" 
-            value={data.captain}
+            value={team.captain}
             required/>
         </div>
         <div className="form-div">
@@ -29,7 +29,7 @@ const TeamForm = ({ data, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Team Name"
             name="teamName" 
-            value={data.teamName}
+            value={team.teamName}
             required/>
         </div>
        
