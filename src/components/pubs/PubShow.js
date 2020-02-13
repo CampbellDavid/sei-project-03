@@ -20,6 +20,7 @@ async componentDidMount() {
 
 render() {
   const { pub } = this.state
+  const pubId = this.props.match.params.id
   return (
     <div className="pub-show">
 
@@ -35,7 +36,8 @@ render() {
               className="button"
               type="button">New Event</button>
           </Link>
-          <Link to="/pubs/:id/edit">
+          {/* <Link to="/pubs/:id/edit"> */}
+          <Link to={`/pubs/${pubId}/edit`}>
             <button 
               className="button"
               type="button">Edit Pub</button>
