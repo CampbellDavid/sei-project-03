@@ -18,7 +18,8 @@ export default class PubEdit extends React.Component {
       quizDay: '',
       quizTime: '',
       averagePintCost: ''
-    }
+    }, 
+    errors: {}
   }
   
   async componentDidMount() {
@@ -32,9 +33,10 @@ export default class PubEdit extends React.Component {
     }
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    const data = { ...this.state.data, [name]: value }
-    this.setState({ data })
+  handleChange = e => {
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    const errors = { ...this.state.errors, [e.target.name]: '' }
+    this.setState({ data, errors })
   }
 
   handleSubmit = async e => {
@@ -46,20 +48,21 @@ export default class PubEdit extends React.Component {
       })
       this.props.history.push(`/pubs/${data._id}`)
     } catch (error) {
-      console.log(error)
+      this.setState({ errors: error.response.data.errors })
     }
   } 
 
   render() {
     return (
       <>
-      <h1>Edit a pub page</h1>
-      <h1>Edit a pub!</h1>
-      <PubForm 
-        data={this.state.data}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
-        </>
+        <h1>Edit a pub page</h1>
+        <h1>Edit a pub!</h1>
+        <PubForm 
+          data={this.state.data}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}/>
+          errors={this.state.errors}
+      </>
     )
   }
 

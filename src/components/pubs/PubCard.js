@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const PubCard = ({ _id, name, image, starRating }) => (
-  <section className="card-container">
+  <>
     <Link to={`/pubs/${_id}`}>
       <div className="card">
         <div className="colour-header">
@@ -16,7 +16,7 @@ const PubCard = ({ _id, name, image, starRating }) => (
         </div>
       </div>
     </Link>
-  </section>
+  </>
 )
 
 export default PubCard
