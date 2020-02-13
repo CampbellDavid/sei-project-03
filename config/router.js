@@ -74,11 +74,28 @@ router.route('/profiles/:id') // come back to
 
 router.route('/profiles/:id/messages') // necessary???
   .post(secureRoute, users.sendMessage)
-  
+
 
 
 
 // Teams
+
+// Short routes
+
+router.route('/teams') // done
+  .get(teams.indexShort)
+  .post(secureRoute, teams.create)
+
+router.route('/teams/:teamId') // done
+.delete(secureRoute, teams.destroy)
+.put(secureRoute, teams.update)
+.put(secureRoute, teams.join)
+.put(secureRoute, teams.leave) // check for functionality
+.get(teams.show)
+
+
+
+// Long routes
 
 router.route('/events/:eventId/teams') // done
   .get(teams.index)

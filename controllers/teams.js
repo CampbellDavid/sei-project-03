@@ -24,6 +24,17 @@ function index(req, res) {
     .catch(err => res.json(err))
 }
 
+function indexShort(req, res) {
+  Team
+    .find()
+    .populate('captain')
+    .populate('members')
+    .populate('event')
+    .populate('user')
+    .then(foundTeams => res.status(200).json(foundTeams))
+    .catch(err => res.json(err))
+}
+
 function create(req, res, next) {
   req.body.user = req.currentUser
   Team
@@ -87,7 +98,6 @@ function leave(req, res, next) {
     .catch(next)
 }
 
-
 function destroy(req, res) {
   Team
     .findById(req.params.teamId)
@@ -102,4 +112,4 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, create, show, update, destroy, join, leave }
+module.exports = { index, create, show, update, destroy, join, leave, indexShort }
