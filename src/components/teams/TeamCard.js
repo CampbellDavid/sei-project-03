@@ -1,5 +1,6 @@
 import React from 'react'
 import Authorization from '../../../lib/authorization'
+import { Link } from 'react-router-dom'
 
 const TeamCard = ({ members, captain, event, teamName }) => (
   <>
@@ -7,7 +8,7 @@ const TeamCard = ({ members, captain, event, teamName }) => (
     <h2>{event}</h2>
     <h3>Captain: {captain.username}</h3>
     <h3>Members: {members.map((member, i) => {
-      return <li key={i}>{member.username}</li>
+      return <li key={i}><Link to={`/profiles/${member._id}`}>{member.username}</Link></li>
     })}</h3>
 
     {Authorization.isAuthenticated() ?
