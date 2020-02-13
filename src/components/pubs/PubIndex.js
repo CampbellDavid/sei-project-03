@@ -4,7 +4,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import MapComp from '../common/MapComp'
+import PubMapComp from './PubMapComp'
 // import SearchBar from '../common/SearchBar'
 import PubCard from './PubCard'
 
@@ -88,7 +88,7 @@ export default class PubIndex extends React.Component {
           </div>
           
           <div className="map-container">
-            <MapComp 
+            <PubMapComp 
               viewport={this.state.viewport} 
               handleGeocoderViewportChange={this.handleGeocoderViewportChange}
               handleViewportChange={this.handleViewportChange} 

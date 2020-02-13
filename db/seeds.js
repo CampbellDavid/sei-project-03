@@ -106,7 +106,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizDay: 'Wednesday',
             quizTime: '19:00',
             pub: 'Clapton Hart',
-            postcode: 'E58 EG',
+            postcode: 'E5 8EG',
             user: createdTeams[0].captain
           }, {
             teams: [createdTeams[1], createdTeams[2], createdTeams[3]],

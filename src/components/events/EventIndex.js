@@ -1,15 +1,15 @@
+import 'mapbox-gl/dist/mapbox-gl.css'
+import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import EventMapComp from './EventMapComp'
 import EventCard from './EventCard'
-import MapComp from '../common/MapComp'
-
 
 export default class EventIndex extends React.Component {
   state = {
-    events: null,
     postcodes: null,
-    pubs: null,
+    events: null,
     viewport: {
       latitude: 51.5074,
       longitude: 0.1278,
@@ -17,13 +17,15 @@ export default class EventIndex extends React.Component {
     }
   }
 
-  mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
+  mapboxToken = process.env.MAPBOX_ACCESS_TOKEN;
   mapRef = React.createRef()
+
   handleViewportChange = viewport => {
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
     })
   }
+
   handleGeocoderViewportChange = viewport => {
     const geocoderDefaultOverrides = { transitionDuration: 1000 }
     this.setState({
@@ -37,15 +39,13 @@ export default class EventIndex extends React.Component {
       ...viewport,
       ...geocoderDefaultOverrides
     })
-  }
-
-
+  };
 
   async componentDidMount() {
     try {
-      const { data } = await axios.get('/api/events')
-      console.log('data', data)
-      this.setState({ events: data })
+      const res  = await axios.get('/api/events')
+      console.log('data', res.data)
+      this.setState({ events: res.data })
       this.getPostcodes()
     } catch (err) {
       console.log(err)
@@ -53,14 +53,15 @@ export default class EventIndex extends React.Component {
   }
 
   async getPostcodes() {
-    const postcodes = this.state.pubs.map(pub => {
-      return pub.postcode
+    const postcodes = this.state.events.map(event => {
+      console.log('POSTCODE', event.postcode)
+      return event.postcode
     })
     const res = await axios.post(
       'https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes',
       { postcodes }
     )
-    // console.log(res.data.result)
+    console.log(res.data.result)
     this.setState({ postcodes: res.data.result })
   }
 
@@ -77,32 +78,23 @@ export default class EventIndex extends React.Component {
             {this.state.events.map(event => (
               <EventCard key={event._id} {...event} />
             ))}
-            <Link to="/events/new">
-              <button type="button">New Event</button>
-            </Link>
           </div>
-          <div className="map-container">
-            {/* <Map goes here/> */}
-          </div>
-        </div>
-<<<<<<< HEAD
-        <Link to="/events/new">
-          <button type="button">New Event</button>
-        </Link>
+          <Link to="/events/new">
+            <button type="button">New Event</button>
+          </Link>
 
-        <div className="map-container">
-          <MapComp 
-            viewport={this.state.viewport} 
-            handleGeocoderViewportChange={this.handleGeocoderViewportChange}
-            handleViewportChange={this.handleViewportChange} 
-            mapboxToken={this.mapboxToken}
-            mapRef={this.mapRef} 
-            postcodes={this.state.postcodes}
-            pubs={this.state.pubs} 
-          />
+          <div className="map-container">
+            <EventMapComp
+              viewport={this.state.viewport}
+              handleGeocoderViewportChange={this.handleGeocoderViewportChange}
+              handleViewportChange={this.handleViewportChange}
+              mapboxToken={this.mapboxToken}
+              mapRef={this.mapRef}
+              postcodes={this.state.postcodes}
+              events={this.state.events}
+            />
+          </div>
         </div>
-=======
->>>>>>> development
       </section>
     )
   }
