@@ -3,6 +3,7 @@ import axios from 'axios'
 import TeamCard from '../teams/TeamCard'
 import TeamNew from '../teams/TeamNew'
 import { Link } from 'react-router-dom'
+import Authorization from '../../../lib/authorization'
 
 export default class EventShow extends React.Component {
   state = {
@@ -41,9 +42,15 @@ export default class EventShow extends React.Component {
       <>
         <h1>{this.state.event.entryFee}</h1>
         {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} />)}
-        <Link to={`/events/${eventId}/teams/new`}>
-          <button type="button">New Team</button>
-        </Link>
+
+        {Authorization.isAuthenticated() ?
+          <Link to={`/events/${eventId}/teams/new`}>
+            <button type="button">New Team</button>
+          </Link>
+          : null}
+
+
+
       </>
     )
   }

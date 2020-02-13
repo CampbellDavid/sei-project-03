@@ -1,4 +1,5 @@
 import React from 'react'
+import Authorization from '../../../lib/authorization'
 
 const TeamCard = ({ members, captain, event, teamName }) => (
   <>
@@ -9,8 +10,12 @@ const TeamCard = ({ members, captain, event, teamName }) => (
       return <li key={i}>{member.username}</li>
     })}</h3>
 
-    <button type="button">Join Team</button>
-    <button type="button">Edit Team</button>
+    {Authorization.isAuthenticated() ?
+      <div className="buttons">
+        <button type="button">Join Team</button>
+        <button type="button">Edit Team</button>
+      </div>
+      : null}
   </>
 )
 

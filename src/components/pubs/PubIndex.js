@@ -3,6 +3,7 @@ import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Authorization from '../../../lib/authorization'
 
 import PubMapComp from './PubMapComp'
 // import SearchBar from '../common/SearchBar'
@@ -74,29 +75,35 @@ export default class PubIndex extends React.Component {
         <div className="title">
           <h1 >Find a pub quiz near you!</h1>
         </div>
-  
+
         <div className="index" >
           {/* <SearchBar /> */}
           <div className="card-container">
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
             ))}
-            <Link to="/pubs/new">
-              <button 
-                className="button"
-                type="button">New Pub</button>
-            </Link>
+
+
+            {Authorization.isAuthenticated() ?
+              <Link to="/pubs/new">
+                <button
+                  className="button"
+                  type="button">New Pub</button>
+              </Link> 
+              : null}
+
+
           </div>
-          
+
           <div className="map-container">
-            <PubMapComp 
-              viewport={this.state.viewport} 
+            <PubMapComp
+              viewport={this.state.viewport}
               handleGeocoderViewportChange={this.handleGeocoderViewportChange}
-              handleViewportChange={this.handleViewportChange} 
+              handleViewportChange={this.handleViewportChange}
               mapboxToken={this.mapboxToken}
-              mapRef={this.mapRef} 
+              mapRef={this.mapRef}
               postcodes={this.state.postcodes}
-              pubs={this.state.pubs} 
+              pubs={this.state.pubs}
             />
           </div>
 

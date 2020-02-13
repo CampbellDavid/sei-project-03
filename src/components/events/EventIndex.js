@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import EventMapComp from './EventMapComp'
 import EventCard from './EventCard'
+import Authorization from '../../../lib/authorization'
 
 export default class EventIndex extends React.Component {
   state = {
@@ -43,7 +44,7 @@ export default class EventIndex extends React.Component {
 
   async componentDidMount() {
     try {
-      const res  = await axios.get('/api/events')
+      const res = await axios.get('/api/events')
       console.log('data', res.data)
       this.setState({ events: res.data })
       this.getPostcodes()
@@ -78,11 +79,17 @@ export default class EventIndex extends React.Component {
             {this.state.events.map(event => (
               <EventCard key={event._id} {...event} />
             ))}
-            <Link to="/events/new">
-              <button type="button">New Event</button>
-            </Link>
+
+
+            {Authorization.isAuthenticated() ?
+              <Link to="/events/new">
+                <button type="button">New Event</button>
+              </Link>
+              : null}
+
+
           </div>
-       
+
 
           <div className="map-container">
             <EventMapComp

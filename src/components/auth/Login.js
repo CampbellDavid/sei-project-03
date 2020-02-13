@@ -12,7 +12,7 @@ export default class Login extends React.Component {
     error: ''
   }
 
-  lastLocation = useLastLocation()
+  // lastLocation = useLastLocation()
 
   handleChange = ({ target: { name, value } }) => {
     const data = { ...this.state.data, [name]: value }
@@ -25,7 +25,7 @@ export default class Login extends React.Component {
       const res = await axios.post('/api/login', this.state.data)
       Authorization.setToken(res.data.token)
       console.log(res.data)
-      // this.props.history.push(`/${this.lastLocation}`) 
+      this.props.history.push('/')
       
     } catch (error) {
       this.setState({ error: 'Invalid Credentials' })
