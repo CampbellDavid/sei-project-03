@@ -78,10 +78,11 @@ export default class EventIndex extends React.Component {
             {this.state.events.map(event => (
               <EventCard key={event._id} {...event} />
             ))}
+            <Link to="/events/new">
+              <button type="button">New Event</button>
+            </Link>
           </div>
-          <Link to="/events/new">
-            <button type="button">New Event</button>
-          </Link>
+       
 
           <div className="map-container">
             <EventMapComp
@@ -98,5 +99,4 @@ export default class EventIndex extends React.Component {
       </section>
     )
   }
-
 }
