@@ -3,15 +3,15 @@ import React from 'react'
 const TeamForm = ({ data, handleChange, handleSubmit }) => {
   return (
     <div>
-      <h1>Create a new quiz event at this pub!</h1>
+      <h1>Create a new team for this event!</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-div">
-          <label>Pub Name:</label>
+          <label>Event:</label>
           <input
             onChange={handleChange}
-            placeholder="Pub Name"
-            name="pub" 
-            value={data.pub}
+            placeholder="Event Name"
+            name="event" 
+            value={data.event}
             required/>
         </div>
         <div className="form-div">
@@ -30,15 +30,6 @@ const TeamForm = ({ data, handleChange, handleSubmit }) => {
             placeholder="Team Name"
             name="teamName" 
             value={data.teamName}
-            required/>
-        </div>
-        <div className="form-div">
-          <label>Event:</label>
-          <input
-            onChange={handleChange}
-            placeholder="Event Name"
-            name="event" 
-            value={data.event}
             required/>
         </div>
        
