@@ -25,16 +25,21 @@ export default class EventIndex extends React.Component {
     if (!this.state.events) return null
     // const eventArr = this.state.events
     return (
-      <section className="event-index-section">
+      <section>
         <h1>Find an event near you!</h1>
-        <div className="container">
-          {this.state.events.map(event => (
-            <EventCard key={event._id} {...event} />
-          ))}
+        <div className="index">
+          <div className="container">
+            {this.state.events.map(event => (
+              <EventCard key={event._id} {...event} />
+            ))}
+            <Link to="/events/new">
+              <button type="button">New Event</button>
+            </Link>
+          </div>
+          <div className="map-container">
+            {/* <Map goes here/> */}
+          </div>
         </div>
-        <Link to="/events/new">
-          <button type="button">New Event</button>
-        </Link>
       </section>
     )
   }
