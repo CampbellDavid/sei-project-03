@@ -50,7 +50,7 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             placeholder="Phone Number"
             name="phone" 
             value={data.phone}
-            required/>
+          />
         </div>
         <div className="form-div">
           <label>Website:</label>
@@ -59,7 +59,7 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             placeholder="Website"
             name="website" 
             value={data.website}
-            required/>
+          />
         </div>
         <div className="form-div">
           <label>Pub Description:</label>
@@ -68,7 +68,7 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             placeholder="Pub Description"
             name="description" 
             value={data.description}
-            required/>
+          />
         </div>
         <div className="form-div">
           <label>Max. Team Size:</label>
