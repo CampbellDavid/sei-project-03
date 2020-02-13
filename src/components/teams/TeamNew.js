@@ -5,7 +5,7 @@ import TeamForm from './TeamForm'
 
 export default class TeamNew extends React.Component {
   state = {
-    data: {
+    team: {
       captain: '',
       teamName: '',
       event: '',
@@ -15,19 +15,19 @@ export default class TeamNew extends React.Component {
   }
 
   handleChange = ({ target: { name, value } }) => {
-    const data = { ...this.state.data, [name]: value }
-    console.log(data)
-    this.setState({ data })
+    const team = { ...this.state.team, [name]: value }
+    console.log(team)
+    this.setState({ team })
   }
 
   handleSubmit = async e => {
     e.preventDefault()
     try {
       const eventId = this.props.match.params.id
-      const res = await axios.post(`/api/${eventId}/teams`, this.state.data, {
+      const res = await axios.post(`/api/${eventId}/teams`, this.state.team, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      this.props.history.push(`/events/${res.data._id}`)
+      this.props.history.push(`/events/${eventId}/teams${res.team._id}`)
     } catch (error) {
       console.log(error)
     }
@@ -36,11 +36,11 @@ export default class TeamNew extends React.Component {
   render() {
     return (
       <>
-      <h1>New Team Page</h1>
-      <TeamForm 
-        data={this.state.data}
+      <p>New Team Page</p>
+      {/* <TeamForm 
+        team={this.state.team}
         handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
+        handleSubmit={this.handleSubmit}/> */}
       </>
     )
   }

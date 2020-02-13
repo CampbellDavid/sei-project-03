@@ -23,6 +23,7 @@ import Login from './components/auth/Login'
 import TeamNew from './components/teams/TeamNew'
 import Unknown from './components/common/Unknown'
 import Profile from './components/profile/Profile'
+import ProfileEdit from './components/profile/ProfileEdit'
 
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
             <SecureRoute path='/events/new' component={EventNew}/>
             <Route path='/events/:id' component={EventShow}/>
             <Route path='/events' component={EventIndex}/>
+            <SecureRoute path='/profiles/:id/edit' component={ProfileEdit}/>
             <Route path='/profiles/:id' component={Profile}/>
             <Route path='/register' component={Register}/>
             <Route path='/login' component={Login}/>

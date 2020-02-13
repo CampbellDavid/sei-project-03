@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+// import BrowserHistory from 'react-router/lib/BrowserHistory'
 import Authorization from '../../../lib/authorization'
 
 export default class Login extends React.Component {
@@ -23,7 +23,7 @@ export default class Login extends React.Component {
       const res = await axios.post('/api/login', this.state.data)
       Authorization.setToken(res.data.token)
       console.log(res.data)
-      this.props.history.push(`/profiles/${res.data.userId}`)
+      this.props.history.push('/') // navigate to previous page
       
     } catch (error) {
       this.setState({ error: 'Invalid Credentials' })

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../../lib/authorization'
 import ProfileForm from './ProfileForm'
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
 
@@ -27,54 +28,40 @@ class Profile extends React.Component {
       console.log(error)
     }
   }
- 
+
 
   render() {
+    const userId = this.props.match.params.id
     console.log('rendering')
     const { username, favouriteDrinks, quizStrengths, email, bio, personalityType } = this.state.user
     return (
       <>
 
-      {/* <p>test</p> */}
-        {!Auth.isAuthenticated() && <h1>{username}</h1>}
-        {!Auth.isAuthenticated() && <p>Favourite Drinks: {favouriteDrinks}</p>}
-        {!Auth.isAuthenticated() && <p>Quiz Strengths: {quizStrengths}</p>}
-        {!Auth.isAuthenticated() && <p>Email: {email}</p>}
-        {!Auth.isAuthenticated() && <p>Bio: {bio}</p>}
-        {!Auth.isAuthenticated() && <p>Peronality Type: {personalityType}</p>}
+        {/* <p>test</p> */}
+        <p>{username}</p>
+        <p>Favourite Drinks: {favouriteDrinks}</p>
+        <p>Quiz Strengths: {quizStrengths}</p>
+        <p>Email: {email}</p>
+        <p>Bio: {bio}</p>
+        <p>Peronality Type: {personalityType}</p>
 
-        {Auth.isAuthenticated() && <p>{username}</p>}
-        {Auth.isAuthenticated() && <ProfileForm />}
+        <Link to={`/profiles/${userId}/edit`}>
+          <button>Edit Profile</button>
+        </Link>
       </>
     )
   }
 }
-  
+
 export default Profile
 
 
 //TODO
+
+// Add profile image
 //* after login, redirect to user profile page, show the following information
 
 //* embed team card (if currentUser belongs to certain teams)
 
 //* team card should contain links to user profiles (non-secure route)
 //* public user profiles have a direct message button => DirectMessage component
-
-
-
-
-
-
-
-//username: { type: String, required: true, unique: true },
-// email: { type: String, required: true, unique: true },
-// password: { type: String, required: true },
-// favouriteDrinks: [{ type: String }],
-// personalityType: { type: String },
-// bio: { type: String },
-// age: { type: Number },
-// gender: { type: String },
-// quizStrengths: [{ type: String }],
-// profileImage: { type: String }
-
