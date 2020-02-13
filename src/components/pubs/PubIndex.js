@@ -76,14 +76,15 @@ export default class PubIndex extends React.Component {
         </div>
   
         <div className="index" >
-       
           {/* <SearchBar /> */}
-          <div className="container">
+          <div className="card-container">
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
             ))}
             <Link to="/pubs/new">
-              <button type="button">New Pub</button>
+              <button 
+                className="button"
+                type="button">New Pub</button>
             </Link>
           </div>
           
