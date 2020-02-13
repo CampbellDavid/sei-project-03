@@ -45,7 +45,7 @@ export default class EventShow extends React.Component {
 
         {Authorization.isAuthenticated() ?
           <Link to={`/events/${eventId}/teams/new`}>
-            <button type="button">New Team</button>
+            <button type="button" className="button">New Team</button>
           </Link>
           : null}
 

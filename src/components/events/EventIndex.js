@@ -83,7 +83,7 @@ export default class EventIndex extends React.Component {
 
             {Authorization.isAuthenticated() ?
               <Link to="/events/new">
-                <button type="button">New Event</button>
+                <button type="button" className="button">New Event</button>
               </Link>
               : null}
 

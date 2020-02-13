@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../../lib/authorization'
-import ProfileForm from './ProfileForm'
+import Authorization from '../../../lib/authorization'
 import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
@@ -17,6 +16,9 @@ class Profile extends React.Component {
       _id: ''
     }
   }
+
+  isOwner = () => Authorization.getPayload().sub === this.state.user._id
+
 
   async componentDidMount() {
     const userId = this.props.match.params.id
@@ -44,16 +46,26 @@ class Profile extends React.Component {
         <p>Email: {email}</p>
         <p>Bio: {bio}</p>
         <p>Peronality Type: {personalityType}</p>
+        
 
-        <Link to={`/profiles/${userId}/edit`}>
-          <button>Edit Profile</button>
-        </Link>
+        {/* can only edit profile if you are the owner of the profile */}
+        
+        {this.isOwner() && <Link to={`/profiles/${userId}/edit`}>
+          <button type="button" className="button">Edit Profile</button>
+        </Link>}
+        {Authorization.isAuthenticated() && <Link to={`/profiles/${userId}/message`}>
+          <button type="button" className="button">DM Me!</button>
+        </Link>}
+        
+
+
       </>
     )
   }
 }
 
 export default Profile
+
 
 
 //TODO
