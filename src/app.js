@@ -41,7 +41,9 @@ class App extends React.Component {
             <SecureRoute path='/pubs/new' component={PubNew}/>
             <Route path='/pubs/:id' component={PubShow}/>
             <Route path='/pubs' component={PubIndex}/>
+
             <SecureRoute path='/events/:id/teams/new' component={TeamNew}/>
+
             <SecureRoute path='/events/:id/edit' component={EventEdit}/>
             <SecureRoute path='/events/new' component={EventNew}/>
             <Route path='/events/:id' component={EventShow}/>

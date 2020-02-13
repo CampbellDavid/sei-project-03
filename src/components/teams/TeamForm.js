@@ -15,15 +15,6 @@ const TeamForm = ({ team, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Captain:</label>
-          <input
-            onChange={handleChange}
-            placeholder="Captain"
-            name="captain" 
-            value={team.captain}
-            required/>
-        </div>
-        <div className="form-div">
           <label>Team Name:</label>
           <input
             onChange={handleChange}
@@ -32,6 +23,16 @@ const TeamForm = ({ team, handleChange, handleSubmit }) => {
             value={team.teamName}
             required/>
         </div>
+        <div className="form-div">
+          <label>Captain:</label>
+          <input
+            onChange={handleChange}
+            placeholder="Captain"
+            name="captain" 
+            value={team.captain}
+            required/>
+        </div>
+
        
         <div className="button-div">
           <button
