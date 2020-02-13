@@ -46,6 +46,7 @@ class Profile extends React.Component {
         <p>Email: {email}</p>
         <p>Bio: {bio}</p>
         <p>Peronality Type: {personalityType}</p>
+        
 
         {/* can only edit profile if you are the owner of the profile */}
         
