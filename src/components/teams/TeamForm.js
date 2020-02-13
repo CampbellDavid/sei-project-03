@@ -1,9 +1,6 @@
 import React from 'react'
 
-
-//TODO: Pub Name input to be autopopulated somehow
-
-const EventForm = ({ data, handleChange, handleSubmit }) => {
+const TeamForm = ({ data, handleChange, handleSubmit }) => {
   return (
     <div>
       <h1>Create a new quiz event at this pub!</h1>
@@ -12,49 +9,39 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
           <label>Pub Name:</label>
           <input
             onChange={handleChange}
-            placeholder="Pub"
+            placeholder="Pub Name"
             name="pub" 
             value={data.pub}
             required/>
         </div>
         <div className="form-div">
-          <label>Entry Fee:</label>
+          <label>Captain:</label>
           <input
             onChange={handleChange}
-            placeholder="£"
-            name="entryFee" 
-            value={data.entryFee}
+            placeholder="Captain"
+            name="captain" 
+            value={data.captain}
             required/>
         </div>
         <div className="form-div">
-          <label>Date of Quiz:</label>
+          <label>Team Name:</label>
           <input
             onChange={handleChange}
-            type="date"
-            placeholder="DD/MM/YY"
-            name="quizDay" 
-            value={data.quizDay}
+            placeholder="Team Name"
+            name="teamName" 
+            value={data.teamName}
             required/>
         </div>
         <div className="form-div">
-          <label>Time of Quiz:</label>
-          <input
-            type="time"
-            onChange={handleChange}
-            placeholder="Time"
-            name="quizTime" 
-            value={data.quizTime}
-            required/>
-        </div>
-        <div className="form-div">
-          <label>Postcode:</label>
+          <label>Event:</label>
           <input
             onChange={handleChange}
-            placeholder="Postcode"
-            name="postcode" 
-            value={data.postcode}
+            placeholder="Event Name"
+            name="event" 
+            value={data.event}
             required/>
         </div>
+       
         <div className="button-div">
           <button
             className="button"
@@ -66,4 +53,4 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
   )
 }
 
-export default EventForm
+export default TeamForm

@@ -5,8 +5,9 @@ const eventSchema = new mongoose.Schema({
   entryFee: { type: String, required: true },
   quizDay: { type: String, required: true },
   quizTime: { type: String, required: true },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  pubName: { type: mongoose.Schema.ObjectId, ref: 'Pub' } // require later
+  pub: { type: String, required: true },
+  postcode: { type: String, required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
 eventSchema

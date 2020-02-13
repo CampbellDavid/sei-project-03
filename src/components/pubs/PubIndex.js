@@ -4,7 +4,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import MapComp from '../common/MapComp'
+import PubMapComp from './PubMapComp'
 // import SearchBar from '../common/SearchBar'
 import PubCard from './PubCard'
 
@@ -17,8 +17,8 @@ export default class PubIndex extends React.Component {
       latitude: 51.5074,
       longitude: 0.1278,
       zoom: 9
-    },
-    showPopup: true
+    }
+    // showPopup: true
   }
   mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
   mapRef = React.createRef()
@@ -40,7 +40,10 @@ export default class PubIndex extends React.Component {
       ...viewport,
       ...geocoderDefaultOverrides
     })
-  };
+  }
+
+
+
   async componentDidMount() {
     try {
       const res = await axios.get('/api/pubs')
@@ -71,13 +74,10 @@ export default class PubIndex extends React.Component {
         <div className="title">
           <h1 >Find a pub quiz near you!</h1>
         </div>
-     
+  
         <div className="index" >
        
           {/* <SearchBar /> */}
-      
-        
-          
           <div className="container">
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
@@ -88,7 +88,7 @@ export default class PubIndex extends React.Component {
           </div>
           
           <div className="map-container">
-            <MapComp 
+            <PubMapComp 
               viewport={this.state.viewport} 
               handleGeocoderViewportChange={this.handleGeocoderViewportChange}
               handleViewportChange={this.handleViewportChange} 
@@ -98,9 +98,7 @@ export default class PubIndex extends React.Component {
               pubs={this.state.pubs} 
             />
           </div>
-          
-         
-       
+
         </div>
       </section>
     )
