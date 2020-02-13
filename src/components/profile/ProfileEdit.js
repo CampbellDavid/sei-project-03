@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../../lib/authorization'
+import Authorization from '../../../lib/authorization'
 import ProfileForm from './ProfileForm'
 
 class ProfileEdit extends React.Component {
@@ -52,8 +52,8 @@ class ProfileEdit extends React.Component {
     const { user } = this.state
     return (
       <>
-        {Auth.isAuthenticated() && <p>{user.username}</p>}
-        {Auth.isAuthenticated() && <ProfileForm
+        {Authorization.isAuthenticated() && <p>{user.username}</p>}
+        {Authorization.isAuthenticated() && <ProfileForm
           user={this.state.user}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
