@@ -37,10 +37,10 @@ export default class TeamNew extends React.Component {
     return (
       <>
       <p>New Team Page</p>
-      {/* <TeamForm 
+      <TeamForm 
         team={this.state.team}
         handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/> */}
+        handleSubmit={this.handleSubmit}/>
       </>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import BrowserHistory from 'react-router/lib/BrowserHistory'
+import { useLastLocation } from 'react-router-last-location'
 import Authorization from '../../../lib/authorization'
 
 export default class Login extends React.Component {
@@ -11,6 +11,8 @@ export default class Login extends React.Component {
     },
     error: ''
   }
+
+  lastLocation = useLastLocation()
 
   handleChange = ({ target: { name, value } }) => {
     const data = { ...this.state.data, [name]: value }
@@ -23,7 +25,7 @@ export default class Login extends React.Component {
       const res = await axios.post('/api/login', this.state.data)
       Authorization.setToken(res.data.token)
       console.log(res.data)
-      this.props.history.push('/') // navigate to previous page
+      // this.props.history.push(`/${this.lastLocation}`) 
       
     } catch (error) {
       this.setState({ error: 'Invalid Credentials' })
