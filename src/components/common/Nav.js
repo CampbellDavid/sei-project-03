@@ -15,7 +15,7 @@ class Nav extends React.Component {
 
   handleLogout = () => {
     Authorization.logout()
-    notify.show(`You've logged out!`, 'custom', 3000, { background: 'FFFFF0' })
+    notify.show('You\'ve logged out!', 'custom', 3000, { background: 'FFFFF0' })
     this.props.history.push('/')
   }
 
@@ -39,7 +39,7 @@ class Nav extends React.Component {
               
         <Link className="nav-item" hidden={this.state.loggedIn} to="/register">Register</Link>
           
-        {<a onClick={this.handleLogout} className="nav-item"><Link to="/" hidden={!this.state.loggedIn}>Logout</Link></a>}
+        {<p onClick={this.handleLogout} className="nav-item"><Link to="/" hidden={!this.state.loggedIn}>Logout</Link></p>}
 
       </nav> 
     )
