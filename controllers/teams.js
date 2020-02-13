@@ -58,6 +58,7 @@ function show(req, res, next) {
 }
 
 function update(req, res, next) {
+  req.body.user = req.currentUser
   Team
     .findById(req.params.teamId)
     .then(team => {
