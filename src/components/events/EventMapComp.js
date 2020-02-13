@@ -6,7 +6,15 @@ import Geocoder from 'react-map-gl-geocoder'
 import { Link } from 'react-router-dom'
 // const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 // const mapRef = React.createRef()
-const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, mapboxToken, mapRef, postcodes, pubs  }) => (
+const MapComp = ({
+  viewport,
+  handleGeocoderViewportChange,
+  handleViewportChange,
+  mapboxToken,
+  mapRef,
+  postcodes,
+  events
+}) => (
   <MapGL
     mapboxApiAccessToken={mapboxToken}
     ref={mapRef}
@@ -21,6 +29,8 @@ const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, 
       onViewportChange={handleGeocoderViewportChange}
       mapboxApiAccessToken={mapboxToken}
     />
+   
+
     {postcodes.map((postcode, index) => {
       return (
         <Marker
@@ -29,11 +39,11 @@ const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, 
           longitude={postcode.result.longitude}
         >
           <button className="marker">
-            {pubs.map((pub, i) => {
-              return pub.postcode === postcode.query ? (
-                <Link key={i} to={`/pubs/${pub._id}`}>
+            {events.map((event, i) => {
+              return event.postcode === postcode.query ? (
+                <Link key={i} to={`/events/${event._id}`}>
                   <div>
-                    <img src={pub.image} />
+                    <img src="https://s3.amazonaws.com/tc-global-prod/download_resources/au/downloads/12368/party-decorations-thumbnail-image-v1.jpg" />
                   </div>
                 </Link>
               ) : null
@@ -42,6 +52,7 @@ const PubMap = ({ viewport, handleGeocoderViewportChange, handleViewportChange, 
         </Marker>
       )
     })}
+    
   </MapGL>
 )
-export default PubMap
+export default MapComp
