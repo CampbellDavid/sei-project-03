@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { useLastLocation } from 'react-router-last-location'
+// import { useLastLocation } from 'react-router-last-location'
 import Authorization from '../../../lib/authorization'
 
 export default class Login extends React.Component {
