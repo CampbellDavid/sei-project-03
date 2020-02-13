@@ -40,7 +40,7 @@ class Nav extends React.Component {
               
         {!Authorization.isAuthenticated() && <Link className="nav-item"  to="/register">Register</Link>}
           
-        {Authorization.isAuthenticated() && <p onClick={this.handleLogout} className="nav-item"><Link to="/" >Logout</Link></p>}
+        {Authorization.isAuthenticated() && <span onClick={this.handleLogout} className="nav-item"><Link to="/" >Logout</Link></span>}
 
       </nav> 
     )

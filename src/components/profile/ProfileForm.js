@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, personalityType, handleChange, handleSubmit }) => {
+const ProfileForm = ({ user, handleChange, handleSubmit }) => {
   return (
     <div>
       <p>Edit Your Profile:</p>
@@ -11,7 +11,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Email"
             name="email" 
-            value={email}
+            value={user.email}
             required/>
         </div>
         <div className="form-div">
@@ -20,7 +20,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Favourite Drinks"
             name="favouriteDrinks" 
-            value={favouriteDrinks}
+            value={user.favouriteDrinks}
             required/>
         </div>
         <div className="form-div">
@@ -29,7 +29,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Personality Type"
             name="personalityType" 
-            value={personalityType}
+            value={user.personalityType}
             required/>
         </div>
 
@@ -39,7 +39,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Bio"
             name="bio" 
-            value={bio}
+            value={user.bio}
             required/>
         </div>
 
@@ -49,7 +49,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Age"
             name="age" 
-            value={age}
+            value={user.age}
             required/>
         </div>
 
@@ -59,7 +59,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Gender"
             name="gender" 
-            value={gender}
+            value={user.gender}
             required/>
         </div>
        
@@ -69,7 +69,7 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
             onChange={handleChange}
             placeholder="Quiz Strengths"
             name="quizStrengths" 
-            value={quizStrengths}
+            value={user.quizStrengths}
             required/>
         </div>
 
@@ -96,4 +96,6 @@ const TeamForm = ({ gender, age, favouriteDrinks, quizStrengths, email, bio, per
   )
 }
 
-export default TeamForm
+export default ProfileForm
+
+// TODO: add coontrol field

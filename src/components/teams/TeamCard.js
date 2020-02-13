@@ -10,6 +10,7 @@ const TeamCard = ({ members, captain, event, teamName }) => (
     })}</h3>
 
     <button type="button">Join Team</button>
+    <button type="button">Edit Team</button>
   </>
 )
 
