@@ -22,7 +22,7 @@ class Nav extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.setState({ loggedIn: false })
-    }
+    }   
   }
 
   render() {
@@ -39,8 +39,8 @@ class Nav extends React.Component {
               
         <Link className="nav-item" hidden={this.state.loggedIn} to="/register">Register</Link>
           
-        {<a onClick={this.handleLogout} className="nav-item"><Link to="/" hidden={!this.state.loggedIn}>Logout</Link></a>}         
-    
+        {<a onClick={this.handleLogout} className="nav-item"><Link to="/" hidden={!this.state.loggedIn}>Logout</Link></a>}
+
       </nav> 
     )
     
