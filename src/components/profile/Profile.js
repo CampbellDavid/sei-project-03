@@ -1,8 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../../lib/authorization'
+import Authorization from '../../../lib/authorization'
 import ProfileForm from './ProfileForm'
 import { Link } from 'react-router-dom'
+
+
+//!CAN ONLY EDIT PROFILE IF YOU ARE THE OWNER OF PROFILE
 
 class Profile extends React.Component {
 
@@ -45,15 +48,23 @@ class Profile extends React.Component {
         <p>Bio: {bio}</p>
         <p>Peronality Type: {personalityType}</p>
 
+        {/* can only edit profile if you are the owner of the profile */}
         <Link to={`/profiles/${userId}/edit`}>
-          <button>Edit Profile</button>
+          <button type="button" className="button">Edit Profile</button>
         </Link>
+        {Authorization.isAuthenticated() && <Link to={`/profiles/${userId}/message`}>
+          <button type="button" className="button">DM Me!</button>
+        </Link>}
+        
+
+
       </>
     )
   }
 }
 
 export default Profile
+
 
 
 //TODO

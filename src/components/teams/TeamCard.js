@@ -13,8 +13,8 @@ const TeamCard = ({ members, captain, event, teamName }) => (
 
     {Authorization.isAuthenticated() ?
       <div className="buttons">
-        <button type="button">Join Team</button>
-        <button type="button">Edit Team</button>
+        <button type="button" className="button">Join Team</button>
+        <button type="button" className="button">Edit Team</button>
       </div>
       : null}
   </>
