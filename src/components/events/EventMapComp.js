@@ -1,7 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import React from 'react'
-import MapGL, { Marker } from 'react-map-gl'
+import MapGL, { Marker, Popup } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 import { Link } from 'react-router-dom'
 // const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
@@ -38,17 +38,27 @@ const MapComp = ({
           latitude={postcode.result.latitude}
           longitude={postcode.result.longitude}
         >
-          <button className="marker">
-            {events.map((event, i) => {
-              return event.postcode === postcode.query ? (
-                <Link key={i} to={`/events/${event._id}`}>
-                  <div>
-                    <img src="https://s3.amazonaws.com/tc-global-prod/download_resources/au/downloads/12368/party-decorations-thumbnail-image-v1.jpg" />
-                  </div>
-                </Link>
-              ) : null
-            })}
-          </button>
+          {/* <button className="marker"> */}
+          {events.map((event, i) => {
+            return event.postcode === postcode.query ? (
+                
+              <div key={i} >
+                {/* <img src="https://cdn3.iconfinder.com/data/icons/project-management-32/48/37-512.png" />
+                    <img src="https://image.flaticon.com/icons/png/512/36/36601.png" />
+                    <p> {event.pub} </p> */}
+                  
+                <Popup
+                  tipSize={12}
+                  anchor="bottom"
+                  latitude={postcode.result.latitude}
+                  longitude={postcode.result.longitude}>
+                  <p>{event.pub}</p>
+                </Popup>
+              </div>
+                
+            ) : null
+          })}
+          {/* </button> */}
         </Marker>
       )
     })}
@@ -56,3 +66,24 @@ const MapComp = ({
   </MapGL>
 )
 export default MapComp
+
+
+
+
+
+{/* <Link key={i} to={`/events/${event._id}`}>
+<div>
+  <img src="https://cdn3.iconfinder.com/data/icons/project-management-32/48/37-512.png" />
+  <img src="https://image.flaticon.com/icons/png/512/36/36601.png" />
+  <p> {event.pub} </p>
+
+  <Popup
+    key={i} 
+    tipSize={12}
+    anchor="bottom"
+    latitude={postcode.result.latitude}
+    longitude={postcode.result.longitude}>
+    <p>text</p>
+  </Popup>
+</div>
+</Link> */}
