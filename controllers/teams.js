@@ -16,6 +16,10 @@ function index(req, res) {
       path: 'teams',
       populate: ({ path: 'event' })
     })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'user' })
+    })
     .then(foundTeams => res.status(200).json(foundTeams))
     .catch(err => res.json(err))
 }
@@ -31,18 +35,10 @@ function create(req, res, next) {
 function show(req, res, next) {
   Team
     .findById(req.params.teamId)
-    .populate({
-      path: 'teams',
-      populate: ({ path: 'captain' })
-    })
-    .populate({
-      path: 'teams',
-      populate: ({ path: 'members' })
-    })
-    .populate({
-      path: 'teams',
-      populate: ({ path: 'event' })
-    })
+    .populate('captain')
+    .populate('members')
+    .populate('event')
+    .populate('user')
     .then(team => {
       if (!team) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(team)

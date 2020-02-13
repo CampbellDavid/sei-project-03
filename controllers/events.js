@@ -17,6 +17,10 @@ function index(req, res) {
       path: 'teams',
       populate: ({ path: 'event' })
     })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'user' })
+    })
     .then(foundEvents => res.status(200).json(foundEvents))
     .catch(err => res.json(err))
 }
@@ -24,7 +28,15 @@ function index(req, res) {
 function indexForSpecificPub(req, res) {
   Pub
     .findById(req.params.id)
-    .populate('events')
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'members'
+        })
+      })
+    })
     .then(foundEvents => res.status(200).json(foundEvents))
     .catch(err => res.json(err))
 }
@@ -42,7 +54,22 @@ function show(req, res, next) {
   Event
     .findById(req.params.id)
     .populate('user')
-    .populate('teams')
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'captain' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'members' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'event' })
+    })
+    .populate({
+      path: 'teams',
+      populate: ({ path: 'user' })
+    })
     .then(event => {
       console.log(event)
       if (!event) return res.status(404).json({ message: 'Not Found' })

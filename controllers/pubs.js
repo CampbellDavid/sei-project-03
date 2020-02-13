@@ -4,8 +4,33 @@ function index(req, res) {
   Pub
     .find()
     .populate('user')
-    .populate('events')
-    .populate('events.teams')
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'captain'
+        })
+      })
+    })
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'members'
+        })
+      })
+    })
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'user'
+        })
+      })
+    })
     .then(foundPubs => {
       res.status(200).json(foundPubs)
     })
@@ -24,9 +49,34 @@ function show(req, res, next) {
   Pub
     .findById(req.params.id)
     .populate('user')
-    .populate('events')
-    .populate('events.teams')
-    .then(pub => { 
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'captain'
+        })
+      })
+    })
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'members'
+        })
+      })
+    })
+    .populate({
+      path: 'events',
+      populate: ({
+        path: 'teams',
+        populate: ({
+          path: 'user'
+        })
+      })
+    })
+    .then(pub => {
       if (!pub) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(pub)
     })
@@ -39,10 +89,10 @@ function update(req, res, next) {
     .then(pub => {
       if (!pub) throw new Error('Not Found')
       if (!pub.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(pub, req.body) 
-      return pub.save()  
+      Object.assign(pub, req.body)
+      return pub.save()
     })
-    .then(updatedPub => res.status(202).json(updatedPub)) 
+    .then(updatedPub => res.status(202).json(updatedPub))
     .catch(next)
 }
 
@@ -78,7 +128,7 @@ function reviewCreate(req, res) {
 function reviewDelete(req, res) {
   Pub
     .findById(req.params.reviewId)
-    .then(pub => { 
+    .then(pub => {
       if (!pub) return res.status(404).json({ message: 'Not Found ' })
       const review = pub.reviews.id(req.params.reviewId)
       if (!review) return res.status(404).json({ message: 'Not Found ' })
