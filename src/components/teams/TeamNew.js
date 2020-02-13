@@ -1,17 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 import Authorization from '../../../lib/authorization'
+import TeamForm from './TeamForm'
 
-import EventForm from './EventForm'
-
-export default class EventNew extends React.Component {
+export default class TeamNew extends React.Component {
   state = {
     data: {
-      entryFee: '',
-      quizDay: '',
-      quizTime: '',
-      pub: '',
-      postcode: ''
+      captain: '',
+      teamName: '',
+      event: '',
+      members: '',
+      user: ''
     }
   }
 
@@ -24,7 +23,8 @@ export default class EventNew extends React.Component {
   handleSubmit = async e => {
     e.preventDefault()
     try {
-      const res = await axios.post('/api/events', this.state.data, {
+      const eventId = this.props.match.params.id
+      const res = await axios.post(`/api/${eventId}/teams`, this.state.data, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
       this.props.history.push(`/events/${res.data._id}`)
@@ -36,8 +36,8 @@ export default class EventNew extends React.Component {
   render() {
     return (
       <>
-      <h1>New Event Page</h1>
-      <EventForm 
+      <h1>New Team Page</h1>
+      <TeamForm 
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}/>

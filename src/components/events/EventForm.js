@@ -46,6 +46,15 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             value={data.quizTime}
             required/>
         </div>
+        <div className="form-div">
+          <label>Postcode:</label>
+          <input
+            onChange={handleChange}
+            placeholder="Postcode"
+            name="postcode" 
+            value={data.postcode}
+            required/>
+        </div>
         <div className="button-div">
           <button
             className="button"

@@ -97,24 +97,32 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             entryFee: '£2',
             quizDay: 'Tuesday',
             quizTime: '18:00',
+            pub: 'Abbey Bar',
+            postcode: 'EC3N 1DD',
             user: createdTeams[0].captain
           }, {
             teams: [createdTeams[0], createdTeams[1], createdTeams[2]],
             entryFee: '£3',
             quizDay: 'Wednesday',
             quizTime: '19:00',
+            pub: 'Clapton Hart',
+            postcode: 'E5 8EG',
             user: createdTeams[0].captain
           }, {
             teams: [createdTeams[1], createdTeams[2], createdTeams[3]],
             entryFee: '£4',
             quizDay: 'Thursday',
             quizTime: '20:00',
+            pub: 'White Heart',
+            postcode: 'N16 8EL',
             user: createdTeams[1].captain
           }, {
             teams: [createdTeams[2], createdTeams[3]],
             entryFee: '£5',
             quizDay: 'Friday',
             quizTime: '21:00',
+            pub: 'Red Lion',
+            postcode: 'SW1A 2NH',
             user: createdTeams[2].captain
           }
         ])
