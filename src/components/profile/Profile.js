@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../../lib/authorization'
 
 class Profile extends React.Component {
 
@@ -32,12 +33,19 @@ class Profile extends React.Component {
     const { username, favouriteDrinks, quizStrenghts, email, bio, personalityType } = this.state.user
     return (
       <>
-        <h1>{username}</h1>
-        <p>Favourite Drinks: {favouriteDrinks}</p>
-        <p>Quiz Strengths: {quizStrenghts}</p>
-        <p>Email: {email}</p>
-        <p>Bio: {bio}</p>
-        <p>Peronality Type: {personalityType}</p>
+        {!Auth.isAuthenticated() && <h1>{username}</h1>}
+        {!Auth.isAuthenticated() && <p>Favourite Drinks: {favouriteDrinks}</p>}
+        {!Auth.isAuthenticated() && <p>Quiz Strengths: {quizStrenghts}</p>}
+        {!Auth.isAuthenticated() && <p>Email: {email}</p>}
+        {!Auth.isAuthenticated() && <p>Bio: {bio}</p>}
+        {!Auth.isAuthenticated() && <p>Peronality Type: {personalityType}</p>}
+
+        {Auth.isAuthenticated() && <h1>{username}</h1>}
+        {Auth.isAuthenticated() && <p>Favourite Drinks: {favouriteDrinks}</p>}
+        {Auth.isAuthenticated() && <p>Quiz Strengths: {quizStrenghts}</p>}
+        {Auth.isAuthenticated() && <p>Email: {email}</p>}
+        {Auth.isAuthenticated() && <p>Bio: {bio}</p>}
+        {Auth.isAuthenticated() && <p>Peronality Type: {personalityType}</p>}
       </>
     )
   }
