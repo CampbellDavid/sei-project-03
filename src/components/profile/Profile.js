@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../../lib/authorization'
+import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {
 
@@ -7,7 +9,7 @@ class Profile extends React.Component {
     user: {
       username: '',
       favouriteDrinks: [],
-      quizStrenghts: [],
+      quizStrengths: [],
       email: '',
       bio: '',
       personalityType: '',
@@ -29,15 +31,20 @@ class Profile extends React.Component {
 
   render() {
     console.log('rendering')
-    const { username, favouriteDrinks, quizStrenghts, email, bio, personalityType } = this.state.user
+    const { username, favouriteDrinks, quizStrengths, email, bio, personalityType } = this.state.user
     return (
       <>
-        <h1>{username}</h1>
-        <p>Favourite Drinks: {favouriteDrinks}</p>
-        <p>Quiz Strengths: {quizStrenghts}</p>
-        <p>Email: {email}</p>
-        <p>Bio: {bio}</p>
-        <p>Peronality Type: {personalityType}</p>
+
+      {/* <p>test</p> */}
+        {!Auth.isAuthenticated() && <h1>{username}</h1>}
+        {!Auth.isAuthenticated() && <p>Favourite Drinks: {favouriteDrinks}</p>}
+        {!Auth.isAuthenticated() && <p>Quiz Strengths: {quizStrengths}</p>}
+        {!Auth.isAuthenticated() && <p>Email: {email}</p>}
+        {!Auth.isAuthenticated() && <p>Bio: {bio}</p>}
+        {!Auth.isAuthenticated() && <p>Peronality Type: {personalityType}</p>}
+
+        {Auth.isAuthenticated() && <p>{username}</p>}
+        {Auth.isAuthenticated() && <ProfileForm />}
       </>
     )
   }
