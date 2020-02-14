@@ -7,10 +7,10 @@ function index(req, res) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
-        populate: ({
-          path: 'captain'
-        })
+        path: 'teams'
+        // populate: ({
+        //   path: 'captain'
+        // })
       })
     })
     .populate({
@@ -52,10 +52,10 @@ function show(req, res, next) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
-        populate: ({
-          path: 'captain'
-        })
+        path: 'teams'
+        // populate: ({
+        //   path: 'captain'
+        // })
       })
     })
     .populate({

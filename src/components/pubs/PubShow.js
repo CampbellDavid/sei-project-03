@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import StarRating from '../common/StarRating'
 
 import Authorization from '../../../lib/authorization'
 
@@ -81,8 +82,6 @@ export default class PubShow extends React.Component {
     return (
       <>
         <div className="pub-show">
-
-
 
           <div className="pub-info">
             <h1>{pub.name}</h1>

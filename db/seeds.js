@@ -63,25 +63,25 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdUsers.length)} users created`)
         return Team.create([
           {
-            captain: createdUsers[0],
+            // captain: createdUsers[0],
             teamName: 'Inquizitours',
             // event: '5e44498928eeec38c5183622',
             members: [createdUsers[1], createdUsers[2], createdUsers[3]],
             user: createdUsers[0]
           }, {
-            captain: createdUsers[1],
+            // captain: createdUsers[1],
             teamName: 'Beijing Team',
             // event: '5e44498928eeec38c5183621',
             members: [createdUsers[0], createdUsers[2], createdUsers[3]],
             user: createdUsers[1]
           }, {
-            captain: createdUsers[2],
+            // captain: createdUsers[2],
             teamName: 'Copenhagen Team',
             // event: '5e44498928eeec38c5183623',
             members: [createdUsers[0], createdUsers[1], createdUsers[3]],
             user: createdUsers[2]
           }, {
-            captain: createdUsers[3],
+            // captain: createdUsers[3],
             teamName: 'London Team',
             // event: '5e44498928eeec38c5183620',
             members: [createdUsers[0], createdUsers[1], createdUsers[2]],
@@ -99,7 +99,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizTime: '18:00',
             pub: 'Abbey Bar',
             postcode: 'EC3N 1DD',
-            user: createdTeams[0].captain
+            user: createdTeams[0].user
           }, {
             teams: [createdTeams[0], createdTeams[1], createdTeams[2]],
             entryFee: '£3',
@@ -107,7 +107,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizTime: '19:00',
             pub: 'Clapton Hart',
             postcode: 'E5 8EG',
-            user: createdTeams[0].captain
+            user: createdTeams[0].user
           }, {
             teams: [createdTeams[1], createdTeams[2], createdTeams[3]],
             entryFee: '£4',
@@ -115,7 +115,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             quizTime: '20:00',
             pub: 'White Heart',
             postcode: 'N16 8EL',
-            user: createdTeams[1].captain
+            user: createdTeams[1].user
           }, {
             teams: [createdTeams[2], createdTeams[3]],
             entryFee: '£5',

@@ -41,17 +41,21 @@ class TeamCard extends React.Component {
       const response = await axios.get(`/api/profiles/${userId}`)
       const currentUser = membersArr.filter(member => member._id === userId)[0]
       const index = membersArr.indexOf(currentUser)
-      membersArr.some(member => member._id === userId) ?
-        membersArr.splice(index, 1) :
+      if (membersArr.some(member => member._id === userId)) {
+        membersArr.splice(index, 1)
+        this.state.captain = membersArr[0] 
+        
+      } else {
         membersArr.push(response.data)
+        this.state.captain = membersArr[0]
+        
+      }
       this.setState({ members: membersArr })
+      this.setState({ captain: this.state.team.captain })
     } catch (err) {
       console.log(err)
     }
   }
-
-
-
 
   render() {
     const userId = Authorization.getPayload().sub

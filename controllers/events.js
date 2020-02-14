@@ -6,8 +6,8 @@ function index(req, res) {
     .find()
     .populate('user')
     .populate({
-      path: 'teams',
-      populate: ({ path: 'captain' })
+      path: 'teams'
+      // populate: ({ path: 'captain' })
     })
     .populate({
       path: 'teams',
@@ -55,8 +55,8 @@ function show(req, res, next) {
     .findById(req.params.id)
     .populate('user')
     .populate({
-      path: 'teams',
-      populate: ({ path: 'captain' })
+      path: 'teams'
+      // populate: ({ path: 'captain' })
     })
     .populate({
       path: 'teams',
