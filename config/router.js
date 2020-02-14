@@ -87,11 +87,11 @@ router.route('/teams') // done
   .post(secureRoute, teams.create)
 
 router.route('/teams/:teamId') // done
-.delete(secureRoute, teams.destroy)
-.put(secureRoute, teams.update)
-.put(secureRoute, teams.join)
-.put(secureRoute, teams.leave) // check for functionality
-.get(teams.show)
+  .delete(secureRoute, teams.destroy)
+  .put(secureRoute, teams.update)
+  .post(secureRoute, teams.join)
+  .patch(secureRoute, teams.leave) // check for functionality
+  .get(teams.show)
 
 
 
@@ -104,8 +104,8 @@ router.route('/events/:eventId/teams') // done
 router.route('/events/:eventId/teams/:teamId') // done
   .delete(secureRoute, teams.destroy)
   .put(secureRoute, teams.update)
-  .put(secureRoute, teams.join)
-  .put(secureRoute, teams.leave) // check for functionality
+  .post(secureRoute, teams.join)
+  .patch(secureRoute, teams.leave) // check for functionality
   .get(teams.show)
 
 module.exports = router

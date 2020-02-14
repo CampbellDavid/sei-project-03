@@ -3,6 +3,7 @@ import Authorization from '../../../lib/authorization'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+
 class TeamCard extends React.Component {
 
   state = {
@@ -20,26 +21,39 @@ class TeamCard extends React.Component {
 
 
   async componentDidMount() {
-    const teamId = this.props.match.params.id
+    const teamId = this.props._id
     try {
       const res = await axios.get(`/api/teams/${teamId}`)
-      console.log(res.data)
+      console.log('DATA FOR CARD', res.data)
       this.setState({ team: res.data })
     } catch (error) {
       this.setState({ errors: error.res.data.errors })
     }
   }
 
-  // handleClick = e => {
-  //   e.preventDefault()
+  handleClick = async e => {
+    e.preventDefault()
 
-  // }
-
-  // handleChange
+    const userId = Authorization.getPayload().sub
+    console.log(userId)
+    const membersArr = this.state.team.members
+    try {
+      const response = await axios.get(`/api/profiles/${userId}`)
+      membersArr.some(member => member._id === userId) ?
+        membersArr.pop(userId) :
+        membersArr.push(response.data)
+      this.setState({ members: membersArr })
+      console.log(membersArr)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   render() {
+    const userId = Authorization.getPayload().sub
     const { team } = this.state
     console.log(this.state)
+    
     return (
       <>
         <h2>{team.teamName}</h2>
@@ -51,7 +65,9 @@ class TeamCard extends React.Component {
 
         {Authorization.isAuthenticated() ?
           <div className="buttons">
-            <button type="button" className="button">Join Team</button>
+            {team.members.some(member => member._id === userId) ?
+              <button type="button" className="button" onClick={this.handleClick}>Leave Team</button> :
+              <button type="button" className="button" onClick={this.handleClick}>Join Team</button>}
             {this.isOwner() && <button type="button" className="button">Edit Team</button>}
           </div>
           : null}
@@ -60,6 +76,5 @@ class TeamCard extends React.Component {
   }
 
 }
-
 
 export default TeamCard
