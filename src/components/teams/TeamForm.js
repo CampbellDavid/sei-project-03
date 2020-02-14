@@ -2,12 +2,11 @@ import React from 'react'
 
 const TeamForm = ({ handleChange, handleSubmit }) => {
   return (
-    <div>
+    <section className="form">
       <h1>Create a new team for this event!</h1>
       <form onSubmit={handleSubmit}>
         
         <div className="form-div">
-          <label>Team Name:</label>
           <input
             onChange={handleChange}
             placeholder="Team Name"
@@ -22,7 +21,7 @@ const TeamForm = ({ handleChange, handleSubmit }) => {
               Submit</button>
         </div>
       </form>
-    </div>
+    </section>
   )
 }
 

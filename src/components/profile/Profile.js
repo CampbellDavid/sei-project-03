@@ -56,9 +56,9 @@ class Profile extends React.Component {
             {this.isOwner() && <Link to={`/profiles/${userId}/edit`}>
               <button type="button" className="button">Edit Profile</button>
             </Link>}
-            {Authorization.isAuthenticated() && <Link to={`/profiles/${userId}/message`}>
+            {/* {Authorization.isAuthenticated() && <Link to={`/profiles/${userId}/message`}>
               <button type="button" className="button">DM Me!</button>
-            </Link>}
+            </Link>} */}
           </div>
 
           {/* can only edit profile if you are the owner of the profile */}
