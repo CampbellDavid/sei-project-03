@@ -35,6 +35,10 @@ section {
   align-items: center;
 }
 
+li {
+ list-style:none;
+}
+
 
 //!Nav
 html, body, div, p, ul, li {
@@ -210,6 +214,10 @@ p {
 .pub-image {
 display: flex;
 justify-content: center;
+}
+.pub-image1{
+  max-width:80%;
+max-height:100%;
 }
 
 .button-list {

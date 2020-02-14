@@ -35,13 +35,13 @@ export default class EventNew extends React.Component {
 
   render() {
     return (
-      <>
-      <h1>New Event Page</h1>
-      <EventForm 
-        data={this.state.data}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
-      </>
+      <section className="form">
+    
+        <EventForm 
+          data={this.state.data}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}/>
+      </section>
     )
   }
 }

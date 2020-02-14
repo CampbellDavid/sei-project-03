@@ -271,7 +271,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             user: createdEvents[2].user
           },
           {
-            name: 'The Pride of Spitalfields London',
+            name: 'The Pride of Spitalfields',
             image: 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/11/28/15/pride-.jpg?w968',
             city: 'London',
             streetName: '3 Heneage St, Spitalfields',

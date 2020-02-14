@@ -32,7 +32,7 @@ export default class PubShow extends React.Component {
           <h1>{pub.name}</h1>
           {/* <h2>{pub.starRating}</h2> */}
           <figure className="pub-image">
-            <img src={pub.image} />
+            <img className="pub-image1" src={pub.image} />
           </figure>
           <p>{pub.description}</p>
           <a href={pub.website}>Visit Pub Website</a>
