@@ -44,12 +44,7 @@ class TeamCard extends React.Component {
       membersArr.some(member => member._id === userId) ?
         membersArr.splice(index, 1) :
         membersArr.push(response.data)
-        this.setState({ members: membersArr })
-      }
-
-      // this.setState({ members: membersArr })
-
-      console.log(membersArr)
+      this.setState({ members: membersArr })
     } catch (err) {
       console.log(err)
     }
