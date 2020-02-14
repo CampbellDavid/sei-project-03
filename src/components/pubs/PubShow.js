@@ -139,7 +139,7 @@ export default class PubShow extends React.Component {
           </div>
 
           <div className="reviews">
-            <h3>{pub.starRating}</h3>
+          
             <ul>{pub.reviews.length < 1 ?
               null :
               pub.reviews.map(review => (
@@ -156,23 +156,20 @@ export default class PubShow extends React.Component {
             </ul>
           </div>
 
-          {Authorization.isAuthenticated() && <form onSubmit={this.handleSubmitReview}>
+          {Authorization.isAuthenticated() && <form className="review-form" onSubmit={this.handleSubmitReview}>
             <div>
-              <label>Review</label>
-              <div>
-                <textarea
-                  className="textarea"
-                  placeholder="Add a review"
-                  onChange={this.handleChange}
-                  value={text}
-                />
-              </div>
+              <textarea
+                className="review-textarea"
+                placeholder="Add a review"
+                onChange={this.handleChange}
+                value={text}
+              />
             </div>
+           
             <div>
-              <div>
-                <button type="submit">Add</button>
-              </div>
+              <button className="button" type="submit">Add</button>
             </div>
+           
           </form>}
 
 

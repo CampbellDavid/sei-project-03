@@ -16,6 +16,8 @@ export default class App extends Component {
       <>
         <BeautyStars
           value={this.state.starRating}
+          inactiveColor='#121621'
+          activeColor='#FFED76'
           onChange={starRating => {
             this.state.starRatingArr.push(starRating)
             this.setState({ starRatingVal: starRating })
