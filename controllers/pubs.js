@@ -8,9 +8,9 @@ function index(req, res) {
       path: 'events',
       populate: ({
         path: 'teams',
-        populate: ({
-          path: 'captain'
-        })
+        // populate: ({
+        //   path: 'captain'
+        // })
       })
     })
     .populate({
@@ -53,9 +53,9 @@ function show(req, res, next) {
       path: 'events',
       populate: ({
         path: 'teams',
-        populate: ({
-          path: 'captain'
-        })
+        // populate: ({
+        //   path: 'captain'
+        // })
       })
     })
     .populate({
@@ -158,4 +158,4 @@ function starRating(req, res) {
 
 module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete, starRating }
 
-// TODO: remove star rating function
+// TODO: toggle star rating function

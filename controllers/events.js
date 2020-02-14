@@ -5,10 +5,10 @@ function index(req, res) {
   Event
     .find()
     .populate('user')
-    .populate({
-      path: 'teams',
-      populate: ({ path: 'captain' })
-    })
+    // .populate({
+    //   path: 'teams',
+    //   populate: ({ path: 'captain' })
+    // })
     .populate({
       path: 'teams',
       populate: ({ path: 'members' })
@@ -54,10 +54,10 @@ function show(req, res, next) {
   Event
     .findById(req.params.id)
     .populate('user')
-    .populate({
-      path: 'teams',
-      populate: ({ path: 'captain' })
-    })
+    // .populate({
+    //   path: 'teams',
+    //   populate: ({ path: 'captain' })
+    // })
     .populate({
       path: 'teams',
       populate: ({ path: 'members' })

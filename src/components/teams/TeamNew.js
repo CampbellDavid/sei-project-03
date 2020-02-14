@@ -6,11 +6,7 @@ import TeamForm from './TeamForm'
 export default class TeamNew extends React.Component {
   state = {
     team: {
-      captain: '',
-      teamName: '',
-      event: '',
-      members: '',
-      user: ''
+      teamName: ''
     }
   }
 
