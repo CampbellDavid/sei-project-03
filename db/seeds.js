@@ -33,7 +33,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             bio: 'Bio for user 2',
             age: 25,
             gender: 'Male',
-            quizStrengths: ['Gen Ed']
+            quizStrengths: ['Gen Ed'],
+            profileImage: 'https://i.insider.com/59c387d3ba785e34910e27b4?width=1100&format=jpeg&auto=webp'
           },{
             username: 'Bill Clinton',
             email: '3@email.com',
