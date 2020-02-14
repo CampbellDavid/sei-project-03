@@ -13,6 +13,7 @@ class ProfileEdit extends React.Component {
       email: '',
       bio: '',
       personalityType: '',
+      gender: '',
       _id: ''
     },
     errors: {}

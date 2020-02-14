@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import ImageUpload from '../common/ImageUpload'
+import ImageUpload from '../common/ImageUpload'
 
 const ProfileForm = ({ user, handleChange, handleSubmit }) => {
   return (
@@ -11,7 +11,7 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
           <input
             onChange={handleChange}
             placeholder="Email"
-            name="email" 
+            name="email"
             value={user.email}
           />
         </div>
@@ -19,7 +19,7 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
           <input
             onChange={handleChange}
             placeholder="Favourite Drinks"
-            name="favouriteDrinks" 
+            name="favouriteDrinks"
             value={user.favouriteDrinks}
           />
         </div>
@@ -27,52 +27,56 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
           <input
             onChange={handleChange}
             placeholder="Personality Type"
-            name="personalityType" 
+            name="personalityType"
             value={user.personalityType}
           />
         </div>
 
         <div className="form-div">
-          <input
+          <textarea
+            rows="5"
+            cols="30"
             onChange={handleChange}
             placeholder="Bio"
-            name="bio" 
-            value={user.bio}
-          />
+            name="bio" />
         </div>
 
         <div className="form-div">
           <input
+            type="number"
             onChange={handleChange}
             placeholder="Age"
-            name="age" 
+            name="age"
             value={user.age}
           />
         </div>
 
         <div className="form-div">
-          <input
+
+          <select
             onChange={handleChange}
             placeholder="Gender"
-            name="gender" 
-            value={user.gender}
-          />
+            name="gender"
+            value={user.gender}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
-       
+
         <div className="form-div">
           <input
             onChange={handleChange}
             placeholder="Quiz Strengths"
-            name="quizStrengths" 
+            name="quizStrengths"
             value={user.quizStrengths}
           />
         </div>
-        {/* <div className="form-div">
+        <div className="form-div">
           <ImageUpload
             // labelText="Upload Image"
-            onChange={handleChange}
-            fieldName="image"/>
-        </div> */}
+            handleChange={handleChange}
+            fieldName="image" />
+        </div>
 
         {/* <div className="form-div">
           <label>Profile Image:</label>
@@ -88,7 +92,7 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
           <button
             className="button"
             type="submit">
-              Submit</button>
+            Submit</button>
         </div>
       </form>
     </section>
