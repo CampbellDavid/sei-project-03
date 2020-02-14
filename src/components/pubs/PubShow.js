@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+
+import Review from '../reviews/Review'
 import Authorization from '../../../lib/authorization'
 
 export default class PubShow extends React.Component {
@@ -23,6 +25,7 @@ export default class PubShow extends React.Component {
     const { pub } = this.state
     const pubId = this.props.match.params.id
     return (
+      <>
       <div className="pub-show">
 
         <div className="pub-info">
@@ -70,14 +73,12 @@ export default class PubShow extends React.Component {
             <p>Average Cost of a Pint: {pub.averagePintCost}</p>
           </div>
         </div>
-
-
-        <div className="reviews">
-          {/* <h2>{pub.reviews}</h2> */}
-        </div>
-
-
       </div>
+      {/* if we want to add reviews/comments we can look at this */}
+      {/* <div className="reviews">
+        <Review />
+      </div> */}
+      </>
     )
   }
 }
