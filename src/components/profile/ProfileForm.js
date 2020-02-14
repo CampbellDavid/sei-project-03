@@ -1,76 +1,81 @@
 import React from 'react'
 
+import ImageUpload from '../common/ImageUpload'
+
 const ProfileForm = ({ user, handleChange, handleSubmit }) => {
   return (
-    <div>
-      <p>Edit Your Profile:</p>
+    <section className="form">
+      <h1>Edit Your Profile:</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-div">
-          <label>Email:</label>
           <input
             onChange={handleChange}
             placeholder="Email"
-            name="email" 
+            name="email"
             value={user.email}
-            required/>
+          />
         </div>
         <div className="form-div">
-          <label>Favorite Drinks:</label>
           <input
             onChange={handleChange}
             placeholder="Favourite Drinks"
-            name="favouriteDrinks" 
+            name="favouriteDrinks"
             value={user.favouriteDrinks}
-            required/>
+          />
         </div>
         <div className="form-div">
-          <label>Personality Type:</label>
           <input
             onChange={handleChange}
             placeholder="Personality Type"
-            name="personalityType" 
+            name="personalityType"
             value={user.personalityType}
-            required/>
+          />
         </div>
 
         <div className="form-div">
-          <label>Bio:</label>
-          <input
+          <textarea
+            rows="5"
+            cols="30"
             onChange={handleChange}
             placeholder="Bio"
-            name="bio" 
-            value={user.bio}
-            required/>
+            name="bio" />
         </div>
 
         <div className="form-div">
-          <label>Age:</label>
           <input
+            type="number"
             onChange={handleChange}
             placeholder="Age"
-            name="age" 
+            name="age"
             value={user.age}
-            required/>
+          />
         </div>
 
         <div className="form-div">
-          <label>Gender:</label>
-          <input
+
+          <select
             onChange={handleChange}
             placeholder="Gender"
-            name="gender" 
-            value={user.gender}
-            required/>
+            name="gender"
+            value={user.gender}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
-       
+
         <div className="form-div">
-          <label>Quiz Strengths:</label>
           <input
             onChange={handleChange}
             placeholder="Quiz Strengths"
-            name="quizStrengths" 
+            name="quizStrengths"
             value={user.quizStrengths}
-            required/>
+          />
+        </div>
+        <div className="form-div">
+          <ImageUpload
+            // labelText="Upload Image"
+            handleChange={handleChange}
+            fieldName="image" />
         </div>
 
         {/* <div className="form-div">
@@ -79,7 +84,7 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Profile Image"
             name="profileImage" 
-            value={data.profileImage}
+            value={user.profileImage}
             required/>
         </div> */}
 
@@ -87,12 +92,10 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
           <button
             className="button"
             type="submit">
-              Submit</button>
+            Submit</button>
         </div>
       </form>
-    </div>
-
-
+    </section>
   )
 }
 

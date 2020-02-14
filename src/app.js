@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Nav from './components/common/Nav'
 import Home from './components/common/Home'
+// import Footer from './components/common/Footer'
 import SecureRoute from './components/common/SecureRoute'
 
 import PubEdit from './components/pubs/PubEdit'
@@ -54,6 +55,7 @@ class App extends React.Component {
             <Route path='/login' component={Login}/>
             <Route path='/*' component={Unknown}/>
           </Switch>
+          {/* <Footer /> */}
         </BrowserRouter>
       </main>
     )

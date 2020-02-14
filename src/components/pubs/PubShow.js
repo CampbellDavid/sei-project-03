@@ -82,10 +82,10 @@ export default class PubShow extends React.Component {
     return (
       <>
         <div className="pub-show">
-
           <div className="pub-info">
             <h1>{pub.name}</h1>
-            {/* <h2>{pub.starRating}</h2> */}
+            <StarRating />
+
             <figure className="pub-image">
               <img src={pub.image} />
             </figure>
@@ -113,14 +113,11 @@ export default class PubShow extends React.Component {
 
               </div>
               : null}
-
-
           </div>
 
           <div className="sidebar">
             <div className="address">
               <h2>Address Info:</h2>
-              <p>{pub.streetName}</p>
               <p>{pub.city}</p>
               <p>{pub.postcode}</p>
               <p>{pub.phone}</p>
@@ -136,6 +133,7 @@ export default class PubShow extends React.Component {
           </div>
 
           <div className="reviews">
+          
             <ul>{pub.reviews.length < 1 ?
               null :
               pub.reviews.map(review => (
@@ -152,23 +150,20 @@ export default class PubShow extends React.Component {
             </ul>
           </div>
 
-          {Authorization.isAuthenticated() && <form onSubmit={this.handleSubmitReview}>
+          {Authorization.isAuthenticated() && <form className="review-form" onSubmit={this.handleSubmitReview}>
             <div>
-              <label>Review</label>
-              <div>
-                <textarea
-                  className="textarea"
-                  placeholder="Add a review"
-                  onChange={this.handleChange}
-                  value={text}
-                />
-              </div>
+              <textarea
+                className="review-textarea"
+                placeholder="Add a review"
+                onChange={this.handleChange}
+                value={text}
+              />
             </div>
+           
             <div>
-              <div>
-                <button type="submit">Add</button>
-              </div>
+              <button className="button" type="submit">Add</button>
             </div>
+           
           </form>}
 
 

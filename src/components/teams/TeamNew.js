@@ -6,11 +6,7 @@ import TeamForm from './TeamForm'
 export default class TeamNew extends React.Component {
   state = {
     team: {
-      captain: '',
-      teamName: '',
-      event: '',
-      members: '',
-      user: ''
+      teamName: ''
     }
   }
 
@@ -37,7 +33,6 @@ export default class TeamNew extends React.Component {
   render() {
     return (
       <>
-      <p>New Team Page</p>
       <TeamForm 
         team={this.state.team}
         handleChange={this.handleChange}

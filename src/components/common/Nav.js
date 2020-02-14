@@ -30,17 +30,12 @@ class Nav extends React.Component {
     return (
       
       <nav className="navbar">    
-        
         <Link className="nav-item" to="/">Home</Link>
-        
         <Link className="nav-item" to="/pubs">Pubs</Link>
         <Link className="nav-item" to="/events">Events</Link>
-      
         {!Authorization.isAuthenticated() && <Link className="nav-item"  to="/login">Login</Link>}
-              
         {!Authorization.isAuthenticated() && <Link className="nav-item"  to="/register">Register</Link>}
-          
-        {Authorization.isAuthenticated() && <span onClick={this.handleLogout} className="nav-item"><Link to="/" >Logout</Link></span>}
+        {Authorization.isAuthenticated() && <span onClick={this.handleLogout} ><Link className="nav-item" to="/">Logout</Link></span>}
 
       </nav> 
     )

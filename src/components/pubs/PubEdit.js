@@ -14,7 +14,7 @@ export default class PubEdit extends React.Component {
       phone: '',
       website: '',
       description: '',
-      maxTeamSize: 0, //changed from null?
+      maxTeamSize: 0,
       quizDay: '',
       quizTime: '',
       averagePintCost: ''

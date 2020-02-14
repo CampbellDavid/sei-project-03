@@ -82,18 +82,8 @@ export default class PubIndex extends React.Component {
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
             ))}
-
-
-            {Authorization.isAuthenticated() ?
-              <Link to="/pubs/new">
-                <button
-                  className="button"
-                  type="button">New Pub</button>
-              </Link> 
-              : null}
-
-
           </div>
+
 
           <div className="map-container">
             <PubMapComp
@@ -106,6 +96,18 @@ export default class PubIndex extends React.Component {
               pubs={this.state.pubs}
             />
           </div>
+
+          
+          <div>
+            {Authorization.isAuthenticated() ?
+              <Link to="/pubs/new">
+                <button
+                  className="button"
+                  type="button">New Pub</button>
+              </Link> 
+              : null}
+          </div>
+         
         </div>
       </section>
     )
