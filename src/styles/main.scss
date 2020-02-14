@@ -131,9 +131,6 @@ html, body, div, p, ul, li {
   flex-wrap: wrap;
   }
 
-// input[type="radio"]{
-//   display: none;
-// }
 
 //! Pub & Event Cards
 
@@ -181,12 +178,7 @@ h3 {
   }
 
 }
-// .event-map-name{
-//   text-align: center;
-//   font-size: 11em;
-//   font-family:'Roboto Condensed', sans-serif;
-//   margin: 0px;
-// }
+
 
 p {
   margin: 5px;
@@ -197,6 +189,8 @@ p {
   display: flex;
   // max-width: 600px;
   margin: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pub-info {
@@ -250,10 +244,43 @@ max-height:100%;
 }
 
 .reviews {
-  width: 55%;
+  // width: 55%;
+  width: 73vw;
   // background-color: $pale;
-  border: medium solid black;
+  // border: medium solid black;
   margin: 50px;
+}
+
+.review-form{
+  display: flex;
+  flex-direction: column;
+  background-color: $pale;
+  border-bottom: 7px solid black;
+  border-top: 1px solid white;
+  width: 73vw;
+  margin: 0px 0px 50px;
+  align-items: center;
+  padding-top: 30px;
+
+.review-textarea {
+  width: 600px;
+  height: 100px;
+  text-align: center;
+}
+
+}
+
+li{
+  display: flex;
+  border: medium  solid black;
+  background-color: $pale;
+  color: black;
+  margin: 7px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+
+
 }
 
 ul {
@@ -261,9 +288,9 @@ ul {
   color: white;
 }
 
-ul li {
-  background-color: purple;
-}
+// ul li {
+//   background-color: purple;
+// }
 
 .event-show{
   .join{
@@ -321,10 +348,10 @@ ul li {
 form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $pale;
   border-bottom: 7px solid black;
   border-top: 1px solid white;
-  width: 70vw;
+  width: 73vw;
   margin: 0px 0px 50px;
   p {
     text-align: center;
