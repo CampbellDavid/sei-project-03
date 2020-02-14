@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import BeautyStars from 'beauty-stars'
 
 export default class App extends Component {
@@ -9,9 +8,7 @@ export default class App extends Component {
   };
 
   render() {
-    console.log(this.state.starRatingArr)
-    console.log(this.state.starRatingArr.length)
-
+    
     return (
       <>
         <BeautyStars
@@ -21,7 +18,7 @@ export default class App extends Component {
           onChange={starRating => {
             this.state.starRatingArr.push(starRating)
             this.setState({ starRatingVal: starRating })
-            console.log(typeof starRating)
+
           }}
         />
 
