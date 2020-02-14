@@ -56,7 +56,10 @@ class TeamCard extends React.Component {
     
     return (
       <>
-        <h2>{team.teamName}</h2>
+      <div className="card">
+        <div className="card-info">
+          <h2>{team.teamName}</h2>
+        </div>
         <h2>{team.event}</h2>
         <h3>Captain: {team.captain.username}</h3>
         <h3>Members: {team.members.map((member, i) => {
@@ -71,6 +74,8 @@ class TeamCard extends React.Component {
             {this.isOwner() && <button type="button" className="button">Edit Team</button>}
           </div>
           : null}
+      </div>
+
       </>
     )
   }

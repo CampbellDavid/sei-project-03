@@ -83,6 +83,8 @@ export default class PubShow extends React.Component {
       <>
         <div className="pub-show">
 
+
+
           <div className="pub-info">
             <h1>{pub.name}</h1>
             {/* <h2>{pub.starRating}</h2> */}
@@ -135,7 +137,7 @@ export default class PubShow extends React.Component {
               pub.reviews.map(review => (
                 <li key={review._id}>
                   {review.text}
-                  
+
                   <button
                     onClick={this.handleDeleteReview}
                     name={review._id}

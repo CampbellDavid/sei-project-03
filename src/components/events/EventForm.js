@@ -9,7 +9,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
       <h1>Create a new quiz event at this pub!</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-div">
-          <label>Pub Name:</label>
+          {/* <label>Pub Name:</label> */}
           <input
             onChange={handleChange}
             placeholder="Pub"
@@ -18,7 +18,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Entry Fee:</label>
+          {/* <label>Entry Fee:</label> */}
           <input
             onChange={handleChange}
             placeholder="£"
@@ -27,7 +27,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Date of Quiz:</label>
+          {/* <label>Date of Quiz:</label> */}
           <input
             onChange={handleChange}
             type="date"
@@ -37,7 +37,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Time of Quiz:</label>
+          {/* <label>Time of Quiz:</label> */}
           <input
             type="time"
             onChange={handleChange}
@@ -47,7 +47,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
-          <label>Postcode:</label>
+          {/* <label>Postcode:</label> */}
           <input
             onChange={handleChange}
             placeholder="Postcode"
