@@ -142,7 +142,6 @@ html, body, div, p, ul, li {
   }
 }
 
-
 .card {
   display: flex;
   justify-content: space-evenly;
@@ -187,6 +186,7 @@ p {
 //!Pub Show
 .pub-show {
   display: flex;
+  // max-width: 600px;
   margin: 50px;
 }
 
@@ -234,6 +234,22 @@ justify-content: center;
   height: 50%;
   margin: 10px;
   background-color: $pale;
+}
+
+.reviews {
+  width: 55%;
+  // background-color: $pale;
+  border: medium solid black;
+  margin: 50px;
+}
+
+ul {
+  list-style: none;
+  color: white;
+}
+
+ul li {
+  background-color: purple;
 }
 
 
