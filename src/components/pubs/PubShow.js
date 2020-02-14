@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-// import Review from '../reviews/Review'
 import Authorization from '../../../lib/authorization'
 
 export default class PubShow extends React.Component {
@@ -70,8 +69,8 @@ export default class PubShow extends React.Component {
     this.setState({ text })
   }
 
-  isOwner = () => {
-    return Authorization.getPayload().sub === this.state.pub.user
+  isPubOwner = () => {
+    return Authorization.getPayload().sub === this.state.pub.user._id
   }
 
   render() {
@@ -102,11 +101,17 @@ export default class PubShow extends React.Component {
                     type="button">New Event</button>
                 </Link>
 
-                <Link to={`/pubs/${pubId}/edit`}>
-                  <button
-                    className="button"
-                    type="button">Edit Pub</button>
-                </Link>
+                {this.isPubOwner() &&
+                  <div>
+                    <Link to={`/pubs/${pubId}/edit`}>
+                      <button
+                        className="button"
+                        type="button">Edit Pub</button>
+                    </Link>
+                    <button className="button" onClick={this.handleDelete}>Delete Pub</button>
+                  </div>}
+
+
               </div>
               : null}
 
@@ -170,10 +175,7 @@ export default class PubShow extends React.Component {
 
 
         </div>
-        {/* if we want to add reviews/comments we can look at this */}
-        {/* <div className="reviews">
-        <Review />
-      </div> */}
+
       </>
     )
   }
