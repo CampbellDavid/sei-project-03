@@ -82,9 +82,6 @@ export default class PubShow extends React.Component {
     return (
       <>
         <div className="pub-show">
-
-
-
           <div className="pub-info">
             <h1>{pub.name}</h1>
             <StarRating />
@@ -116,9 +113,6 @@ export default class PubShow extends React.Component {
 
               </div>
               : null}
-
-              
-
           </div>
 
           <div className="sidebar">
