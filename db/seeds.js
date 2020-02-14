@@ -273,7 +273,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
           },
           {
             name: 'The Pride of Spitalfields',
-            image: 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/11/28/15/pride-.jpg?w968',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSdAyr3k0EAvddGpzKNvy5bmXj_zRcEgaES5gYVW6rs8fbFdd8H',
             city: 'London',
             streetName: '3 Heneage St, Spitalfields',
             postcode: 'E1 5LJ',
