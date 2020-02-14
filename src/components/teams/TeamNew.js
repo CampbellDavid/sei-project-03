@@ -37,7 +37,6 @@ export default class TeamNew extends React.Component {
   render() {
     return (
       <>
-      <p>New Team Page</p>
       <TeamForm 
         team={this.state.team}
         handleChange={this.handleChange}

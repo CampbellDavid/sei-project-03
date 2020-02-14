@@ -64,7 +64,6 @@ class TeamCard extends React.Component {
           <div className="card-info">
             <h2>{team.teamName}</h2>
           </div>
-          <h2>{team.event}</h2>
           <h3>Captain: {team.captain.username}</h3>
           <h3>Members: {team.members.map((member, i) => {
             return <li key={i}><Link to={`/profiles/${member._id}`}>{member.username}</Link></li>

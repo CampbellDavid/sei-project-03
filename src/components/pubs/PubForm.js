@@ -98,10 +98,12 @@ const PubForm = ({ data, handleChange, handleSubmit }) => {
             required/>
         </div>
         <div className="form-div">
+          <label>* required field</label>
           <ImageUpload
             labelText="Upload Image"
             handleChange={handleChange}
-            fieldName="image"/>
+            fieldName="image"
+            required/>
         
         </div>
         <div className="button-div">
