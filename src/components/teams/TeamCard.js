@@ -24,7 +24,7 @@ class TeamCard extends React.Component {
     const teamId = this.props._id
     try {
       const res = await axios.get(`/api/teams/${teamId}`)
-      console.log('DATA FOR CARD', res.data)
+      
       this.setState({ team: res.data })
     } catch (error) {
       this.setState({ errors: error.res.data.errors })
@@ -35,7 +35,7 @@ class TeamCard extends React.Component {
     e.preventDefault()
 
     const userId = Authorization.getPayload().sub
-    console.log(userId)
+    
     const membersArr = this.state.team.members
     try {
       const response = await axios.get(`/api/profiles/${userId}`)
@@ -44,20 +44,21 @@ class TeamCard extends React.Component {
       membersArr.some(member => member._id === userId) ?
         membersArr.splice(index, 1) :
         membersArr.push(response.data)
-      this.setState({ members: membersArr })
+      this.setState({ 
+        members: membersArr, 
+        captain: membersArr[0]
+      })
     } catch (err) {
       console.log(err)
     }
   }
 
 
-
-
   render() {
     const userId = Authorization.getPayload().sub
     const { team } = this.state
-    console.log(this.state)
-
+    console.log(this.state.team.members[0])
+    console.log(this.state.team.captain.username)
     return (
       <>
         <div className="card">

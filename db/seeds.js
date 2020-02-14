@@ -64,28 +64,28 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdUsers.length)} users created`)
         return Team.create([
           {
-            captain: createdUsers[0],
+            // captain: createdUsers[0],
             teamName: 'Inquizitours',
             // event: '5e44498928eeec38c5183622',
-            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
+            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
             user: createdUsers[0]
           }, {
-            captain: createdUsers[1],
+            // captain: createdUsers[1],
             teamName: 'Beijing Team',
             // event: '5e44498928eeec38c5183621',
-            members: [createdUsers[0], createdUsers[2], createdUsers[3]],
+            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
             user: createdUsers[1]
           }, {
-            captain: createdUsers[2],
+            // captain: createdUsers[2],
             teamName: 'Copenhagen Team',
             // event: '5e44498928eeec38c5183623',
-            members: [createdUsers[0], createdUsers[1], createdUsers[3]],
+            members: [createdUsers[2], createdUsers[3], createdUsers[0]],
             user: createdUsers[2]
           }, {
-            captain: createdUsers[3],
+            // captain: createdUsers[3],
             teamName: 'London Team',
             // event: '5e44498928eeec38c5183620',
-            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
+            members: [createdUsers[3], createdUsers[0], createdUsers[1]],
             user: createdUsers[3]
           }
         ])
@@ -273,7 +273,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
           },
           {
             name: 'The Pride of Spitalfields',
-            image: 'https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/11/28/15/pride-.jpg?w968',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSdAyr3k0EAvddGpzKNvy5bmXj_zRcEgaES5gYVW6rs8fbFdd8H',
             city: 'London',
             streetName: '3 Heneage St, Spitalfields',
             postcode: 'E1 5LJ',
