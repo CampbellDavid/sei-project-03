@@ -64,28 +64,28 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdUsers.length)} users created`)
         return Team.create([
           {
-            captain: createdUsers[0],
+            // captain: createdUsers[0],
             teamName: 'Inquizitours',
             // event: '5e44498928eeec38c5183622',
-            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
+            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
             user: createdUsers[0]
           }, {
-            captain: createdUsers[1],
+            // captain: createdUsers[1],
             teamName: 'Beijing Team',
             // event: '5e44498928eeec38c5183621',
-            members: [createdUsers[0], createdUsers[2], createdUsers[3]],
+            members: [createdUsers[1], createdUsers[2], createdUsers[3]],
             user: createdUsers[1]
           }, {
-            captain: createdUsers[2],
+            // captain: createdUsers[2],
             teamName: 'Copenhagen Team',
             // event: '5e44498928eeec38c5183623',
-            members: [createdUsers[0], createdUsers[1], createdUsers[3]],
+            members: [createdUsers[2], createdUsers[3], createdUsers[0]],
             user: createdUsers[2]
           }, {
-            captain: createdUsers[3],
+            // captain: createdUsers[3],
             teamName: 'London Team',
             // event: '5e44498928eeec38c5183620',
-            members: [createdUsers[0], createdUsers[1], createdUsers[2]],
+            members: [createdUsers[3], createdUsers[0], createdUsers[1]],
             user: createdUsers[3]
           }
         ])
