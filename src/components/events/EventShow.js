@@ -44,7 +44,7 @@ export default class EventShow extends React.Component {
       <>
         <div className="event-show">
           <h1>{this.state.event.pub}</h1>
-          <h2>Join a team at this event!</h2>
+          <h2 className="join">Join a team at this event!</h2>
           {this.state.teams.teams.map(team => <TeamCard key={team._id} {...team} />)}
         </div>
 
