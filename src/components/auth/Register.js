@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
+import FormErrors from './FormErrors'
 import ImageUpload from '../common/ImageUpload'
 
 export default class Register extends React.Component {
@@ -17,13 +18,54 @@ state = {
     gender: '',
     quizStrengths: '',
     profileImage: ''
-  }
+  }, 
+  emaiValid: false,
+  formValid: false,
+  passwordValid: false,
+  formErrors: { email: '', password: '' }
 }
 
 handleChange = e => {
-  
-  const data = { ...this.state.data, [e.target.name]: e.target.value } 
-  this.setState({ data })
+  const name = e.target.name
+  const value = e.target.value 
+  const data = { ...this.state.data, [name]: value } 
+  this.setState({ data },
+    () => {
+      this.validateField(name, value)
+    } )
+}
+
+
+validateField(fieldName, value) {
+  let fieldValidationErrors = this.state.formErrors
+  let emailValid = this.state.emailValid
+  let passwordValid = this.state.passwordValid
+
+  switch (fieldName) {
+    case 'email': 
+      emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+      fieldValidationErrors.email = emailValid ? '' : ' is invalid'
+      break
+    case 'password':
+      passwordValid = value.length >= 1
+      fieldValidationErrors.password  = passwordValid ? '' : ' is too short'
+      break
+    default: 
+      break
+  }
+  this.setState({
+    formErrors: fieldValidationErrors, 
+    emailValid: emailValid,
+    passwordValid: passwordValid
+  }, this.validateForm)
+}
+
+validateForm() {
+  this.setState({ formValid: this.state.emailValid && this.state.passwordValid })
+}
+
+errorClass(error) {
+  return (error.length === 0 ? '' : 'has-error')
 }
 
 handleSubmit = async e => {
@@ -36,6 +78,10 @@ handleSubmit = async e => {
   }
 }
 
+//! register form validation
+//* so far we have email that requires email format (i.e., an @ symbol) 
+//* emails should be unique, but when someone uses the same email to register, they fail, but there's no error message telling them why they fail to register
+
 render() {
   return (
     <section className="form">
@@ -43,6 +89,9 @@ render() {
       <form
         onSubmit={this.handleSubmit}
       >
+        <div className="panel panel-default">
+          <FormErrors formErrors={this.state.formErrors} />
+        </div>
         <div className="form-div">
           <input
             onChange={this.handleChange}
@@ -126,7 +175,7 @@ render() {
         <div className="button-div">
           <button
             className="button"
-            type="submit">
+            type="submit" disabled={!this.state.formValid}>
               Register</button>
         </div>
       </form>
