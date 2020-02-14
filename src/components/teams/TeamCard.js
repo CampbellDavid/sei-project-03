@@ -87,6 +87,3 @@ class TeamCard extends React.Component {
 }
 
 export default TeamCard
-
-// TODO: fix filter method
-// TODO: new team function
