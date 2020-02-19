@@ -20,18 +20,17 @@ export default class ImageUpload extends React.Component {
     const { image } = this.state
     return (
       <>
-      {image ?
-        <div>
-          <img src={image} />
-        </div>
-        :
-      <>
-      {/* <label>{this.props.labelText}</label> */}
-      <input type="file"
-        onChange={this.handleUpload} />
+        {image ?
+          <div>
+            <img src={image} />
+          </div>
+          :
+          <>
+            <input type="file"
+              onChange={this.handleUpload} />
+          </>
+        }
       </>
-      }
-  </>
     )
   }
 }

@@ -73,20 +73,9 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
         </div>
         <div className="form-div">
           <ImageUpload
-            // labelText="Upload Image"
             handleChange={handleChange}
             fieldName="image" />
         </div>
-
-        {/* <div className="form-div">
-          <label>Profile Image:</label>
-          <input
-            onChange={handleChange}
-            placeholder="Profile Image"
-            name="profileImage" 
-            value={user.profileImage}
-            required/>
-        </div> */}
 
         <div className="button-div">
           <button
@@ -100,5 +89,3 @@ const ProfileForm = ({ user, handleChange, handleSubmit }) => {
 }
 
 export default ProfileForm
-
-// TODO: add coontrol field

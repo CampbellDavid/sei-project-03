@@ -24,7 +24,6 @@ export default class PubNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const data = { ...this.state.data, [name]: value }
-    console.log(data)
     this.setState({ data })
   }
 
@@ -34,7 +33,6 @@ export default class PubNew extends React.Component {
       const res = await axios.post('/api/pubs', this.state.data, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
       })
-      console.log(res.data)
       this.props.history.push(`/pubs/${res.data._id}`)
     } catch (error) {
       console.log(error)
@@ -44,11 +42,11 @@ export default class PubNew extends React.Component {
   render() {
     return (
       <>
-      <h1>Create a new pub!</h1>
-      <PubForm 
-        data={this.state.data}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
+        <h1>Create a new pub!</h1>
+        <PubForm
+          data={this.state.data}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit} />
       </>
     )
   }

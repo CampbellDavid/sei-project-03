@@ -1,9 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-
 import TeamCard from '../teams/TeamCard'
-// import TeamNew from '../teams/TeamNew'
 import { Link } from 'react-router-dom'
 import Authorization from '../../../lib/authorization'
 
@@ -21,15 +19,12 @@ export default class EventShow extends React.Component {
         axios.get(`/api/events/${eventId}`),
         axios.get(`/api/events/${eventId}/teams`)
       ])
-
         .then(axios.spread((eventReq, teamsReq) => {
           this.setState({
             event: eventReq.data,
             teams: teamsReq.data
           })
-
         }))
-
     } catch (error) {
       console.log(error)
     }
@@ -38,8 +33,6 @@ export default class EventShow extends React.Component {
   render() {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
-    console.log(this.state.event)
-    console.log(this.state.teams)
     return (
       <>
         <div className="event-show">
@@ -54,11 +47,7 @@ export default class EventShow extends React.Component {
           </Link>
           : null}
 
-
-
       </>
     )
   }
 }
-
-// double embedded 'teams' - try to fix in back end.. works so leave til end

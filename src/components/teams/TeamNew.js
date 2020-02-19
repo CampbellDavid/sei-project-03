@@ -12,7 +12,6 @@ export default class TeamNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const team = { ...this.state.team, [name]: value }
-    console.log(team)
     this.setState({ team })
   }
 
@@ -33,10 +32,10 @@ export default class TeamNew extends React.Component {
   render() {
     return (
       <>
-      <TeamForm 
-        team={this.state.team}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
+        <TeamForm
+          team={this.state.team}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit} />
       </>
     )
   }

@@ -1,65 +1,57 @@
 import React from 'react'
 
-
-//TODO: Pub Name input to be autopopulated somehow
-
 const EventForm = ({ data, handleChange, handleSubmit }) => {
   return (
     <div>
       <h1>Create a new quiz event at this pub!</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-div">
-          {/* <label>Pub Name:</label> */}
           <input
             onChange={handleChange}
             placeholder="Pub"
-            name="pub" 
+            name="pub"
             value={data.pub}
-            required/>
+            required />
         </div>
         <div className="form-div">
-          {/* <label>Entry Fee:</label> */}
           <input
             onChange={handleChange}
             placeholder="£"
-            name="entryFee" 
+            name="entryFee"
             value={data.entryFee}
-            required/>
+            required />
         </div>
         <div className="form-div">
-          {/* <label>Date of Quiz:</label> */}
           <input
             onChange={handleChange}
             type="date"
             placeholder="DD/MM/YY"
-            name="quizDay" 
+            name="quizDay"
             value={data.quizDay}
-            required/>
+            required />
         </div>
         <div className="form-div">
-          {/* <label>Time of Quiz:</label> */}
           <input
             type="time"
             onChange={handleChange}
             placeholder="Time"
-            name="quizTime" 
+            name="quizTime"
             value={data.quizTime}
-            required/>
+            required />
         </div>
         <div className="form-div">
-          {/* <label>Postcode:</label> */}
           <input
             onChange={handleChange}
             placeholder="Postcode"
-            name="postcode" 
+            name="postcode"
             value={data.postcode}
-            required/>
+            required />
         </div>
         <div className="button-div">
           <button
             className="button"
             type="submit">
-              Submit</button>
+            Submit</button>
         </div>
       </form>
     </div>

@@ -55,19 +55,16 @@ export default class EventIndex extends React.Component {
 
   async getPostcodes() {
     const postcodes = this.state.events.map(event => {
-      console.log('POSTCODE', event.postcode)
       return event.postcode
     })
     const res = await axios.post(
       'https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes',
       { postcodes }
     )
-    console.log(res.data.result)
     this.setState({ postcodes: res.data.result })
   }
 
   render() {
-    console.log('events', this.state.events)
     if (!this.state.events) return null
     if (!this.state.postcodes) return null
     return (
@@ -85,7 +82,7 @@ export default class EventIndex extends React.Component {
 
             {Authorization.isAuthenticated() ?
               <Link to="/events/new">
-                <button type="button" 
+                <button type="button"
                   className="button">New Event</button>
               </Link>
               : null}

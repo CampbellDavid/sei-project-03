@@ -7,10 +7,7 @@ function index(req, res) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
-        // populate: ({
-        //   path: 'captain'
-        // })
+        path: 'teams'
       })
     })
     .populate({
@@ -52,10 +49,7 @@ function show(req, res, next) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
-        // populate: ({
-        //   path: 'captain'
-        // })
+        path: 'teams'
       })
     })
     .populate({
@@ -131,7 +125,6 @@ function reviewDelete(req, res) {
     .then(pub => {
       if (!pub) return res.status(404).json({ message: 'Not Found ' })
       const review = pub.reviews.id(req.params.reviewId)
-      console.log(review)
       if (!review) return res.status(404).json({ message: 'Not Found ' })
       if (!review.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
       review.remove()
@@ -157,5 +150,3 @@ function starRating(req, res) {
 }
 
 module.exports = { index, create, show, update, destroy, reviewCreate, reviewDelete, starRating }
-
-// TODO: toggle star rating function

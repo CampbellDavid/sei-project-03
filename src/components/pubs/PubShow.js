@@ -16,7 +16,6 @@ export default class PubShow extends React.Component {
     const pubId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/pubs/${pubId}`)
-      console.log(res.data)
       this.setState({ pub: res.data })
     } catch (err) {
       console.log(err)
@@ -38,9 +37,7 @@ export default class PubShow extends React.Component {
   handleDeleteReview = async (e) => {
     e.preventDefault()
     const pubId = this.props.match.params.id
-    console.log('ID', e.target.name)
     const reviewId = e.target.name
-    console.log(reviewId)
     try {
       await axios.delete(`/api/pubs/${pubId}/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
@@ -78,7 +75,7 @@ export default class PubShow extends React.Component {
     if (!this.state.pub) return null
     const { pub, text } = this.state
     const pubId = this.props.match.params.id
-    console.log(this.state.pub.reviews.length)
+
     return (
       <>
         <div className="pub-show">
@@ -133,7 +130,7 @@ export default class PubShow extends React.Component {
           </div>
 
           <div className="reviews">
-          
+
             <ul>{pub.reviews.length < 1 ?
               null :
               pub.reviews.map(review => (
@@ -159,14 +156,12 @@ export default class PubShow extends React.Component {
                 value={text}
               />
             </div>
-           
+
             <div>
               <button className="button" type="submit">Add</button>
             </div>
-           
+
           </form>}
-
-
 
         </div>
 

@@ -5,10 +5,8 @@ const PubCard = ({ _id, name, image }) => (
   <>
     <Link to={`/pubs/${_id}`}>
       <div className="card">
-        
         <div className="card-info">
           <h3>{name}</h3>
-          {/* <p>Rating: {starRating}</p> */}
         </div>
         <div className="colour-header">
           <figure className="image">

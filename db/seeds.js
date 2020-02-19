@@ -35,7 +35,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             gender: 'Male',
             quizStrengths: ['Gen Ed'],
             profileImage: 'https://i.insider.com/59c387d3ba785e34910e27b4?width=1100&format=jpeg&auto=webp'
-          },{
+          }, {
             username: 'Bill Clinton',
             email: '3@email.com',
             password: '3',
@@ -46,7 +46,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             age: 28,
             gender: 'Female',
             quizStrengths: ['Geography', 'Math']
-          },{
+          }, {
             username: 'Donald Trump',
             email: '4@email.com',
             password: '4',
@@ -64,27 +64,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
         console.log(`${'🍺'.repeat(createdUsers.length)} users created`)
         return Team.create([
           {
-            // captain: createdUsers[0],
             teamName: 'Inquizitours',
-            // event: '5e44498928eeec38c5183622',
             members: [createdUsers[0], createdUsers[1], createdUsers[2]],
             user: createdUsers[0]
           }, {
-            // captain: createdUsers[1],
             teamName: 'Beijing Team',
-            // event: '5e44498928eeec38c5183621',
             members: [createdUsers[1], createdUsers[2], createdUsers[3]],
             user: createdUsers[1]
           }, {
-            // captain: createdUsers[2],
             teamName: 'Copenhagen Team',
-            // event: '5e44498928eeec38c5183623',
             members: [createdUsers[2], createdUsers[3], createdUsers[0]],
             user: createdUsers[2]
           }, {
-            // captain: createdUsers[3],
             teamName: 'London Team',
-            // event: '5e44498928eeec38c5183620',
             members: [createdUsers[3], createdUsers[0], createdUsers[1]],
             user: createdUsers[3]
           }
@@ -143,9 +135,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 8,
             quizDay: 'Tuesday',
             quizTime: '18:30',
-            // starRating: [1, 2, 3, 4, 5, 5, 5, 5],
             averagePintCost: '£6.50',
-            // reviews: ['This was great', 'great service', 'quiz was awesome'],
             events: [createdEvents[0]],
             user: createdEvents[0].user
           }, {
@@ -160,9 +150,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 6,
             quizDay: 'Thursday',
             quizTime: '20:00',
-            // starRating: [3, 2, 4, 1],
             averagePintCost: '£5.00',
-            // reviews: [],
             events: [createdEvents[1]],
             user: createdEvents[1].user
           }, {
@@ -177,9 +165,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 6,
             quizDay: 'Wednesday',
             quizTime: '20:00',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£5.00',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
             events: [createdEvents[2]],
             user: createdEvents[2].user
           }, {
@@ -194,12 +180,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 5,
             quizDay: 'Wednesday',
             quizTime: '20:00',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£5.80',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
             events: [createdEvents[3]],
             user: createdEvents[3].user
-          },{
+          }, {
             name: 'The George Inn',
             image: 'https://i1.wp.com/bitaboutbritain.com/wp-content/uploads/2016/03/George_04.jpg?resize=700%2C525',
             city: 'London',
@@ -211,12 +195,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 5,
             quizDay: 'Monday',
             quizTime: '18:30',
-            // starRating: [1, 2, 3, 4, 5, 5, 5, 5],
             averagePintCost: '£6',
-            // reviews: ['This was great', 'great service', 'quiz was awesome'],
-            // events: [createdEvents[1]],
             user: createdEvents[1].user
-          } ,
+          },
           {
             name: 'The Nags Head',
             image: 'https://i.pinimg.com/originals/9f/50/9d/9f509d21afccfbd53dfbe619eece9a47.jpg',
@@ -229,10 +210,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 5,
             quizDay: 'Monday',
             quizTime: '19:00',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£4.80',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
-            // events: [createdEvents[5]],
             user: createdEvents[3].user
           },
           {
@@ -247,10 +225,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 5,
             quizDay: 'Tuesday',
             quizTime: '19:30',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£5.00',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
-            // events: [createdEvents[6]],
             user: createdEvents[0].user
           },
           {
@@ -265,10 +240,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 5,
             quizDay: 'Tuesday',
             quizTime: '19:30',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£4.50',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
-            // events: [createdEvents[7]],
             user: createdEvents[2].user
           },
           {
@@ -283,13 +255,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
             maxTeamSize: 4,
             quizDay: 'Monday',
             quizTime: '19:30',
-            // starRating: [2, 3, 3, 3, 5],
             averagePintCost: '£4.50',
-            // reviews: ['Rollover jackpot to claim!', 'A bit quiet and not much atmosphere'],
-            // events: [createdEvents[8]],
             user: createdEvents[2].user
           }
-    
+
         ])
       })
       .then(createdPub => {
@@ -299,5 +268,3 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true },
       .finally(() => mongoose.connection.close())
   })
 
-// Have removed array of starRating and reviews for purpose of seeding, as each item requires user validation
-// for each review and rating - seed file would become too long. Will check when front end is running

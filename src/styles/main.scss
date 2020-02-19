@@ -1,6 +1,7 @@
 $pale: rgb(245, 238, 226);
 
-//! Common
+// Common
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,7 +27,6 @@ body {
   min-height: 100%;
   background-repeat: no-repeat;
   background-size: contain;
-  
 }
 
 section {
@@ -36,11 +36,12 @@ section {
 }
 
 li {
- list-style:none;
+  list-style:none;
 }
 
 
-//!Nav
+// Nav
+
 html, body, div, p, ul, li {
   margin: 0;
   padding: 0;
@@ -75,67 +76,66 @@ html, body, div, p, ul, li {
   text-decoration: none;
 }
 
-//!Home
+// Home
+
 .home {
-    background-image: url('https://www.bunchofgrapesborough.co.uk/youngs/uploads/sites/156/2018/09/bunchofgrapes-104-2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    .headline {
-      background-color: rgba(212, 218, 212, 0.5);
-      h1 {
-        font-size: 10vw;
-        color: white;
-      }
-      p {
-        font-size: 4vw;
-        color: white;
-        margin: 20;
-      }
+  background-image: url('https://www.bunchofgrapesborough.co.uk/youngs/uploads/sites/156/2018/09/bunchofgrapes-104-2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  .headline {
+    background-color: rgba(212, 218, 212, 0.5);
+    h1 {
+      font-size: 10vw;
+      color: white;
     }
+    p {
+      font-size: 4vw;
+      color: white;
+      margin: 20;
+    }
+  }
 }
 
 
-//!Map
+// Map
+
 .marker {
   background: none;
   border: none;
 }
+
 .marker img {
   width: 60px;
   height: 60px;
   border-radius:100%;
 }
 
-.index{
+.index {
   display: flex;
-  // background-color: red;
   flex-wrap: wrap;
 }
 
 .map-container {
   display: flex;
   width: 65vw;
-  // background-color: lightgreen;
   flex-wrap: wrap;
-  }
+}
 
 
-//! Pub & Event Cards
+// Pub & Event Cards
 
 .card-container {
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
   width: 35vw;
   overflow: scroll;
   height:100vh;
- 
   a {
     color: black;
     text-decoration: none;
@@ -156,7 +156,7 @@ html, body, div, p, ul, li {
   align-items: center;
 }
 
-.image img{
+.image img {
   width: 50px;
   height: 50px;
   border-radius:100%;
@@ -172,52 +172,49 @@ h3 {
   }
 }
 
-
 p {
   margin: 5px;
 }
 
-//!Pub Show
+// Pub Show
+
 .pub-show {
   display: flex;
-  // max-width: 600px;
   margin: 50px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .pub-info {
- border: medium solid black;
- width: 60%;
- margin: 10px;
- background-color: $pale;
- h1 {
-   color: black;
- }
- p {
-   padding: 10px;
- }
- a {
-   padding: 10px;
-   margin: 10px;
- }
+  border: medium solid black;
+  width: 60%;
+  margin: 10px;
+  background-color: $pale;
+  h1 {
+    color: black;
+  }
+  p {
+    padding: 10px;
+  }
+  a {
+    padding: 10px;
+    margin: 10px;
+  }
 }
 
 .pub-image {
-display: flex;
-justify-content: center;
-background-image: contain;
+  display: flex;
+  justify-content: center;
+  background-image: contain;
 }
 
-.pub-image1{
+.pub-image1 {
   max-width:80%;
-max-height:100%;
-
+  max-height:100%;
 }
 
 .button-list {
   display: flex;
-  
 }
 
 .sidebar {
@@ -240,12 +237,9 @@ max-height:100%;
 }
 
 .reviews {
-  // width: 55%;
   width: 73vw;
-  // background-color: $pale;
-  // border: medium solid black;
   margin: 50px;
-  li{
+  li {
     display: flex;
     border: medium  solid black;
     background-color: $pale;
@@ -257,7 +251,7 @@ max-height:100%;
   }
 }
 
-.review-form{
+.review-form {
   display: flex;
   flex-direction: column;
   background-color: $pale;
@@ -272,21 +266,14 @@ max-height:100%;
   width: 600px;
   height: 100px;
   text-align: center;
+ }
 
 }
-
-}
-
-
 
 ul {
   list-style: none;
   color: white;
 }
-
-// ul li {
-//   background-color: purple;
-// }
 
 .event-show{
   .join{
@@ -296,15 +283,14 @@ ul {
 }
 
 
-//PROFILES
+// Profiles
 
 .profile-container{
   display: flex;
   justify-content: center;
   align-content: center;
   height: 400px;
-
-  .profile-card{
+  .profile-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,7 +300,7 @@ ul {
     margin: 10px;
     background-color: $pale;
     margin: 30px;
-    h2{
+    h2 {
       font-size: 3em;
     }
     .profile-bio{
@@ -322,25 +308,22 @@ ul {
       align-items: center;
       padding: 20px;
       justify-content: space-evenly;
-      p{
+      p {
         font-size: 1.5em;
         span{
           font-weight: 600;
         }
       }
-      .profile-image{
+      .profile-image {
         width: 250px;
         height: 150px;
-        // border-radius: 100%;
       }
-      
     }
   }
-
-  
 }
 
-//! Forms
+// Forms
+
 form {
   display: flex;
   flex-direction: column;
@@ -357,6 +340,7 @@ form {
     margin: 0px;
   }
 }
+
 .form-div {
   list-style-type: none;
   display: flex;
@@ -364,6 +348,7 @@ form {
   padding: .5em;
   border-radius: 10px;
 }
+
 .button-div {
   display: flex;
   justify-content: center;
@@ -385,6 +370,7 @@ form {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 20px;
   }
+
 .button:hover {
   border-top-color: orangered;
   background: orangered;
@@ -431,12 +417,14 @@ form {
 	appearance: none;
 	background-color: #fff;
 }
+
 .form-div > option {
   padding: 1.5em 4em 1.5em 0;
   margin: 0.5em 3em;
 }
 
-//! Footer
+
+// Footer
 
 .footer{
   background-color: black;
@@ -449,6 +437,3 @@ form {
   text-align: center;
   width: 100%;
 }
-
-
-

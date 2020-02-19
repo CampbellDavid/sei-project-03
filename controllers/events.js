@@ -5,10 +5,6 @@ function index(req, res) {
   Event
     .find()
     .populate('user')
-    // .populate({
-    //   path: 'teams',
-    //   populate: ({ path: 'captain' })
-    // })
     .populate({
       path: 'teams',
       populate: ({ path: 'members' })
@@ -54,24 +50,25 @@ function show(req, res, next) {
   Event
     .findById(req.params.id)
     .populate('user')
-    // .populate({
-    //   path: 'teams',
-    //   populate: ({ path: 'captain' })
-    // })
     .populate({
       path: 'teams',
-      populate: ({ path: 'members' })
+      populate: ({
+        path: 'members'
+      })
     })
     .populate({
       path: 'teams',
-      populate: ({ path: 'event' })
+      populate: ({
+        path: 'event'
+      })
     })
     .populate({
       path: 'teams',
-      populate: ({ path: 'user' })
+      populate: ({
+        path: 'user'
+      })
     })
     .then(event => {
-      console.log(event)
       if (!event) return res.status(404).json({ message: 'Not Found' })
       res.status(200).json(event)
     })

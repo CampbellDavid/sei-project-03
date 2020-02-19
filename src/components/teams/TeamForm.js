@@ -5,20 +5,20 @@ const TeamForm = ({ handleChange, handleSubmit }) => {
     <section className="form">
       <h1>Create a new team for this event!</h1>
       <form onSubmit={handleSubmit}>
-        
+
         <div className="form-div">
           <input
             onChange={handleChange}
             placeholder="Team Name"
             name="teamName"
-            required/>
+            required />
         </div>
-       
+
         <div className="button-div">
           <button
             className="button"
             type="submit">
-              Submit</button>
+            Submit</button>
         </div>
       </form>
     </section>

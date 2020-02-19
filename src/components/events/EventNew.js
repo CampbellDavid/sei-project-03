@@ -17,7 +17,6 @@ export default class EventNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const data = { ...this.state.data, [name]: value }
-    console.log(data)
     this.setState({ data })
   }
 
@@ -36,11 +35,10 @@ export default class EventNew extends React.Component {
   render() {
     return (
       <section className="form">
-    
-        <EventForm 
+        <EventForm
           data={this.state.data}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}/>
+          handleSubmit={this.handleSubmit} />
       </section>
     )
   }

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import Authorization from '../../../lib/authorization'
 
 import PubMapComp from './PubMapComp'
-// import SearchBar from '../common/SearchBar'
 import PubCard from './PubCard'
 
 
@@ -19,7 +18,6 @@ export default class PubIndex extends React.Component {
       longitude: 0.1278,
       zoom: 9
     }
-    // showPopup: true
   }
   mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
   mapRef = React.createRef()
@@ -62,14 +60,11 @@ export default class PubIndex extends React.Component {
       'https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes',
       { postcodes }
     )
-    // console.log(res.data.result)
     this.setState({ postcodes: res.data.result })
   }
   render() {
     if (!this.state.postcodes) return null
     if (!this.state.pubs) return null
-    // console.log('pubs', this.state.pubs)
-    // console.log('postcodes', this.state.postcodes)
     return (
       <section>
         <div className="title">
@@ -77,7 +72,6 @@ export default class PubIndex extends React.Component {
         </div>
 
         <div className="index" >
-          {/* <SearchBar /> */}
           <div className="card-container">
             {this.state.pubs.map(pub => (
               <PubCard key={pub._id} {...pub} />
@@ -97,17 +91,17 @@ export default class PubIndex extends React.Component {
             />
           </div>
 
-          
+
           <div>
             {Authorization.isAuthenticated() ?
               <Link to="/pubs/new">
                 <button
                   className="button"
                   type="button">New Pub</button>
-              </Link> 
+              </Link>
               : null}
           </div>
-         
+
         </div>
       </section>
     )

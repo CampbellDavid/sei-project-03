@@ -1,8 +1,8 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const  { secret } = require('../config/environment')
+const { secret } = require('../config/environment')
 
-function register(req, res) { 
+function register(req, res) {
   User
     .create(req.body)
     .then(user => res.status(201).json({ 'message': `Registered with username: ${user.username}` }))
@@ -39,7 +39,7 @@ function show(req, res, next) {
   User
     .findById(req.params.id)
     .populate('user')
-    .then(profile => { 
+    .then(profile => {
       if (!profile) throw new Error('Not Found')
       res.status(200).json(profile)
     })
@@ -55,7 +55,7 @@ function update(req, res, next) {
       Object.assign(profile, req.body)
       return profile.save()
     })
-    .then(updatedProfile => res.status(201).json(updatedProfile)) 
+    .then(updatedProfile => res.status(201).json(updatedProfile))
     .catch(next)
 }
 
@@ -73,7 +73,7 @@ function destroy(req, res) {
     .catch(err => res.json(err))
 }
 
-function sendMessage(req, res) { // necessary??
+function sendMessage(req, res) {
   User
     .findById(req.params.id)
     .then(profile => {
@@ -87,4 +87,4 @@ function sendMessage(req, res) { // necessary??
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login, displayProfileCreations, show, update, destroy, sendMessage  }
+module.exports = { register, login, displayProfileCreations, show, update, destroy, sendMessage }

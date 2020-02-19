@@ -2,11 +2,11 @@ import React from 'react'
 
 const SearchBar = ({ onChange }) => (
   <div className="field control">
-    <input 
-      type="text" 
-      className="input" 
+    <input
+      type="text"
+      className="input"
       placeholder="Search..."
-      onChange={ e => {
+      onChange={e => {
         const userInput = e.target.value
         onChange(userInput)
       }}

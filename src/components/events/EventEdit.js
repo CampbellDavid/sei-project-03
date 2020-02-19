@@ -17,7 +17,6 @@ export default class EventEdit extends React.Component {
     const eventId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/events/${eventId}`)
-      console.log(res.data)
       this.setState({ data: res.data })
     } catch (error) {
       console.log(error)
@@ -45,10 +44,10 @@ export default class EventEdit extends React.Component {
 
   render() {
     return (
-      <EventForm 
+      <EventForm
         data={this.state.data}
         handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}/>
+        handleSubmit={this.handleSubmit} />
     )
   }
 }

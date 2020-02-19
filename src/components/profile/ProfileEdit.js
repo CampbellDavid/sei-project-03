@@ -23,7 +23,6 @@ class ProfileEdit extends React.Component {
     const userId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/profiles/${userId}`)
-      console.log(res.data)
       this.setState({ user: res.data })
     } catch (error) {
       console.log(error)
@@ -66,12 +65,3 @@ class ProfileEdit extends React.Component {
 }
 
 export default ProfileEdit
-
-
-//TODO
-//* after login, redirect to user profile page, show the following information
-
-//* embed team card (if currentUser belongs to certain teams)
-
-//* team card should contain links to user profiles (non-secure route)
-//* public user profiles have a direct message button => DirectMessage component

@@ -18,15 +18,14 @@ export default class PubEdit extends React.Component {
       quizDay: '',
       quizTime: '',
       averagePintCost: ''
-    }, 
+    },
     errors: {}
   }
-  
+
   async componentDidMount() {
     const pubId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/pubs/${pubId}`)
-      console.log('this console',res.data)
       this.setState({ data: res.data })
     } catch (error) {
       console.log(error)
@@ -50,14 +49,14 @@ export default class PubEdit extends React.Component {
     } catch (error) {
       this.setState({ errors: error.response.data.errors })
     }
-  } 
+  }
 
   render() {
     return (
       <>
         <h1>Edit a pub page</h1>
         <h1>Edit a pub!</h1>
-        <PubForm 
+        <PubForm
           data={this.state.data}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
