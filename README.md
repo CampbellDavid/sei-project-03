@@ -3,7 +3,7 @@
 # pub-quiz-sei-project
 Software Engineneering Immersive: Project 3 (Group Project)
 
-This was a group project that we were assigned as a team of four, for the Software Engineering Immersive at General Assembly London (Week 9).
+This was a group project that we were assigned as a team of four, for the Software Engineering Immersive at General Assembly London (Week 9) built with React.js and Node.js.
 
 ## Team members:
 - Adrian Cusniriuc (https://github.com/Adriancusniriuc)
@@ -89,14 +89,16 @@ The frontend was developed using React and axios for communication with the back
 
 We structured the ten days we had as follows:
 Day 1:
-- Planning and assignment of tasks
+  - Planning and assignment of tasks
+
 Day 2:
-- Began backend development
-- Seed development
-- Tests
-- Start of frontend development
+  - Began backend development
+  - Seed development
+  - Tests
+  - Start of frontend development
+
 Day 3: 
 
 ## Challenges & future improvements
 
-Text Here
+Text Here (list todo's from previous code)
