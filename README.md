@@ -34,24 +34,28 @@ This was a group project that we were assigned as a team of four, for the Softwa
 
 The user is required to register if they intend to make any posts to any of our database models. For instance, the 'Like' and 'Add Pub' buttons on the Pub Show page will be invisible unless the user is registered and logged in. The register function also determined whether the email address is of valid format and will prompt the user in the case that they have entered and email address incorrectly. The interface also returns an error if the user has entered an email address that is associated with a pre-existing account.
 
-<img src="src/assets/profile.png" width=700> (add screenshot)
+<img src="src/assets/readme/register.png" width=700>
 
 #
 ## Profile
 
 The user profile has several attributes that the user has the option to complete. These include: favourite drinks, personality type, bio, age, gender, quiz strengths and an optional profile image. The profile image is hosted by Cloudinary.
 
-<img src="src/assets/profile.png" width=700> (add screenshot)
+<img src="src/assets/readme/register-cont.png" width=700>
 
 #
 ## Homepage
 
 The homepage is the first page the user will see when they navigate to the URL. It shows minimal content, such as logo, background image and the nav bar.
 
+<img src="src/assets/readme/home-page.png" width=700>
+
 #
 ## Posting/editing/deleting a new pub
 
 The user can post, edit and delete a pub once they are logged in. The new pub page will show the field of required informatiomn that the user needs to input for a new pub to be added. If the user wished to edit the pub, they will be navigated to the form with the fields pre-populated with the existing information. Note that only the user who created the pub has the ability to edit or delete it.
+
+<img src="src/assets/readme/pub-create.png" width=700>
 
 #
 ## Posting/editing/deleting a new event
@@ -62,6 +66,8 @@ The event schema is nested within the pub schema. This is because each event is 
 ## Posting/editing/deleting a new team
 
 The team schema is nested within the event schema, as each team belongs to a specific event. The team captain is shown as the user who created the team at first, however the captain is able to remove themselves and rejoin if they so wish. The 'captain' is set as the zero index of the team members array.
+
+<img src="src/assets/readme/team-create.png" width=700>
 
 #
 ## Other users
