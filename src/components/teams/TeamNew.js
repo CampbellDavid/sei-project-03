@@ -18,7 +18,6 @@ export default class TeamNew extends React.Component {
   handleSubmit = async e => {
     e.preventDefault()
     const eventId = this.props.match.params.id
-    console.log(eventId)
     try {
       await axios.post(`/api/events/${eventId}/teams`, this.state.team, {
         headers: { Authorization: `Bearer ${Authorization.getToken()}` }
