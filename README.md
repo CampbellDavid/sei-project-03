@@ -14,7 +14,7 @@ This was a group project that we were assigned as a team of four, for the Softwa
 ## Built With
 
 1. HTML5
-2. SCSS & Spectre
+2. SCSS
 3. JavaScript
    * ECMAScript6
    * React.js
