@@ -7,7 +7,7 @@ function index(req, res) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
+        path: 'teams'
         // populate: ({
         //   path: 'captain'
         // })
@@ -52,7 +52,7 @@ function show(req, res, next) {
     .populate({
       path: 'events',
       populate: ({
-        path: 'teams',
+        path: 'teams'
         // populate: ({
         //   path: 'captain'
         // })

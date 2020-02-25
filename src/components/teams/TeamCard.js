@@ -47,10 +47,11 @@ class TeamCard extends React.Component {
         
       } else {
         membersArr.push(response.data)
-      this.setState({ 
-        members: membersArr, 
-        captain: membersArr[0]
-      })
+        this.setState({ 
+          members: membersArr, 
+          captain: membersArr[0]
+        })
+      }
     } catch (err) {
       console.log(err)
     }
