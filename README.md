@@ -1,14 +1,16 @@
 ![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
 
 # pub-quiz-sei-project
+
 Software Engineering Immersive: Project 3 (Group Project)
 
 This was a group project that we were assigned as a team of four, for the Software Engineering Immersive at General Assembly London (Week 9) built with React.js and Node.js.
 
 ## Team members:
+
 - Adrian Cusniriuc (https://github.com/Adriancusniriuc)
 - Clare Roberts (https://github.com/flare222)
-- David Campbell (https://github.com/davidcampbell-01)
+- David Campbell (https://github.com/CampbellDavid)
 - Xuan Wang (https://github.com/mmxw)
 
 ## Built With
@@ -16,17 +18,17 @@ This was a group project that we were assigned as a team of four, for the Softwa
 1. HTML5
 2. SCSS
 3. JavaScript
-   * ECMAScript6
-   * React.js
-   * Node.js
-   * Express.js
-   * Axios
+   - ECMAScript6
+   - React.js
+   - Node.js
+   - Express.js
+   - Axios
 4. NoSQL
-   * MongoDB
+   - MongoDB
 5. Testing
-   * Manual: Insomnia
-   * Automated: Mocha & Chai
-5. GitHub
+   - Manual: Insomnia
+   - Automated: Mocha & Chai
+6. GitHub
 
 # User Experience
 
@@ -37,6 +39,7 @@ The user is required to register if they intend to make any posts to any of our 
 <img src="src/assets/screenshots/register.png" width=700>
 
 #
+
 ## Profile
 
 The user profile has several attributes that the user has the option to complete. These include: favourite drinks, personality type, bio, age, gender, quiz strengths and an optional profile image. The profile image is hosted by Cloudinary.
@@ -44,6 +47,7 @@ The user profile has several attributes that the user has the option to complete
 <img src="src/assets/screenshots/register-cont.png" width=700>
 
 #
+
 ## Homepage
 
 The homepage is the first page the user will see when they navigate to the URL. It shows minimal content, such as logo, background image and the nav bar.
@@ -51,6 +55,7 @@ The homepage is the first page the user will see when they navigate to the URL. 
 <img src="src/assets/screenshots/home-page.png" width=700>
 
 #
+
 ## Posting/editing/deleting a new pub
 
 The user can post, edit and delete a pub once they are logged in. The new pub page will show the field of required information that the user needs to input for a new pub to be added. If the user wished to edit the pub, they will be navigated to the form with the fields pre-populated with the existing information. Note that only the user who created the pub has the ability to edit or delete it.
@@ -58,6 +63,7 @@ The user can post, edit and delete a pub once they are logged in. The new pub pa
 <img src="src/assets/screenshots/pub-create.png" width=700>
 
 #
+
 ## Posting/editing/deleting a new event
 
 The event schema is nested within the pub schema. This is because each event is specific to a pub. For a user to create a new event, they must first log in and then navigate to the 'Events' or 'Pub Show' page, where they will be presented with a button that displays the form for a new event to be created. As with pub creation, each event can only be edited or deleted by the user that created it, however any user is able to create a team within the event.
@@ -65,6 +71,7 @@ The event schema is nested within the pub schema. This is because each event is 
 <img src="src/assets/screenshots/event-create.png" width=700>
 
 #
+
 ## Posting/editing/deleting a new team
 
 The team schema is nested within the event schema, as each team belongs to a specific event. The team captain is shown as the user who created the team at first, however the captain is able to remove themselves and re-join if they so wish. The 'captain' is set as the zero index of the team members array.
@@ -72,6 +79,7 @@ The team schema is nested within the event schema, as each team belongs to a spe
 <img src="src/assets/screenshots/team-create.png" width=700>
 
 #
+
 ## Planning
 
 -- BACKEND --
@@ -91,7 +99,8 @@ The frontend was developed using React.js and Axios for communication with the b
 The frontend is separated into six separate directories, all located within the 'components' directory which is located in 'src'. Each folder and nested file have been named to reflect the functionality of the file. For example, 'auth' contains files necessary for the correct execution of the login and register functions, and for the protection of access to certain member-only features within the site.
 
 Login is necessary for a user to access features such as the creation, edition and deletion of data within models; a user must be logged in to create a new event, pub or team. This was achieved through the development of the 'authorization.js' file in the 'lib' directory located in the back end. This file has been imported wherever a change to the page needs to reflect if the user is logged in and who the user is. For example, a post request to the 'teams' section of the API requires a token, reflected in the following section of code:
-``` handleSubmit = async e => {
+
+```handleSubmit = async e => {
     e.preventDefault()
     const eventId = this.props.match.params.id
     try {
@@ -106,6 +115,7 @@ Login is necessary for a user to access features such as the creation, edition a
 ```
 
 Meanwhile, a ternary statement was used to discern if the user was logged in to be able to show the button to create a new pub:
+
 ```
   {Authorization.isAuthenticated() ?
     <Link to="/pubs/new">
@@ -117,6 +127,7 @@ Meanwhile, a ternary statement was used to discern if the user was logged in to 
 ```
 
 The isOwner() identifier was used to discern if a user's profile belonged to the currently logged in user. If this is a match, the 'edit' button will appear:
+
 ```
 isOwner = () => Authorization.getPayload().sub === this.state.user._id
 
@@ -136,26 +147,31 @@ export default Profile
 
 We structured the ten days we had as follows:
 Day 1:
-  - Planning and assignment of tasks
+
+- Planning and assignment of tasks
 
 Day 2:
-  - Began backend development
-  - Seed development
-  - Tests
-  - Start of frontend development
+
+- Began backend development
+- Seed development
+- Tests
+- Start of frontend development
 
 Day 3 - Day 8:
-  - Continual changes to backend as issues were discovered
-  - Development of frontend
-  - Testing using Mocha and Chai
+
+- Continual changes to backend as issues were discovered
+- Development of frontend
+- Testing using Mocha and Chai
 
 Day 9:
- - Fixing errors so that minimum viable product can be showcased
- - Begin styling
+
+- Fixing errors so that minimum viable product can be showcased
+- Begin styling
 
 Day 10:
- - Continued amendments to code for added features
- - Finishing touches to styling
+
+- Continued amendments to code for added features
+- Finishing touches to styling
 
 ## Challenges & future improvements
 
