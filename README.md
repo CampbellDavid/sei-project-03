@@ -173,6 +173,32 @@ Day 10:
 - Continued amendments to code for added features
 - Finishing touches to styling
 
+## Successes and key learnings
+
+Project three posed significant challenges to all members of my team, as it was the first project where we were required to create a functional frontend and backend. I’m immensely proud of how quickly we established the backend component of the app, and also how we addressed any errors that were discovered during the course of production of the frontend.
+
+Locating the source of many errors was an obstacle, as my team were not as familiar with the workings of MongoDB as we were familiar with React.js. However, the fact that we successfully overcame obstacles with a speedy and can-do approach is testament to our abilities (as a collective team and as individuals) in terms of learning and coding.
+
+One large challenge we discovered was that many fields had to be 'populated' when they were nested within other datasets. The following code snippet illustrates this:
+
+```
+Pub
+  .find()
+  .populate('user')
+  .populate({
+    path: 'events',
+    populate: ({
+      path: 'teams'
+    })
+  })
+```
+
+Learning how to do this and applying it to all necessary areas of the code was a huge obstacle that we overcame and one of the key areas of backend development that we learned successfully.
+
+Additionally, the use of Git in the Command Line proved to be a significant obstacle that we each overcame. Communication here was key, as errors were often thrown which had to be resolved (for example, when discrepancies were displayed whilst pulling from the 'development' branch of the repository). This is a skill that we quickly learned and one that drastically improved by the end of the project.
+
+Amongst all the hard skills that we exercised during the development of this project, I also learned key leadership skills, exercised communication skills, time management skills and prioritisation skills.
+
 ## Challenges & future improvements
 
 I believe we produced an exceptional amount of work and to a high standard for the ten days we had to produce this project, working very well as a team with ambitious goals and a can-do approach to problem solving.
