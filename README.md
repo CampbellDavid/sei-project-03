@@ -82,9 +82,9 @@ The team schema is nested within the event schema, as each team belongs to a spe
 
 ## Planning
 
--- BACKEND --
+-- BACK END --
 
-The backend of the app was developed first and foremost using MongoDB. This was necessary in order for the functions to operate correctly and render properly on the frontend. A first structure of the backend was primarily developed, and changes were made throughout the duration of the project in response to issues that needed addressing and when functionality was added.
+The back end of the app was developed first and foremost using MongoDB. This was necessary in order for the functions to operate correctly and render properly on the front end. A first structure of the back end was primarily developed, and changes were made throughout the duration of the project in response to issues that needed addressing and when functionality was added.
 
 The following diagram illustrates the relationship between various models used within our database:
 
@@ -92,11 +92,11 @@ The following diagram illustrates the relationship between various models used w
 
 The above model demonstrates which data elements are nested within which model (found in the 'models' folder) and how they relate to the other. A dashed line with a triple-linear attachment to the model indicated that said model is supplied with many forms of the data coming from the connected model, whilst a dashed line with a single-linear attachment after indicated that said model is supplied with one form of the data coming from the connected model. For example, the 'pubs' model is connected to the 'star rating' model via a dashed line that is connected to the 'pubs' model using a singular connector, and the 'star rating' model using a triple connector, indicating that one pub can have many star ratings, and a single star rating can only belong to one pub.
 
--- FRONTEND --
+-- FRONT END --
 
-The frontend was developed using React.js and Axios for communication with the backend. We started developing the frontend on the second day of the project, in order to maximize our time and use the time we had efficiently. We have implemented the use of various concepts that we have learned over the preceding several weeks leading up to the development of this application.
+The front end was developed using React.js and Axios for communication with the back end. We started developing the front end on the second day of the project, in order to maximize our time and use the time we had efficiently. We have implemented the use of various concepts that we have learned over the preceding several weeks leading up to the development of this application.
 
-The frontend is separated into six separate directories, all located within the 'components' directory which is located in 'src'. Each folder and nested file have been named to reflect the functionality of the file. For example, 'auth' contains files necessary for the correct execution of the login and register functions, and for the protection of access to certain member-only features within the site.
+The front end is separated into six separate directories, all located within the 'components' directory which is located in 'src'. Each folder and nested file have been named to reflect the functionality of the file. For example, 'auth' contains files necessary for the correct execution of the login and register functions, and for the protection of access to certain member-only features within the site.
 
 Login is necessary for a user to access features such as the creation, edition and deletion of data within models; a user must be logged in to create a new event, pub or team. This was achieved through the development of the 'authorization.js' file in the 'lib' directory located in the back end. This file has been imported wherever a change to the page needs to reflect if the user is logged in and who the user is. For example, a post request to the 'teams' section of the API requires a token, reflected in the following section of code:
 
@@ -152,15 +152,15 @@ Day 1:
 
 Day 2:
 
-- Began backend development
+- Began back end development
 - Seed development
 - Tests
-- Start of frontend development
+- Start of front end development
 
 Day 3 - Day 8:
 
-- Continual changes to backend as issues were discovered
-- Development of frontend
+- Continual changes to back end as issues were discovered
+- Development of front end
 - Testing using Mocha and Chai
 
 Day 9:
@@ -175,7 +175,7 @@ Day 10:
 
 ## Successes and key learnings
 
-Project three posed significant challenges to all members of my team, as it was the first project where we were required to create a functional frontend and backend. I’m immensely proud of how quickly we established the backend component of the app, and also how we addressed any errors that were discovered during the course of production of the frontend.
+Project three posed significant challenges to all members of my team, as it was the first project where we were required to create a functional front end and back end. I’m immensely proud of how quickly we established the back end component of the app, and also how we addressed any errors that were discovered during the course of production of the front end.
 
 Locating the source of many errors was an obstacle, as my team were not as familiar with the workings of MongoDB as we were familiar with React.js. However, the fact that we successfully overcame obstacles with a speedy and can-do approach is testament to our abilities (as a collective team and as individuals) in terms of learning and coding.
 
@@ -193,7 +193,7 @@ Pub
   })
 ```
 
-Learning how to do this and applying it to all necessary areas of the code was a huge obstacle that we overcame and one of the key areas of backend development that we learned successfully.
+Learning how to do this and applying it to all necessary areas of the code was a huge obstacle that we overcame and one of the key areas of back end development that we learned successfully.
 
 Additionally, the use of Git in the Command Line proved to be a significant obstacle that we each overcame. Communication here was key, as errors were often thrown which had to be resolved (for example, when discrepancies were displayed whilst pulling from the 'development' branch of the repository). This is a skill that we quickly learned and one that drastically improved by the end of the project.
 
@@ -205,6 +205,6 @@ I believe we produced an exceptional amount of work and to a high standard for t
 
 Given more time, the added features we wanted to implement include the capability of an instant messaging feature, the ability to take payments for pub quizzes and for the app to display who has paid in the team, the ability to 'buy a pint' for other users. Additionally, more time would ideally have been allocated to styling the site, however we collectively agreed that the application's functionality was of higher importance.
 
-The app has some errors that require addressing. The first I would like to address relates to the functionality that allows users to add and remove themselves to teams within the quiz. At present, it is possible to belong to two teams at the same time; this is a bug that needs addressing so that any one user can only belong to a single team whilst they are not a member of any others. The 'add to team' function is also only visible from the front end at present, meaning when the page is refreshed the data reverts back to its original state. The reason for this was due to the time crunch we experienced when developing the application, as this was a feature we left until later and required for demonstration. It would also be good if a single user could only belong to one event at any given time, as the way the app is configured currently allows users to be able to belong to multiple teams at various pubs simultaneously. We would have liked to achieve this and have all current attending events visible to the user through the profile view page. Finally, the current team captain does not change in the case that the user who created the team leaves; we tried to set the team captain as the '0' index of the members array, however it wasn't rendering properly in the frontend.
+The app has some errors that require addressing. The first I would like to address relates to the functionality that allows users to add and remove themselves to teams within the quiz. At present, it is possible to belong to two teams at the same time; this is a bug that needs addressing so that any one user can only belong to a single team whilst they are not a member of any others. The 'add to team' function is also only visible from the front end at present, meaning when the page is refreshed the data reverts back to its original state. The reason for this was due to the time crunch we experienced when developing the application, as this was a feature we left until later and required for demonstration. It would also be good if a single user could only belong to one event at any given time, as the way the app is configured currently allows users to be able to belong to multiple teams at various pubs simultaneously. We would have liked to achieve this and have all current attending events visible to the user through the profile view page. Finally, the current team captain does not change in the case that the user who created the team leaves; we tried to set the team captain as the '0' index of the members array, however it wasn't rendering properly in the front end.
 
 Additionally, a user is currently able to add multiple star ratings to a single pub, which is a bug that needs addressing. We would achieve this through the use of the .contains() method on the star rating array, as the array is set up to consist of objects which has the user data nested within; the star rating number simply returns the sum of all ratings divided by the length of how many users have left a star rating.
