@@ -19,7 +19,7 @@
 		"@mapbox/mapbox-gl-geocoder": "mapbox/mapbox-gl-geocoder",
 		"@okta/okta-react": "^1.4.0",
 		"axios": "^0.19.2",
-		"bcrypt": "^3.0.7",
+		"bcrypt": "^5.0.0",
 		"beauty-stars": "^1.0.4",
 		"body-parser": "^1.19.0",
 		"dotenv": "^8.2.0",
